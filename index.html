@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Đấu Trường Triết Học</title>
+<title>Ngôi Đền Chân Lý</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Lora:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -15,7 +15,7 @@ h1,h2,h3,.pf{font-family:'Playfair Display',Georgia,serif;margin:0}
 header{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:2px solid var(--gold)}
 header svg{width:34px;height:34px;color:var(--gold)}header h1{font-size:22px;font-weight:900;letter-spacing:.5px}header .sp{flex:1}
 .mean{height:10px;margin:3px 0;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 12px);opacity:.55}
-main{max-width:980px;margin:0 auto;padding:18px 16px 60px}
+main{max-width:1200px;margin:0 auto;padding:18px 16px 60px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 0 var(--line)}
 .tag{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:18px;display:flex;justify-content:space-between}
 .tm{font-style:normal;font-weight:900;font-size:26px;color:var(--red)}
@@ -40,9 +40,12 @@ textarea{height:130px;font-family:monospace;font-size:13px}
 .pod .h1{height:210px}.pod .h2{height:165px}.pod .h3{height:130px}.pod .sc{font-size:26px;font-weight:900;color:var(--gold)}
 .center{text-align:center}.mut{color:var(--mut)}.err{color:var(--red)}
 .star{border:2px dashed var(--gold);padding:10px;border-radius:6px}
+.endg{display:grid;grid-template-columns:1fr 380px;gap:16px;align-items:start}@media(max-width:820px){.endg{grid-template-columns:1fr}}
+.rk{display:flex;gap:10px;align-items:center;padding:7px 8px;border-bottom:1px dotted var(--line)}.rk .rn{width:28px;font-family:'Playfair Display',serif;font-weight:900;color:var(--mut)}.rk .rt{flex:1}
+.rk.top{background:rgba(154,107,31,.14);border-left:3px solid var(--gold)}.rk.top .rn{color:var(--gold);font-size:20px}.scr{max-height:380px;overflow-y:auto}
 </style></head>
 <body>
-<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Đấu Trường Triết Học</h1><span class="sp"></span><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
+<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Ngôi Đền Chân Lý</h1><span class="sp"></span><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
 <div class="mean"></div>
 <main id="app"><p class="center mut">Đang kết nối…</p></main>
 <script>
@@ -95,7 +98,7 @@ function onMsg(c,d){if(!d||typeof d!='object'||!S)return;
   const p=SEC[d.sec]||(SEC[d.sec]='p'+nextId++);PL[p]={n,g};conns[p]=c;c._p=p;c.send({t:'ok',pub:p});put({})}
  else if(d.t=='a'){const p=c._p;if(!p||!PL[p]||!S.q||S.stage!='q'||d.k!==S.q.k)return;let v=d.v;
   if(S.q.c==1){if(!Number.isInteger(v)||v<0||v>3)return}else if(S.q.c==2){if(typeof v!='string')return;v=v.slice(0,40)}else if(typeof v!='boolean')return;
-  AN[p]={k:d.k,v,star:S.q.c==3&&!!d.star&&!S.used[PL[p].g]};save();render()}}
+  AN[p]={t:Date.now(),k:d.k,v,star:S.q.c==3&&!!d.star&&!S.used[PL[p].g]};save();render()}}
 function resetHost(){try{peer.destroy()}catch(e){}localStorage.removeItem('host');S=null;PL={};AN={};SEC={};conns={};role=null;isHost=false;bank=null;lastSig='';render()}
 function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValues(c);const code=[...c].map(x=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[x%24]).join('');
  PL={};AN={};SEC={};nextId=1;S={code,phase:'lobby',i:-1,stage:'',q:null,rev:null,gs:{},ps:{},used:{},solved:{},end:0,title:bank.title||'',v:1,pl:PL,cw:bank.tangToc.rows.map(r=>({len:norm(r.answer).length,k:r.k||0}))};
@@ -103,7 +106,7 @@ function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValu
 async function openStep(i){const st=seq(bank)[i];let q;AN={};
  if(st.t=='mc')q={c:1,text:st.q.q,opts:st.q.opts};else if(st.t=='row')q={c:2,t:'row',n:st.i+1,text:st.r.clue,len:norm(st.r.answer).length};
  else if(st.t=='kw')q={c:2,t:'kw',text:bank.tangToc.hint||'Tìm từ khoá hàng dọc!',len:norm(bank.tangToc.keyword).length};else q={c:3,text:st.q.q,stem:st.q.stem||''};
- q.k='s'+i;frozen=null;busy=false;await put({phase:'play',i,stage:'q',q,rev:null,end:Date.now()+TT[st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1)})}
+ q.k='s'+i;frozen=null;busy=false;const dur=TT[st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1),t0=Date.now();await put({phase:'play',i,stage:'q',q,rev:null,t0,dur,end:t0+dur})}
 async function lock(){if(busy||S.stage!='q')return;busy=true;frozen={...AN};await put({stage:'lock'});busy=false}
 async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={...S.ps},used={...S.used},solved={...S.solved},res={},dg={};const L=[];const sg=new Set();
  Object.entries(A).forEach(([u,a])=>{if(a.k!==S.q.k||!PL[u])return;L.push([u,a]);if(st.c==3&&a.star&&!used[PL[u].g])sg.add(PL[u].g)});
@@ -111,6 +114,7 @@ async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={..
  L.forEach(([u,a])=>{const g=PL[u].g,m=sg.has(g)?2:1;let d=0;
   if(st.t=='mc')d=a.v===st.q.a?100:0;else if(st.t=='row'){const t=norm(a.v);if(t)d=t==norm(st.r.answer)?100:-10}
   else if(st.t=='kw')d=norm(a.v)==norm(bank.tangToc.keyword)?1000:0;else d=(a.v===st.q.a?200:-20)*m;
+  if(d>0){const f=Math.min(1,Math.max(.5,.5+.5*((S.end-(a.t||S.t0))/(S.dur||1))));d=Math.round(d*f/10)*10}
   gs[g]=(gs[g]||0)+d;ps[u]=(ps[u]||0)+d/2;res[u]=d/2;dg[g]=(dg[g]||0)+d});
  let ans='';if(st.t=='mc')ans=String.fromCharCode(65+st.q.a)+'. '+st.q.opts[st.q.a];else if(st.t=='row'){ans=st.r.answer;solved[st.i]=st.r.answer}else if(st.t=='kw')ans=bank.tangToc.keyword;else ans=st.q.a?'ĐÚNG':'SAI';
  await put({stage:'rev',gs,ps,used,solved,rev:{a:ans,res,dg,sg:[...sg],c:st.q?st.q.a:null}})}
@@ -131,7 +135,7 @@ function join(){const code=norm($('#jc').value),n=$('#jn').value.trim().slice(0,
 function answer(v){if(S.stage!='q'||!conn||!conn.open)return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);conn.send({t:'a',k:S.q.k,v,star});render()}
 function toggleStar(){if(S.used[PL[uid].g])return;star=!star;if(mine.k==S.q.k)answer(mine.v);else render()}
 function setRole(r){role=r;isHost=r=='host';lastSig='';render()}
-function landH(){return `<div class="card center"><h2>Chào mừng đến Đấu Trường Triết Học</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="setRole('host')">Tôi là chủ phòng</button><button class="g" onclick="setRole('player')">Tôi là người chơi</button></div></div>`}
+function landH(){return `<div class="card center"><h2>Chào mừng đến Ngôi Đền Chân Lý</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="setRole('host')">Tôi là chủ phòng</button><button class="g" onclick="setRole('player')">Tôi là người chơi</button></div></div>`}
 function init(){
  try{const o=JSON.parse(localStorage.host||'null');if(o&&o.S&&!location.hash.slice(1)){S=o.S;bank=o.bank;SEC=o.SEC||{};nextId=o.nextId||1;AN=o.AN||{};PL=S.pl||{};hostStart(S.code)}
   else if(location.hash.length>1)playerStart(norm(location.hash.slice(1)));else if(localStorage.room&&prof.n)playerStart(localStorage.room)}catch(e){}
@@ -144,7 +148,7 @@ function scoreH(){const t=GR.map(g=>[g,S.gs[g]||0]),mx=Math.max(100,...t.map(x=>
  return '<div class="card"><h3>Bảng điểm các nhóm</h3>'+t.sort((a,b)=>b[1]-a[1]).map(([g,s])=>`<div class="bar"><span class="n">Nhóm ${g}</span><div style="width:${Math.max(2,Math.abs(s)/mx*60)}%;${s<0?'background:var(--red)':''}"></div><b>${s}</b></div>`).join('')+'</div>'}
 function qH(){const q=S.q,r=S.rev,me=cur(),h=[];
  h.push(`<div class="card"><div class="tag"><span>Thử thách ${q.c}: ${CH[q.c-1]}${q.n?' · Hàng '+q.n:q.t=='kw'?' · Từ khoá':''}</span><span class="tm" id="tm">${S.stage=='q'?Math.max(0,Math.ceil((S.end-Date.now())/1000)):''}</span></div>`);
- if(q.stem)h.push(`<p class="stem">${esc(q.stem)}</p>`);h.push(`<h2>${esc(q.text)}</h2>`);
+ if(q.stem)h.push(`<p class="stem">${esc(q.stem)}</p>`);h.push(`<h2>${esc(q.text)}</h2>`);if(S.stage=='q')h.push('<p class="mut" style="margin:-6px 0 10px">⏱ Trả lời càng nhanh, điểm cộng càng cao (từ 50% đến 100%).</p>');
  if(q.c==1)h.push('<div class="opts">'+q.opts.map((o,i)=>`<button class="opt ${r?(i==r.c?'ok':me&&me.v===i?'bad':''):me&&me.v===i?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${i})"`}><b>${'ABCD'[i]}.</b> ${esc(o)}</button>`).join('')+'</div>');
  if(q.c==2){if(q.t=='row'||q.t=='kw'){if(!isHost&&S.stage=='q')h.push(`<div class="row"><input id="ai" maxlength="40" placeholder="${q.len} chữ cái" value="${esc(me?me.v:'')}" style="flex:1;min-width:180px"><button onclick="answer($('#ai').value.trim())">Gửi đáp án</button></div>${me?'<p class="mut">Đã gửi: <b>'+esc(me.v)+'</b> (có thể sửa trước khi hết giờ)</p>':''}`);else h.push(`<p class="mut">${q.len} chữ cái</p>`)}}
  if(q.c==3){h.push('<div class="opts">'+[true,false].map(b=>`<button class="opt ${r?(b===r.c?'ok':me&&me.v===b?'bad':''):me&&me.v===b?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${b})"`}><b>${b?'ĐÚNG':'SAI'}</b></button>`).join('')+'</div>');
@@ -152,10 +156,13 @@ function qH(){const q=S.q,r=S.rev,me=cur(),h=[];
  if(r){h.push(`<p class="pf" style="font-size:22px;margin-top:14px">Đáp án: <b style="color:var(--ok)">${esc(r.a)}</b></p>`);if(r.sg&&r.sg.length)h.push(`<p>☀ Ánh Sáng Chân Lý được dùng bởi nhóm ${r.sg.join(', ')}</p>`);
   const d=Object.entries(r.dg||{}).map(([g,v])=>`Nhóm ${g}: <span class="res ${v>=0?'pos':'neg'}">${v>0?'+':''}${v}</span>`).join(' · ');if(d)h.push(`<p>${d}</p>`)}
  h.push('</div>');return h.join('')}
-function finalH(){const t=GR.map(g=>[g,S.gs[g]||0]).sort((a,b)=>b[1]-a[1]),p=Object.entries(S.ps).filter(([u])=>PL[u]).sort((a,b)=>b[1]-a[1]).slice(0,5);
- const pod=[1,0,2].map(i=>t[i]?`<div class="h${i+1}"><div class="pf" style="font-size:34px;border:0;padding:0">${['🏛','Ⅱ','Ⅲ'][i]=='🏛'?'Ⅰ':['Ⅰ','Ⅱ','Ⅲ'][i]}</div><h3>Nhóm ${t[i][0]}</h3><div class="sc">${t[i][1]}</div></div>`:'').join('');
- return `<div class="card center"><svg viewBox="0 0 120 60" width="140" fill="none" stroke="var(--gold)" stroke-width="3"><path d="M20 50C5 35 8 15 25 8M100 50c15-15 12-35-5-42M22 44c-6-6-6-14-2-20M98 44c6-6 6-14 2-20"/><circle cx="60" cy="30" r="12" fill="var(--gold)" stroke="none"/></svg><h2>Kết quả chung cuộc</h2><p class="mut">${esc(S.title)}</p><div class="pod">${pod}</div></div>
- <div class="card"><h3>Cá nhân xuất sắc</h3>${p.map(([u,s],i)=>`<div class="bar"><span class="n">${i+1}. </span><span style="flex:1">${esc(PL[u].n)} <span class="mut">(Nhóm ${PL[u].g})</span></span><b>${s}</b></div>`).join('')||'<p class="mut">Chưa có dữ liệu.</p>'}</div>`+scoreH()}
+function finalH(){
+ const t=GR.map(g=>[g,S.gs[g]||0]).sort((a,b)=>b[1]-a[1]),p=Object.keys(PL).map(u=>[u,S.ps[u]||0]).sort((a,b)=>b[1]-a[1]),R=['Ⅰ','Ⅱ','Ⅲ'];
+ const pod=[1,0,2].map(i=>t[i]?`<div class="h${i+1}"><div class="pf" style="font-size:34px;color:var(--gold)">${R[i]}</div><h3>Nhóm ${t[i][0]}</h3><div class="sc">${t[i][1]}</div></div>`:'').join('');
+ const row=(i,n,sub,s)=>`<div class="rk ${i<3?'top':''}"><span class="rn">${i<3?R[i]:i+1}</span><span class="rt">${n}${sub?` <small class="mut">${sub}</small>`:''}</span><b class="${s<0?'neg':''}">${s}</b></div>`;
+ return `<div class="endg"><div class="card center"><svg viewBox="0 0 120 60" width="150" fill="none" stroke="var(--gold)" stroke-width="3"><path d="M20 50C5 35 8 15 25 8M100 50c15-15 12-35-5-42M22 44c-6-6-6-14-2-20M98 44c6-6 6-14 2-20"/><circle cx="60" cy="30" r="12" fill="var(--gold)" stroke="none"/></svg><h2>Kết quả chung cuộc</h2><p class="mut">${esc(S.title)}</p><div class="pod">${pod}</div></div>
+ <aside><div class="card"><h3>Xếp hạng nhóm</h3>${t.map((x,i)=>row(i,'Nhóm '+x[0],'',x[1])).join('')}</div>
+ <div class="card"><h3>Xếp hạng cá nhân</h3><div class="scr">${p.map(([u,s],i)=>row(i,esc(PL[u].n),'Nhóm '+PL[u].g,s)).join('')||'<p class="mut">Chưa có người chơi.</p>'}</div></div></aside></div>`}
 function rosterH(){return '<div class="card"><h3>Người chơi ('+Object.keys(PL).length+')</h3><div class="grid">'+GR.map(g=>`<div class="gp"><b>Nhóm ${g}</b><br>${Object.values(PL).filter(p=>p.g==g).map(p=>esc(p.n)).join(', ')||'<span class=mut>—</span>'}</div>`).join('')+'</div></div>'}
 function hostH(){
  if(!S){return `<div class="card"><h2>Thiết lập phòng</h2><p>Nạp bộ đề (JSON) rồi tạo phòng. Đáp án chỉ nằm trong trình duyệt của chủ phòng, người chơi không thể đọc được.</p>
