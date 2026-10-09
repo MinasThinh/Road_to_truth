@@ -73,9 +73,9 @@ function valid(b){try{if(!b.khoiDong.every(q=>q.q&&q.opts.length==4&&q.a>=0&&q.a
 /* ---------- âm thanh ---------- */
 let AC,mute=false;
 function tone(f,t,d,v,ty='sine'){const o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.06);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.m);o.start(t);o.stop(t+d)}
-function music(){if(AC)return;AC=new(window.AudioContext||window.webkitAudioContext)();AC.m=AC.createGain();AC.m.gain.value=.13;AC.m.connect(AC.destination);const N=[220,261.6,293.7,329.6,392,440];let n=0;
-setInterval(()=>{if(mute)return;const t=AC.currentTime;tone(N[[0,2,4,3,1,5,3,2][n%8]],t,2.6,.5);if(n%8==0)tone(110,t,6,.5,'triangle');if(n%16==0)tone(165,t,6,.3,'triangle');n++},650)}
-function sfx(k){if(!AC||mute)return;const t=AC.currentTime;(k?[523,659,784,1047]:[247,196,147]).forEach((f,i)=>tone(f,t+i*.13,.6,.7,'triangle'))}
+function music(){if(AC)return;AC=new(window.AudioContext||window.webkitAudioContext)();AC.m=AC.createGain();AC.m.gain.value=.7;AC.m.connect(AC.destination);const N=[220,261.6,293.7,329.6,392,440];let n=0;
+setInterval(()=>{if(mute)return;const t=AC.currentTime;tone(N[[0,2,4,3,1,5,3,2][n%8]],t,2.6,.9);tone(N[[0,2,4,3,1,5,3,2][n%8]]*2,t,1.8,.25);if(n%8==0)tone(110,t,6,.8,'triangle');if(n%16==0)tone(165,t,6,.5,'triangle');n++},650)}
+function sfx(k){if(!AC||mute)return;const t=AC.currentTime;(k?[523,659,784,1047]:[247,196,147]).forEach((f,i)=>tone(f,t+i*.13,.7,1,'triangle'))}
 document.addEventListener('pointerdown',music,{once:true});
 $('#snd').onclick=e=>{music();mute=!mute;e.target.textContent=mute?'✕ Tắt nhạc':'♪ Nhạc';e.stopPropagation()};
 /* ---------- mạng (PeerJS / WebRTC): chủ phòng là máy chủ duy nhất, giữ mọi đáp án ---------- */
@@ -130,7 +130,8 @@ function join(){const code=norm($('#jc').value),n=$('#jn').value.trim().slice(0,
  if(conn&&conn.open&&conn.peer==PFX+code)sendJoin();else if(peer&&!peer.destroyed&&peer.open)connect(code);else playerStart(code);render()}
 function answer(v){if(S.stage!='q'||!conn||!conn.open)return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);conn.send({t:'a',k:S.q.k,v,star});render()}
 function toggleStar(){if(S.used[PL[uid].g])return;star=!star;if(mine.k==S.q.k)answer(mine.v);else render()}
-function landH(){return `<div class="card center"><h2>Chào mừng đến Đấu Trường Triết Học</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="role='host';isHost=true;lastSig='';render()">Tôi là chủ phòng</button><button class="g" onclick="role='player';lastSig='';render()">Tôi là người chơi</button></div></div>`}
+function setRole(r){role=r;isHost=r=='host';lastSig='';render()}
+function landH(){return `<div class="card center"><h2>Chào mừng đến Đấu Trường Triết Học</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="setRole('host')">Tôi là chủ phòng</button><button class="g" onclick="setRole('player')">Tôi là người chơi</button></div></div>`}
 function init(){
  try{const o=JSON.parse(localStorage.host||'null');if(o&&o.S&&!location.hash.slice(1)){S=o.S;bank=o.bank;SEC=o.SEC||{};nextId=o.nextId||1;AN=o.AN||{};PL=S.pl||{};hostStart(S.code)}
   else if(location.hash.length>1)playerStart(norm(location.hash.slice(1)));else if(localStorage.room&&prof.n)playerStart(localStorage.room)}catch(e){}
