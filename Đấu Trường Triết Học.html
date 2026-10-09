@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Đấu Trường Triết Học</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#f1e7d0;--ink:#2a2118;--card:#fbf5e6;--line:#c9b68c;--gold:#9a6b1f;--red:#8b2e2a;--ok:#3d6b3a;--mut:#6b5a43;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120d;--ink:#efe3c8;--card:#231b13;--line:#5a4627;--gold:#d6a64a;--red:#e0705f;--ok:#8fc07f;--mut:#b5a284}}
+:root[data-theme="dark"]{--bg:#17120d;--ink:#efe3c8;--card:#231b13;--line:#5a4627;--gold:#d6a64a;--red:#e0705f;--ok:#8fc07f;--mut:#b5a284}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Lora,Georgia,serif;font-size:17px;line-height:1.5;background-image:radial-gradient(circle at 50% -10%,rgba(154,107,31,.18),transparent 60%)}
+h1,h2,h3,.pf{font-family:'Playfair Display',Georgia,serif;margin:0}
+header{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:2px solid var(--gold)}
+header svg{width:34px;height:34px;color:var(--gold)}header h1{font-size:22px;font-weight:900;letter-spacing:.5px}header .sp{flex:1}
+.mean{height:10px;margin:3px 0;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 12px);opacity:.55}
+main{max-width:980px;margin:0 auto;padding:18px 16px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 0 var(--line)}
+.tag{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:18px;display:flex;justify-content:space-between}
+.tm{font-style:normal;font-weight:900;font-size:26px;color:var(--red)}
+h2{font-size:26px;line-height:1.3;margin:6px 0 12px}.stem{color:var(--mut);font-style:italic;margin:6px 0}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:var(--gold);color:#fff8e8;border:0;border-radius:4px;padding:10px 18px;font-weight:600}
+button.g{background:transparent;color:var(--ink);border:1px solid var(--gold)}button:disabled{opacity:.45;cursor:default}
+input,textarea,select{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;width:100%}
+textarea{height:130px;font-family:monospace;font-size:13px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.opts{grid-template-columns:1fr}}
+.opt{background:var(--bg);color:var(--ink);border:1px solid var(--line);text-align:left;padding:12px 14px}
+.opt.sel{border:2px solid var(--gold);background:rgba(154,107,31,.18)}.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--red);color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.gp{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg)}.gp b{font-family:'Playfair Display',serif;color:var(--gold)}
+.big{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;letter-spacing:10px;color:var(--gold);text-align:center}
+.cwb{overflow-x:auto;padding-bottom:6px}.cr{display:flex;gap:4px;margin:4px 0;align-items:center;width:max-content}.cr b{width:22px;color:var(--mut)}
+.cr i{width:30px;height:30px;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:700}.cr i.key{border:2px solid var(--gold);background:rgba(154,107,31,.2)}.cr.cur i{border-color:var(--red)}
+.bar{display:flex;align-items:center;gap:8px;margin:6px 0}.bar span.n{width:70px;font-family:'Playfair Display',serif;font-weight:700}.bar div{height:18px;background:var(--gold);border-radius:3px;transition:width .6s}
+.res{font-weight:700}.pos{color:var(--ok)}.neg{color:var(--red)}
+.pod{display:flex;gap:12px;align-items:flex-end;justify-content:center;margin:20px 0}.pod div{flex:1;max-width:200px;text-align:center;background:var(--card);border:1px solid var(--gold);border-radius:6px 6px 0 0;padding:12px}
+.pod .h1{height:210px}.pod .h2{height:165px}.pod .h3{height:130px}.pod .sc{font-size:26px;font-weight:900;color:var(--gold)}
+.center{text-align:center}.mut{color:var(--mut)}.err{color:var(--red)}
+.star{border:2px dashed var(--gold);padding:10px;border-radius:6px}
+</style></head>
+<body>
+<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Đấu Trường Triết Học</h1><span class="sp"></span><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
+<div class="mean"></div>
+<main id="app"><p class="center mut">Đang kết nối…</p></main>
+<script>
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'D').replace(/[^a-zA-Z0-9]/g,'').toUpperCase();
+const GR=[1,2,3,4,6,7],CH=['Khởi động','Tăng tốc','Về đích'],TT=[20,35,45,25];
+const SAMPLE={title:"Nhập môn triết học",khoiDong:[
+{q:"Câu nói “Tôi tư duy, vậy tôi tồn tại” thuộc về ai?",opts:["Plato","Descartes","Hume","Marx"],a:1},
+{q:"Vấn đề cơ bản của triết học là quan hệ giữa:",opts:["Vật chất và ý thức","Cá nhân và xã hội","Lý thuyết và thực tiễn","Chân và giả"],a:0},
+{q:"Phép biện chứng của Hegel thường được tóm lược bằng bộ ba nào?",opts:["Nhân – quả – duyên","Chính đề – phản đề – hợp đề","Thực thể – thuộc tính – dạng thức","Tự do – bình đẳng – bác ái"],a:1},
+{q:"Trường phái nào chủ trương “tồn tại có trước bản chất”?",opts:["Chủ nghĩa hiện sinh","Chủ nghĩa duy lý","Chủ nghĩa kinh nghiệm","Chủ nghĩa Khắc kỷ"],a:0}],
+tangToc:{keyword:"LOGIC",hint:"Môn học nghiên cứu các quy luật của tư duy đúng đắn (5 chữ cái).",rows:[
+{clue:"Học trò của Plato, người đặt nền móng cho logic học hình thức.",answer:"Aristotle",k:8},
+{clue:"Triết gia Athens, thường nói mình chỉ biết rằng mình không biết gì.",answer:"Socrates",k:2},
+{clue:"Triết gia Đức, đại diện của phép biện chứng duy tâm.",answer:"Hegel",k:3},
+{clue:"Tác giả “Zarathustra đã nói như thế”, người tuyên bố “Chúa đã chết”.",answer:"Nietzsche",k:2},
+{clue:"Nhà triết học Pháp, cha đẻ của chủ nghĩa duy lý hiện đại.",answer:"Descartes",k:4}]},
+veDich:[
+{stem:"Về phạm trù vật chất trong triết học Mác – Lênin:",q:"Vật chất là thực tại khách quan, tồn tại độc lập với ý thức của con người.",a:true},
+{stem:"Về chủ nghĩa duy tâm chủ quan:",q:"Chủ nghĩa duy tâm chủ quan cho rằng thế giới tồn tại hoàn toàn độc lập với cảm giác của con người.",a:false},
+{stem:"Về Socrates:",q:"Socrates để lại nhiều tác phẩm triết học do chính ông viết ra.",a:false},
+{stem:"Về chủ nghĩa Khắc kỷ:",q:"Chủ nghĩa Khắc kỷ đề cao việc dùng lý trí để giữ tâm bình thản trước điều nằm ngoài tầm kiểm soát.",a:true}]};
+let db,uid,isHost=false,S=null,PL={},AN={},bank=null,frozen=null,mine=JSON.parse(sessionStorage.mine||'{}'),star=false,busy=false,lastSig='',lastSfx=0,err='';
+const prof=JSON.parse(localStorage.prof||'{}');
+const seq=b=>{const a=[];b.khoiDong.forEach(q=>a.push({c:1,t:'mc',q}));b.tangToc.rows.forEach((r,i)=>a.push({c:2,t:'row',r,i}));a.push({c:2,t:'kw'});b.veDich.forEach(q=>a.push({c:3,t:'tf',q}));return a};
+function valid(b){try{if(!b.khoiDong.every(q=>q.q&&q.opts.length==4&&q.a>=0&&q.a<4))return 0;if(!b.tangToc.rows.length||!b.tangToc.keyword||!b.tangToc.rows.every(r=>r.clue&&r.answer))return 0;return b.veDich.every(q=>q.q&&typeof q.a=='boolean')}catch(e){return 0}}
+/* ---------- âm thanh ---------- */
+let AC,mute=false;
+function tone(f,t,d,v,ty='sine'){const o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.06);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.m);o.start(t);o.stop(t+d)}
+function music(){if(AC)return;AC=new(window.AudioContext||window.webkitAudioContext)();AC.m=AC.createGain();AC.m.gain.value=.13;AC.m.connect(AC.destination);const N=[220,261.6,293.7,329.6,392,440];let n=0;
+setInterval(()=>{if(mute)return;const t=AC.currentTime;tone(N[[0,2,4,3,1,5,3,2][n%8]],t,2.6,.5);if(n%8==0)tone(110,t,6,.5,'triangle');if(n%16==0)tone(165,t,6,.3,'triangle');n++},650)}
+function sfx(k){if(!AC||mute)return;const t=AC.currentTime;(k?[523,659,784,1047]:[247,196,147]).forEach((f,i)=>tone(f,t+i*.13,.6,.7,'triangle'))}
+document.addEventListener('pointerdown',music,{once:true});
+$('#snd').onclick=e=>{music();mute=!mute;e.target.textContent=mute?'✕ Tắt nhạc':'♪ Nhạc';e.stopPropagation()};
+/* ---------- khởi tạo ---------- */
+async function init(){
+ try{const[d,u]=await Promise.all([claude.use('db'),claude.use('user')]);db=d;if(!db||!u)throw 0;uid=await u.id();isHost=await u.isOwner();if(!uid)throw 0}
+ catch(e){app.innerHTML='<div class="card center"><h2>Cần đăng nhập</h2><p>Hãy mở trang qua tài khoản Claude được mời để vào phòng chơi.</p></div>';return}
+ db.doc('st/main').onSnapshot(s=>{S=s.exists?s.data():null;render()},()=>{});
+ db.collection('pl').onSnapshot(q=>{PL={};q.docs.forEach(d=>PL[d.id]=d.data());render()},()=>{});
+ if(isHost){db.collection('an').onSnapshot(q=>{AN={};q.docs.forEach(d=>AN[d.id]=d.data());render()},()=>{});
+  try{const b=await db.doc('data/users/'+uid+'/bank').get();if(b.exists)bank=JSON.parse(b.data().json)}catch(e){}}
+ render();
+ setInterval(()=>{const e=$('#tm');if(!S||S.stage!='q'||!e)return;const r=Math.max(0,Math.ceil((S.end-Date.now())/1000));e.textContent=r;if(isHost&&r==0&&!busy)lock()},300)}
+async function put(o){S={...S,...o,v:(S.v||0)+1};render();await db.doc('st/main').set(JSON.parse(JSON.stringify(S)))}
+/* ---------- host ---------- */
+async function clearAll(){for(const id in PL)await db.doc('pl/'+id).delete();for(const id in AN)await db.doc('an/'+id).delete();try{await db.doc('st/main').delete()}catch(e){}}
+async function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValues(c);const code=[...c].map(x=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[x%24]).join('');
+ await clearAll();await db.doc('data/users/'+uid+'/bank').set({json:JSON.stringify(bank)});
+ S={code,phase:'lobby',i:-1,stage:'',q:null,rev:null,gs:{},ps:{},used:{},solved:{},end:0,title:bank.title||'',v:1,cw:bank.tangToc.rows.map(r=>({len:norm(r.answer).length,k:r.k||0}))};
+ await db.doc('st/main').set(S)}
+async function openStep(i){const st=seq(bank)[i];let q;
+ if(st.t=='mc')q={c:1,text:st.q.q,opts:st.q.opts};else if(st.t=='row')q={c:2,t:'row',n:st.i+1,text:st.r.clue,len:norm(st.r.answer).length};
+ else if(st.t=='kw')q={c:2,t:'kw',text:bank.tangToc.hint||'Tìm từ khoá hàng dọc!',len:norm(bank.tangToc.keyword).length};else q={c:3,text:st.q.q,stem:st.q.stem||''};
+ q.k='s'+i;frozen=null;busy=false;await put({phase:'play',i,stage:'q',q,rev:null,end:Date.now()+TT[st.c==2&&st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1)})}
+async function lock(){if(busy||S.stage!='q')return;busy=true;frozen={...AN};await put({stage:'lock'});busy=false}
+async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={...S.ps},used={...S.used},solved={...S.solved},res={},dg={};const L=[];const sg=new Set();
+ Object.entries(A).forEach(([u,a])=>{if(a.k!==S.q.k||!PL[u])return;L.push([u,a]);if(st.c==3&&a.star&&!used[PL[u].g])sg.add(PL[u].g)});
+ sg.forEach(g=>used[g]=1);
+ L.forEach(([u,a])=>{const g=PL[u].g,m=sg.has(g)?2:1;let d=0;
+  if(st.t=='mc')d=a.v===st.q.a?100:0;else if(st.t=='row'){const t=norm(a.v);if(t)d=t==norm(st.r.answer)?100:-10}
+  else if(st.t=='kw')d=norm(a.v)==norm(bank.tangToc.keyword)?1000:0;else d=(a.v===st.q.a?200:-20)*m;
+  gs[g]=(gs[g]||0)+d;ps[u]=(ps[u]||0)+d/2;res[u]=d/2;dg[g]=(dg[g]||0)+d});
+ let ans='';if(st.t=='mc')ans=String.fromCharCode(65+st.q.a)+'. '+st.q.opts[st.q.a];else if(st.t=='row'){ans=st.r.answer;solved[st.i]=st.r.answer}else if(st.t=='kw')ans=bank.tangToc.keyword;else ans=st.q.a?'ĐÚNG':'SAI';
+ await put({stage:'rev',gs,ps,used,solved,rev:{a:ans,res,dg,sg:[...sg],c:st.q?st.q.a:null}})}
+async function next(){const n=seq(bank).length;if(S.i+1<n)openStep(S.i+1);else put({phase:'end',stage:'',q:null})}
+/* ---------- người chơi ---------- */
+async function join(){const c=norm($('#jc').value),n=$('#jn').value.trim().slice(0,24),g=+$('#jg').value;
+ if(c!=S.code)return err='Mã phòng không đúng.',render();if(!n)return err='Hãy nhập tên của bạn.',render();err='';
+ localStorage.prof=JSON.stringify({n,g});await db.doc('pl/'+uid).set({n,g})}
+async function answer(v){if(S.stage!='q')return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);render();await db.doc('an/'+uid).set({k:S.q.k,v,star:!!star&&S.q.c==3&&!S.used[PL[uid].g]})}
+function toggleStar(){if(S.used[PL[uid].g])return;star=!star;if(mine.k==S.q.k)answer(mine.v);else render()}
+/* ---------- hiển thị ---------- */
+const cur=()=>mine.k===(S.q&&S.q.k)?mine:null;
+function boardH(){const cw=S.cw,mk=Math.max(...cw.map(r=>r.k||1));return '<div class="cwb">'+cw.map((r,i)=>{const a=S.solved[i]?norm(S.solved[i]):'';return `<div class="cr ${S.q&&S.q.c==2&&S.q.n==i+1&&S.stage!='rev'?'cur':''}" style="margin-left:${(mk-(r.k||1))*34}px"><b>${i+1}</b>`+Array.from({length:r.len},(_,j)=>`<i class="${j+1==r.k?'key':''}">${a[j]||''}</i>`).join('')+'</div>'}).join('')+'</div>'}
+function scoreH(){const t=GR.map(g=>[g,S.gs[g]||0]),mx=Math.max(100,...t.map(x=>Math.abs(x[1])));
+ return '<div class="card"><h3>Bảng điểm các nhóm</h3>'+t.sort((a,b)=>b[1]-a[1]).map(([g,s])=>`<div class="bar"><span class="n">Nhóm ${g}</span><div style="width:${Math.max(2,Math.abs(s)/mx*60)}%;${s<0?'background:var(--red)':''}"></div><b>${s}</b></div>`).join('')+'</div>'}
+function qH(){const q=S.q,r=S.rev,me=cur(),h=[];
+ h.push(`<div class="card"><div class="tag"><span>Thử thách ${q.c}: ${CH[q.c-1]}${q.n?' · Hàng '+q.n:q.t=='kw'?' · Từ khoá':''}</span><span class="tm" id="tm">${S.stage=='q'?Math.max(0,Math.ceil((S.end-Date.now())/1000)):''}</span></div>`);
+ if(q.stem)h.push(`<p class="stem">${esc(q.stem)}</p>`);h.push(`<h2>${esc(q.text)}</h2>`);
+ if(q.c==1)h.push('<div class="opts">'+q.opts.map((o,i)=>`<button class="opt ${r?(i==r.c?'ok':me&&me.v===i?'bad':''):me&&me.v===i?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${i})"`}><b>${'ABCD'[i]}.</b> ${esc(o)}</button>`).join('')+'</div>');
+ if(q.c==2){if(q.t=='row'||q.t=='kw'){if(!isHost&&S.stage=='q')h.push(`<div class="row"><input id="ai" maxlength="40" placeholder="${q.len} chữ cái" value="${esc(me?me.v:'')}" style="flex:1;min-width:180px"><button onclick="answer($('#ai').value.trim())">Gửi đáp án</button></div>${me?'<p class="mut">Đã gửi: <b>'+esc(me.v)+'</b> (có thể sửa trước khi hết giờ)</p>':''}`);else h.push(`<p class="mut">${q.len} chữ cái</p>`)}}
+ if(q.c==3){h.push('<div class="opts">'+[true,false].map(b=>`<button class="opt ${r?(b===r.c?'ok':me&&me.v===b?'bad':''):me&&me.v===b?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${b})"`}><b>${b?'ĐÚNG':'SAI'}</b></button>`).join('')+'</div>');
+  if(!isHost){const u=S.used[PL[uid].g];h.push(`<div class="star" style="margin-top:12px"><button class="${star?'':'g'}" ${u||S.stage!='q'?'disabled':''} onclick="toggleStar()">☀ Ánh Sáng Chân Lý ${u?'(nhóm đã dùng)':star?'(đang bật)':''}</button><div class="mut">Mỗi nhóm một lượt: đúng nhân đôi điểm, sai trừ gấp đôi.</div></div>`)}}
+ if(r){h.push(`<p class="pf" style="font-size:22px;margin-top:14px">Đáp án: <b style="color:var(--ok)">${esc(r.a)}</b></p>`);if(r.sg&&r.sg.length)h.push(`<p>☀ Ánh Sáng Chân Lý được dùng bởi nhóm ${r.sg.join(', ')}</p>`);
+  const d=Object.entries(r.dg||{}).map(([g,v])=>`Nhóm ${g}: <span class="res ${v>=0?'pos':'neg'}">${v>0?'+':''}${v}</span>`).join(' · ');if(d)h.push(`<p>${d}</p>`)}
+ h.push('</div>');return h.join('')}
+function finalH(){const t=GR.map(g=>[g,S.gs[g]||0]).sort((a,b)=>b[1]-a[1]),p=Object.entries(S.ps).filter(([u])=>PL[u]).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ const pod=[1,0,2].map(i=>t[i]?`<div class="h${i+1}"><div class="pf" style="font-size:34px;border:0;padding:0">${['🏛','Ⅱ','Ⅲ'][i]=='🏛'?'Ⅰ':['Ⅰ','Ⅱ','Ⅲ'][i]}</div><h3>Nhóm ${t[i][0]}</h3><div class="sc">${t[i][1]}</div></div>`:'').join('');
+ return `<div class="card center"><svg viewBox="0 0 120 60" width="140" fill="none" stroke="var(--gold)" stroke-width="3"><path d="M20 50C5 35 8 15 25 8M100 50c15-15 12-35-5-42M22 44c-6-6-6-14-2-20M98 44c6-6 6-14 2-20"/><circle cx="60" cy="30" r="12" fill="var(--gold)" stroke="none"/></svg><h2>Kết quả chung cuộc</h2><p class="mut">${esc(S.title)}</p><div class="pod">${pod}</div></div>
+ <div class="card"><h3>Cá nhân xuất sắc</h3>${p.map(([u,s],i)=>`<div class="bar"><span class="n">${i+1}. </span><span style="flex:1">${esc(PL[u].n)} <span class="mut">(Nhóm ${PL[u].g})</span></span><b>${s}</b></div>`).join('')||'<p class="mut">Chưa có dữ liệu.</p>'}</div>`+scoreH()}
+function rosterH(){return '<div class="card"><h3>Người chơi ('+Object.keys(PL).length+')</h3><div class="grid">'+GR.map(g=>`<div class="gp"><b>Nhóm ${g}</b><br>${Object.values(PL).filter(p=>p.g==g).map(p=>esc(p.n)).join(', ')||'<span class=mut>—</span>'}</div>`).join('')+'</div></div>'}
+function hostH(){
+ if(!S){return `<div class="card"><h2>Thiết lập phòng</h2><p>Nạp bộ đề (JSON) rồi tạo phòng. Đáp án chỉ nằm trong kho riêng của chủ phòng, người chơi không thể đọc được.</p>
+ <textarea id="bj" placeholder='{"khoiDong":[{"q":"…","opts":["A","B","C","D"],"a":1}],"tangToc":{"keyword":"…","hint":"…","rows":[{"clue":"…","answer":"…","k":3}]},"veDich":[{"stem":"…","q":"…","a":true}]}'></textarea>
+ <div class="row" style="margin-top:10px"><button class="g" onclick="loadTxt()">Nạp từ ô văn bản</button><label class="g" style="border:1px solid var(--gold);padding:9px 14px;border-radius:4px;cursor:pointer">Chọn tệp .json<input type="file" accept=".json" hidden onchange="loadFile(this)"></label><button class="g" onclick="bank=SAMPLE;render()">Dùng đề mẫu</button></div>
+ <p class="err">${err}</p>${bank?`<p class="pos">✔ Đã nạp: ${esc(bank.title||'bộ đề')} — ${bank.khoiDong.length} câu khởi động, ${bank.tangToc.rows.length} hàng ngang + từ khoá, ${bank.veDich.length} mệnh đề.</p><button onclick="create()">Tạo phòng</button>`:''}</div>`}
+ const url=location.href.split('#')[0]+'#'+S.code;let h='';
+ if(S.phase=='lobby')h=`<div class="card center"><h2>Mời người chơi vào phòng</h2><div class="big">${S.code}</div><div id="qr" style="display:inline-block;background:#fff;padding:10px"></div><p class="mut" style="word-break:break-all">${esc(url)}</p></div>${rosterH()}<div class="center"><button onclick="openStep(0)" ${Object.keys(PL).length?'':'disabled'}>Bắt đầu thử thách Khởi động</button></div>`;
+ else if(S.phase=='play'){const n=Object.values(AN).filter(a=>a.k==S.q.k).length,last=S.i+1>=seq(bank).length;
+  h=qH()+`<div class="card row"><span>Đã trả lời: <b>${n}/${Object.keys(PL).length}</b></span><span class="sp" style="flex:1"></span>${S.stage=='q'?'<button onclick="lock()">Khoá đáp án</button>':S.stage=='lock'?'<button onclick="reveal()">Công bố đáp án</button>':`<button onclick="next()">${last?'Xem kết quả cuối':'Câu tiếp theo'}</button>`}</div>`+(S.q.c==2?'<div class="card"><h3>Ô chữ</h3>'+boardH()+'</div>':'')+scoreH()}
+ else h=finalH();
+ return h+(S.phase!='end'?'':`<div class="center"><button class="g" onclick="if(confirm('Xoá phòng này và tạo phòng mới?')){clearAll().then(()=>{S=null;render()})}">Phòng mới</button></div>`)}
+function playerH(){
+ if(!S)return '<div class="card center"><h2>Chờ chủ phòng</h2><p class="mut">Phòng chưa được mở. Trang sẽ tự cập nhật.</p></div>';
+ if(!PL[uid]){const c=decodeURIComponent(location.hash.slice(1));return `<div class="card"><h2>Vào phòng</h2><p class="mut">Nhập mã phòng, tên và chọn nhóm.</p><p><input id="jc" placeholder="Mã phòng" value="${esc(c)}" maxlength="8" style="text-transform:uppercase;letter-spacing:4px"></p><p><input id="jn" placeholder="Tên của bạn" maxlength="24" value="${esc(prof.n||'')}"></p><p><select id="jg">${GR.map(g=>`<option value="${g}" ${prof.g==g?'selected':''}>Nhóm ${g}</option>`).join('')}</select></p><p class="err">${err}</p><button onclick="join()">Tham gia</button></div>`}
+ const p=PL[uid],head=`<div class="card row"><b>${esc(p.n)}</b><span class="mut">Nhóm ${p.g}</span><span style="flex:1"></span><span>Cá nhân: <b>${S.ps[uid]||0}</b></span><span>Nhóm: <b>${S.gs[p.g]||0}</b></span></div>`;
+ if(S.phase=='lobby')return head+'<div class="card center"><h2>Bạn đã vào phòng</h2><p class="mut">Hãy chờ chủ phòng bắt đầu…</p></div>'+rosterH();
+ if(S.phase=='end')return head+finalH();
+ let m='';if(S.stage=='lock')m='<p class="center mut">Đã khoá đáp án — chờ công bố…</p>';
+ if(S.stage=='rev'){const d=S.rev.res[uid];m=`<p class="center res ${d>0?'pos':d<0?'neg':''}">${d==null?'Bạn không trả lời':'Bạn '+(d>=0?'+':'')+d+' điểm'}</p>`;if(lastSfx!=S.v){lastSfx=S.v;if(d!=null)sfx(d>0)}}
+ return head+qH()+m+scoreH()}
+function render(){
+ const sig=JSON.stringify([S&&S.v,Object.keys(PL).length,isHost?Object.keys(AN).length:0,!!PL[uid],!!bank,err,star,mine]);if(sig==lastSig)return;lastSig=sig;
+ app.innerHTML=isHost?hostH():playerH();
+ const q=$('#qr');if(q&&window.QRCode){try{new QRCode(q,{text:location.href.split('#')[0]+'#'+S.code,width:200,height:200})}catch(e){}}}
+function loadTxt(){try{const b=JSON.parse($('#bj').value);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Bộ đề không hợp lệ. Hãy kiểm tra lại định dạng JSON.'}lastSig='';render()}
+function loadFile(i){const f=i.files[0];if(!f)return;f.text().then(t=>{try{const b=JSON.parse(t);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Tệp đề không hợp lệ.'}lastSig='';render()})}
+init();
+</script></body></html>
