@@ -45,7 +45,7 @@ textarea{height:130px;font-family:monospace;font-size:13px}
 .rk.top{background:rgba(154,107,31,.14);border-left:3px solid var(--gold)}.rk.top .rn{color:var(--gold);font-size:20px}.scr{max-height:380px;overflow-y:auto}
 </style></head>
 <body>
-<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Ngôi Đền Chân Lý</h1><span class="sp"></span><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
+<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Ngôi Đền Chân Lý</h1><span class="sp"></span><button class="g" id="rst" style="display:none" title="Xoá toàn bộ dữ liệu phòng đã lưu">⟲ Reset</button><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
 <div class="mean"></div>
 <main id="app"><p class="center mut">Đang kết nối…</p></main>
 <script>
@@ -184,10 +184,12 @@ function playerH(){
  if(S.stage=='rev'){const d=S.rev.res[uid];m=`<p class="center res ${d>0?'pos':d<0?'neg':''}">${d==null?'Bạn không trả lời':'Bạn '+(d>=0?'+':'')+d+' điểm'}</p>`;if(lastSfx!=S.v){lastSfx=S.v;if(d!=null)sfx(d>0)}}
  return head+qH()+m+scoreH()}
 function render(){
+ const rb=$('#rst');if(rb)rb.style.display=isHost?'':'none';
  const sig=JSON.stringify([S&&S.v,Object.keys(PL).length,isHost?Object.keys(AN).length:0,uid,!!bank,err,status,role,star,mine]);if(sig==lastSig)return;lastSig=sig;
  app.innerHTML=role==null?landH():isHost?hostH():playerH();
  const q=$('#qr');if(q&&window.QRCode){try{new QRCode(q,{text:location.href.split('#')[0]+'#'+S.code,width:200,height:200})}catch(e){}}}
 function loadTxt(){try{const b=JSON.parse($('#bj').value);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Bộ đề không hợp lệ. Hãy kiểm tra lại định dạng JSON.'}lastSig='';render()}
 function loadFile(i){const f=i.files[0];if(!f)return;f.text().then(t=>{try{const b=JSON.parse(t);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Tệp đề không hợp lệ.'}lastSig='';render()})}
+$('#rst').onclick=()=>{if(!confirm('Reset sẽ xoá toàn bộ phòng, đề, điểm và dữ liệu đã lưu trong trình duyệt này (localStorage + sessionStorage), rồi tải lại trang. Tiếp tục?'))return;try{peer&&peer.destroy()}catch(e){}try{localStorage.clear();sessionStorage.clear()}catch(e){}location.href=location.pathname};
 init();
 </script></body></html>
