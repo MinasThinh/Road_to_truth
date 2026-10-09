@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Đấu Trường Triết Học</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 :root{--bg:#f1e7d0;--ink:#2a2118;--card:#fbf5e6;--line:#c9b68c;--gold:#9a6b1f;--red:#8b2e2a;--ok:#3d6b3a;--mut:#6b5a43;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -65,7 +66,7 @@ veDich:[
 {stem:"Về chủ nghĩa duy tâm chủ quan:",q:"Chủ nghĩa duy tâm chủ quan cho rằng thế giới tồn tại hoàn toàn độc lập với cảm giác của con người.",a:false},
 {stem:"Về Socrates:",q:"Socrates để lại nhiều tác phẩm triết học do chính ông viết ra.",a:false},
 {stem:"Về chủ nghĩa Khắc kỷ:",q:"Chủ nghĩa Khắc kỷ đề cao việc dùng lý trí để giữ tâm bình thản trước điều nằm ngoài tầm kiểm soát.",a:true}]};
-let db,uid,isHost=false,S=null,PL={},AN={},bank=null,frozen=null,mine=JSON.parse(sessionStorage.mine||'{}'),star=false,busy=false,lastSig='',lastSfx=0,err='';
+let uid=null,isHost=false,S=null,PL={},AN={},bank=null,frozen=null,mine=JSON.parse(sessionStorage.mine||'{}'),star=false,busy=false,lastSig='',lastSfx=0,err='';
 const prof=JSON.parse(localStorage.prof||'{}');
 const seq=b=>{const a=[];b.khoiDong.forEach(q=>a.push({c:1,t:'mc',q}));b.tangToc.rows.forEach((r,i)=>a.push({c:2,t:'row',r,i}));a.push({c:2,t:'kw'});b.veDich.forEach(q=>a.push({c:3,t:'tf',q}));return a};
 function valid(b){try{if(!b.khoiDong.every(q=>q.q&&q.opts.length==4&&q.a>=0&&q.a<4))return 0;if(!b.tangToc.rows.length||!b.tangToc.keyword||!b.tangToc.rows.every(r=>r.clue&&r.answer))return 0;return b.veDich.every(q=>q.q&&typeof q.a=='boolean')}catch(e){return 0}}
@@ -77,27 +78,32 @@ setInterval(()=>{if(mute)return;const t=AC.currentTime;tone(N[[0,2,4,3,1,5,3,2][
 function sfx(k){if(!AC||mute)return;const t=AC.currentTime;(k?[523,659,784,1047]:[247,196,147]).forEach((f,i)=>tone(f,t+i*.13,.6,.7,'triangle'))}
 document.addEventListener('pointerdown',music,{once:true});
 $('#snd').onclick=e=>{music();mute=!mute;e.target.textContent=mute?'✕ Tắt nhạc':'♪ Nhạc';e.stopPropagation()};
-/* ---------- khởi tạo ---------- */
-async function init(){
- try{const[d,u]=await Promise.all([claude.use('db'),claude.use('user')]);db=d;if(!db||!u)throw 0;uid=await u.id();isHost=await u.isOwner();if(!uid)throw 0}
- catch(e){app.innerHTML='<div class="card center"><h2>Cần đăng nhập</h2><p>Hãy mở trang qua tài khoản Claude được mời để vào phòng chơi.</p></div>';return}
- db.doc('st/main').onSnapshot(s=>{S=s.exists?s.data():null;render()},()=>{});
- db.collection('pl').onSnapshot(q=>{PL={};q.docs.forEach(d=>PL[d.id]=d.data());render()},()=>{});
- if(isHost){db.collection('an').onSnapshot(q=>{AN={};q.docs.forEach(d=>AN[d.id]=d.data());render()},()=>{});
-  try{const b=await db.doc('data/users/'+uid+'/bank').get();if(b.exists)bank=JSON.parse(b.data().json)}catch(e){}}
- render();
- setInterval(()=>{const e=$('#tm');if(!S||S.stage!='q'||!e)return;const r=Math.max(0,Math.ceil((S.end-Date.now())/1000));e.textContent=r;if(isHost&&r==0&&!busy)lock()},300)}
-async function put(o){S={...S,...o,v:(S.v||0)+1};render();await db.doc('st/main').set(JSON.parse(JSON.stringify(S)))}
-/* ---------- host ---------- */
-async function clearAll(){for(const id in PL)await db.doc('pl/'+id).delete();for(const id in AN)await db.doc('an/'+id).delete();try{await db.doc('st/main').delete()}catch(e){}}
-async function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValues(c);const code=[...c].map(x=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[x%24]).join('');
- await clearAll();await db.doc('data/users/'+uid+'/bank').set({json:JSON.stringify(bank)});
- S={code,phase:'lobby',i:-1,stage:'',q:null,rev:null,gs:{},ps:{},used:{},solved:{},end:0,title:bank.title||'',v:1,cw:bank.tangToc.rows.map(r=>({len:norm(r.answer).length,k:r.k||0}))};
- await db.doc('st/main').set(S)}
-async function openStep(i){const st=seq(bank)[i];let q;
+/* ---------- mạng (PeerJS / WebRTC): chủ phòng là máy chủ duy nhất, giữ mọi đáp án ---------- */
+let peer,role=null,conns={},conn=null,SEC={},nextId=1,status='',pend=0;
+const PFX='triethoc-';
+const save=()=>{if(isHost)try{localStorage.host=JSON.stringify({S,bank,SEC,nextId,AN})}catch(e){}};
+const bc=()=>{const m={t:'S',S};Object.values(conns).forEach(c=>c.open&&c.send(m))};
+async function put(o){S={...S,...o,v:(S.v||0)+1,pl:PL};save();bc();render()}
+function hostStart(code){isHost=true;role='host';try{peer&&peer.destroy()}catch(e){}
+ peer=new Peer(PFX+code);peer.on('open',()=>{status='';render()});
+ peer.on('disconnected',()=>{try{peer.reconnect()}catch(e){}});
+ peer.on('error',e=>{status='Lỗi kết nối: '+e.type;if(e.type=='unavailable-id')setTimeout(()=>hostStart(code),3000);render()});
+ peer.on('connection',c=>{c.on('data',d=>onMsg(c,d));c.on('close',()=>{if(conns[c._p]===c)delete conns[c._p]})})}
+function onMsg(c,d){if(!d||typeof d!='object'||!S)return;
+ if(d.t=='join'){if(norm(d.code)!=S.code)return c.send({t:'no',m:'Mã phòng không đúng.'});
+  const n=String(d.n||'').trim().slice(0,24),g=+d.g;if(!n||!GR.includes(g)||typeof d.sec!='string'||d.sec.length<8||d.sec.length>80)return c.send({t:'no',m:'Thông tin không hợp lệ.'});
+  const p=SEC[d.sec]||(SEC[d.sec]='p'+nextId++);PL[p]={n,g};conns[p]=c;c._p=p;c.send({t:'ok',pub:p});put({})}
+ else if(d.t=='a'){const p=c._p;if(!p||!PL[p]||!S.q||S.stage!='q'||d.k!==S.q.k)return;let v=d.v;
+  if(S.q.c==1){if(!Number.isInteger(v)||v<0||v>3)return}else if(S.q.c==2){if(typeof v!='string')return;v=v.slice(0,40)}else if(typeof v!='boolean')return;
+  AN[p]={k:d.k,v,star:S.q.c==3&&!!d.star&&!S.used[PL[p].g]};save();render()}}
+function resetHost(){try{peer.destroy()}catch(e){}localStorage.removeItem('host');S=null;PL={};AN={};SEC={};conns={};role=null;isHost=false;bank=null;lastSig='';render()}
+function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValues(c);const code=[...c].map(x=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[x%24]).join('');
+ PL={};AN={};SEC={};nextId=1;S={code,phase:'lobby',i:-1,stage:'',q:null,rev:null,gs:{},ps:{},used:{},solved:{},end:0,title:bank.title||'',v:1,pl:PL,cw:bank.tangToc.rows.map(r=>({len:norm(r.answer).length,k:r.k||0}))};
+ save();hostStart(code);render()}
+async function openStep(i){const st=seq(bank)[i];let q;AN={};
  if(st.t=='mc')q={c:1,text:st.q.q,opts:st.q.opts};else if(st.t=='row')q={c:2,t:'row',n:st.i+1,text:st.r.clue,len:norm(st.r.answer).length};
  else if(st.t=='kw')q={c:2,t:'kw',text:bank.tangToc.hint||'Tìm từ khoá hàng dọc!',len:norm(bank.tangToc.keyword).length};else q={c:3,text:st.q.q,stem:st.q.stem||''};
- q.k='s'+i;frozen=null;busy=false;await put({phase:'play',i,stage:'q',q,rev:null,end:Date.now()+TT[st.c==2&&st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1)})}
+ q.k='s'+i;frozen=null;busy=false;await put({phase:'play',i,stage:'q',q,rev:null,end:Date.now()+TT[st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1)})}
 async function lock(){if(busy||S.stage!='q')return;busy=true;frozen={...AN};await put({stage:'lock'});busy=false}
 async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={...S.ps},used={...S.used},solved={...S.solved},res={},dg={};const L=[];const sg=new Set();
  Object.entries(A).forEach(([u,a])=>{if(a.k!==S.q.k||!PL[u])return;L.push([u,a]);if(st.c==3&&a.star&&!used[PL[u].g])sg.add(PL[u].g)});
@@ -110,11 +116,26 @@ async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={..
  await put({stage:'rev',gs,ps,used,solved,rev:{a:ans,res,dg,sg:[...sg],c:st.q?st.q.a:null}})}
 async function next(){const n=seq(bank).length;if(S.i+1<n)openStep(S.i+1);else put({phase:'end',stage:'',q:null})}
 /* ---------- người chơi ---------- */
-async function join(){const c=norm($('#jc').value),n=$('#jn').value.trim().slice(0,24),g=+$('#jg').value;
- if(c!=S.code)return err='Mã phòng không đúng.',render();if(!n)return err='Hãy nhập tên của bạn.',render();err='';
- localStorage.prof=JSON.stringify({n,g});await db.doc('pl/'+uid).set({n,g})}
-async function answer(v){if(S.stage!='q')return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);render();await db.doc('an/'+uid).set({k:S.q.k,v,star:!!star&&S.q.c==3&&!S.used[PL[uid].g]})}
+function playerStart(code){role='player';isHost=false;try{peer&&peer.destroy()}catch(e){}
+ peer=new Peer();peer.on('open',()=>connect(code));
+ peer.on('error',e=>{status=e.type=='peer-unavailable'?'Chưa tìm thấy phòng '+code+'. Đang thử lại…':'Lỗi kết nối: '+e.type;render();if(e.type=='peer-unavailable')setTimeout(()=>connect(code),3000)})}
+function connect(code){if(!peer||peer.destroyed||!peer.open)return;status='Đang kết nối…';render();conn=peer.connect(PFX+code,{reliable:true});const c=conn;
+ c.on('open',()=>{status='';if(prof.n&&prof.code==code)sendJoin();render()});
+ c.on('data',d=>{if(!d)return;if(d.t=='S'){S=d.S;PL=S.pl||{};render()}else if(d.t=='ok'){uid=d.pub;localStorage.room=code;err='';render()}else if(d.t=='no'){err=d.m;render()}});
+ c.on('close',()=>{if(conn!==c)return;status='Mất kết nối, đang thử lại…';render();setTimeout(()=>connect(code),2500)})}
+const sendJoin=()=>conn&&conn.open&&conn.send({t:'join',code:prof.code,sec:localStorage.sec||(localStorage.sec=(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Date.now().toString(36))),n:prof.n,g:prof.g});
+function join(){const code=norm($('#jc').value),n=$('#jn').value.trim().slice(0,24),g=+$('#jg').value;
+ if(!code)return err='Hãy nhập mã phòng.',render();if(!n)return err='Hãy nhập tên của bạn.',render();err='';
+ Object.assign(prof,{n,g,code});localStorage.prof=JSON.stringify(prof);
+ if(conn&&conn.open&&conn.peer==PFX+code)sendJoin();else if(peer&&!peer.destroyed&&peer.open)connect(code);else playerStart(code);render()}
+function answer(v){if(S.stage!='q'||!conn||!conn.open)return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);conn.send({t:'a',k:S.q.k,v,star});render()}
 function toggleStar(){if(S.used[PL[uid].g])return;star=!star;if(mine.k==S.q.k)answer(mine.v);else render()}
+function landH(){return `<div class="card center"><h2>Chào mừng đến Đấu Trường Triết Học</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="role='host';isHost=true;lastSig='';render()">Tôi là chủ phòng</button><button class="g" onclick="role='player';lastSig='';render()">Tôi là người chơi</button></div></div>`}
+function init(){
+ try{const o=JSON.parse(localStorage.host||'null');if(o&&o.S&&!location.hash.slice(1)){S=o.S;bank=o.bank;SEC=o.SEC||{};nextId=o.nextId||1;AN=o.AN||{};PL=S.pl||{};hostStart(S.code)}
+  else if(location.hash.length>1)playerStart(norm(location.hash.slice(1)));else if(localStorage.room&&prof.n)playerStart(localStorage.room)}catch(e){}
+ render();
+ setInterval(()=>{const e=$('#tm');if(!S||S.stage!='q'||!e)return;const r=Math.max(0,Math.ceil((S.end-Date.now())/1000));e.textContent=r;if(isHost&&r==0&&!busy)lock()},300)}
 /* ---------- hiển thị ---------- */
 const cur=()=>mine.k===(S.q&&S.q.k)?mine:null;
 function boardH(){const cw=S.cw,mk=Math.max(...cw.map(r=>r.k||1));return '<div class="cwb">'+cw.map((r,i)=>{const a=S.solved[i]?norm(S.solved[i]):'';return `<div class="cr ${S.q&&S.q.c==2&&S.q.n==i+1&&S.stage!='rev'?'cur':''}" style="margin-left:${(mk-(r.k||1))*34}px"><b>${i+1}</b>`+Array.from({length:r.len},(_,j)=>`<i class="${j+1==r.k?'key':''}">${a[j]||''}</i>`).join('')+'</div>'}).join('')+'</div>'}
@@ -136,19 +157,18 @@ function finalH(){const t=GR.map(g=>[g,S.gs[g]||0]).sort((a,b)=>b[1]-a[1]),p=Obj
  <div class="card"><h3>Cá nhân xuất sắc</h3>${p.map(([u,s],i)=>`<div class="bar"><span class="n">${i+1}. </span><span style="flex:1">${esc(PL[u].n)} <span class="mut">(Nhóm ${PL[u].g})</span></span><b>${s}</b></div>`).join('')||'<p class="mut">Chưa có dữ liệu.</p>'}</div>`+scoreH()}
 function rosterH(){return '<div class="card"><h3>Người chơi ('+Object.keys(PL).length+')</h3><div class="grid">'+GR.map(g=>`<div class="gp"><b>Nhóm ${g}</b><br>${Object.values(PL).filter(p=>p.g==g).map(p=>esc(p.n)).join(', ')||'<span class=mut>—</span>'}</div>`).join('')+'</div></div>'}
 function hostH(){
- if(!S){return `<div class="card"><h2>Thiết lập phòng</h2><p>Nạp bộ đề (JSON) rồi tạo phòng. Đáp án chỉ nằm trong kho riêng của chủ phòng, người chơi không thể đọc được.</p>
+ if(!S){return `<div class="card"><h2>Thiết lập phòng</h2><p>Nạp bộ đề (JSON) rồi tạo phòng. Đáp án chỉ nằm trong trình duyệt của chủ phòng, người chơi không thể đọc được.</p>
  <textarea id="bj" placeholder='{"khoiDong":[{"q":"…","opts":["A","B","C","D"],"a":1}],"tangToc":{"keyword":"…","hint":"…","rows":[{"clue":"…","answer":"…","k":3}]},"veDich":[{"stem":"…","q":"…","a":true}]}'></textarea>
  <div class="row" style="margin-top:10px"><button class="g" onclick="loadTxt()">Nạp từ ô văn bản</button><label class="g" style="border:1px solid var(--gold);padding:9px 14px;border-radius:4px;cursor:pointer">Chọn tệp .json<input type="file" accept=".json" hidden onchange="loadFile(this)"></label><button class="g" onclick="bank=SAMPLE;render()">Dùng đề mẫu</button></div>
  <p class="err">${err}</p>${bank?`<p class="pos">✔ Đã nạp: ${esc(bank.title||'bộ đề')} — ${bank.khoiDong.length} câu khởi động, ${bank.tangToc.rows.length} hàng ngang + từ khoá, ${bank.veDich.length} mệnh đề.</p><button onclick="create()">Tạo phòng</button>`:''}</div>`}
  const url=location.href.split('#')[0]+'#'+S.code;let h='';
- if(S.phase=='lobby')h=`<div class="card center"><h2>Mời người chơi vào phòng</h2><div class="big">${S.code}</div><div id="qr" style="display:inline-block;background:#fff;padding:10px"></div><p class="mut" style="word-break:break-all">${esc(url)}</p></div>${rosterH()}<div class="center"><button onclick="openStep(0)" ${Object.keys(PL).length?'':'disabled'}>Bắt đầu thử thách Khởi động</button></div>`;
+ if(S.phase=='lobby')h=`<div class="card center"><h2>Mời người chơi vào phòng</h2><div class="big">${S.code}</div><div id="qr" style="display:inline-block;background:#fff;padding:10px"></div><p class="err">${esc(status)}</p><p class="mut" style="word-break:break-all">${esc(url)}</p></div>${rosterH()}<div class="center"><button onclick="openStep(0)" ${Object.keys(PL).length?'':'disabled'}>Bắt đầu thử thách Khởi động</button></div>`;
  else if(S.phase=='play'){const n=Object.values(AN).filter(a=>a.k==S.q.k).length,last=S.i+1>=seq(bank).length;
   h=qH()+`<div class="card row"><span>Đã trả lời: <b>${n}/${Object.keys(PL).length}</b></span><span class="sp" style="flex:1"></span>${S.stage=='q'?'<button onclick="lock()">Khoá đáp án</button>':S.stage=='lock'?'<button onclick="reveal()">Công bố đáp án</button>':`<button onclick="next()">${last?'Xem kết quả cuối':'Câu tiếp theo'}</button>`}</div>`+(S.q.c==2?'<div class="card"><h3>Ô chữ</h3>'+boardH()+'</div>':'')+scoreH()}
  else h=finalH();
- return h+(S.phase!='end'?'':`<div class="center"><button class="g" onclick="if(confirm('Xoá phòng này và tạo phòng mới?')){clearAll().then(()=>{S=null;render()})}">Phòng mới</button></div>`)}
+ return h+(S.phase!='end'?'':`<div class="center"><button class="g" onclick="if(confirm('Xoá phòng này và tạo phòng mới?')){resetHost()}">Phòng mới</button></div>`)}
 function playerH(){
- if(!S)return '<div class="card center"><h2>Chờ chủ phòng</h2><p class="mut">Phòng chưa được mở. Trang sẽ tự cập nhật.</p></div>';
- if(!PL[uid]){const c=decodeURIComponent(location.hash.slice(1));return `<div class="card"><h2>Vào phòng</h2><p class="mut">Nhập mã phòng, tên và chọn nhóm.</p><p><input id="jc" placeholder="Mã phòng" value="${esc(c)}" maxlength="8" style="text-transform:uppercase;letter-spacing:4px"></p><p><input id="jn" placeholder="Tên của bạn" maxlength="24" value="${esc(prof.n||'')}"></p><p><select id="jg">${GR.map(g=>`<option value="${g}" ${prof.g==g?'selected':''}>Nhóm ${g}</option>`).join('')}</select></p><p class="err">${err}</p><button onclick="join()">Tham gia</button></div>`}
+  if(!uid||!PL[uid]){const c=decodeURIComponent(location.hash.slice(1))||prof.code||'';return `<div class="card"><h2>Vào phòng</h2><p class="mut">Nhập mã phòng, tên và chọn nhóm.</p><p><input id="jc" placeholder="Mã phòng" value="${esc(c)}" maxlength="8" style="text-transform:uppercase;letter-spacing:4px"></p><p><input id="jn" placeholder="Tên của bạn" maxlength="24" value="${esc(prof.n||'')}"></p><p><select id="jg">${GR.map(g=>`<option value="${g}" ${prof.g==g?'selected':''}>Nhóm ${g}</option>`).join('')}</select></p><p class="err">${esc(err||status)}</p><button onclick="join()">Tham gia</button></div>`}
  const p=PL[uid],head=`<div class="card row"><b>${esc(p.n)}</b><span class="mut">Nhóm ${p.g}</span><span style="flex:1"></span><span>Cá nhân: <b>${S.ps[uid]||0}</b></span><span>Nhóm: <b>${S.gs[p.g]||0}</b></span></div>`;
  if(S.phase=='lobby')return head+'<div class="card center"><h2>Bạn đã vào phòng</h2><p class="mut">Hãy chờ chủ phòng bắt đầu…</p></div>'+rosterH();
  if(S.phase=='end')return head+finalH();
@@ -156,8 +176,8 @@ function playerH(){
  if(S.stage=='rev'){const d=S.rev.res[uid];m=`<p class="center res ${d>0?'pos':d<0?'neg':''}">${d==null?'Bạn không trả lời':'Bạn '+(d>=0?'+':'')+d+' điểm'}</p>`;if(lastSfx!=S.v){lastSfx=S.v;if(d!=null)sfx(d>0)}}
  return head+qH()+m+scoreH()}
 function render(){
- const sig=JSON.stringify([S&&S.v,Object.keys(PL).length,isHost?Object.keys(AN).length:0,!!PL[uid],!!bank,err,star,mine]);if(sig==lastSig)return;lastSig=sig;
- app.innerHTML=isHost?hostH():playerH();
+ const sig=JSON.stringify([S&&S.v,Object.keys(PL).length,isHost?Object.keys(AN).length:0,uid,!!bank,err,status,role,star,mine]);if(sig==lastSig)return;lastSig=sig;
+ app.innerHTML=role==null?landH():isHost?hostH():playerH();
  const q=$('#qr');if(q&&window.QRCode){try{new QRCode(q,{text:location.href.split('#')[0]+'#'+S.code,width:200,height:200})}catch(e){}}}
 function loadTxt(){try{const b=JSON.parse($('#bj').value);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Bộ đề không hợp lệ. Hãy kiểm tra lại định dạng JSON.'}lastSig='';render()}
 function loadFile(i){const f=i.files[0];if(!f)return;f.text().then(t=>{try{const b=JSON.parse(t);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Tệp đề không hợp lệ.'}lastSig='';render()})}
