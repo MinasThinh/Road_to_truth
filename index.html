@@ -63,7 +63,7 @@ const FB={
   storageBucket: "roadtotruth-1ac11.firebasestorage.app",
   messagingSenderId: "595058707456",
   appId: "1:595058707456:web:13aa354adb200aac505ce5"
-};
+};;
 let db,auth;const fbOK=()=>!/DÁN|TEN-DU-AN/.test(JSON.stringify(FB));
 function fbInit(){if(!firebase.apps.length)firebase.initializeApp(FB);auth=firebase.auth();db=firebase.database();return new Promise(res=>{const u=auth.onAuthStateChanged(x=>{u();x?res(x):auth.signInAnonymously().then(r=>res(r.user))})})}
 const SNDBTN='<button class="btn alt" onclick="mute()">Âm hiệu</button>';
@@ -92,7 +92,7 @@ function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)re
  const q=ch(a.c).qs[a.q];let ok=q.t=='fill'?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
  if(!ok){a.w=(a.w||0)+1;p.cd=Date.now()+2000;if(a.w%3==0)a.lk=Date.now()+Math.min(a.w*2500,20000);return c.send({k:'fb',ok:0,m:a.lk>Date.now()?'Nhóm bị khoá tạm thời vì trả lời sai liên tiếp.':'Chưa đúng, hãy thử lại.'})}
  p.pts++;a.q++;a.w=0;a.lk=0;c.send({k:'fb',ok:1});
- if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;log(`Nhóm ${p.team} giải xong thử thách và chiếm ${f} (${m.tag}); căn cứ đối thủ còn ${3-a.s}/3`);
+ if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;log(`Nhóm ${p.team} giải xong thử thách và chiếm flag (${m.tag}); căn cứ đối thủ còn ${3-a.s}/3`);
   if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;log(`Nhóm ${p.team} chiếm căn cứ Nhóm ${m.lose} (${m.tag})`);if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
 function onMsg(c,d){if(!d||typeof d!='object')return;
  if(d.k=='join'){const pid=c.pid,n=String(d.name||'').trim().slice(0,20),t=+d.team;let p=S.players[pid];
@@ -108,13 +108,13 @@ function hostLanding(){const old=LS.tl_host;$('#app').innerHTML=`<div class="her
  if(old)$('#rs').onclick=()=>{S=JSON.parse(old);startHost()}}
 function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
  $('#app').innerHTML=`<div class="top"><div style="display:flex;gap:12px;align-items:center">${TEMPLE.replace('220','90')}<div><h2>Đấu Trường Triết Học</h2><small id="stg"></small></div></div><div>${SNDBTN} <label class="btn alt">Nạp đề <input type="file" id="qf" accept=".json" hidden></label> <button class="btn" id="nx"></button></div></div>
- <div class="g3"><div><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div>
- <div><div id="mt"></div><div class="card"><h3>Nhật ký trận đấu</h3><div class="log" id="lg"></div></div></div>
+ <div class="g3"><div><div id="jn"><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div><div class="card"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div></div>
+ <div><div id="mt"></div></div>
  <div><div class="card"><h3>Bảng xếp hạng nhóm</h3><div id="lt"></div></div><div class="card"><h3>Bảng xếp hạng cá nhân</h3><div id="lp"></div></div></div></div><div id="en"></div>`;
  new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#000000',colorLight:'#ffffff'});
  $('#nx').onclick=nextStage;
  $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());if(!Array.isArray(j)||!j.length||!j.every(c=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&'a' in q)))throw 0;S.qs=j;log(`Đã nạp đề: ${j.length} thử thách`);bc();toast('Đã nạp đề')}catch{toast('File đề không đúng định dạng')}}}
-function hostR(){if(!$('#mt'))return;const L=lb();
+function hostR(){if(!$('#mt'))return;$('#jn').hidden=S.stage>=0;$('#lg').style.maxHeight=S.stage>=0?'72vh':'230px';const L=lb();
  $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+(S.qs.length?` (${S.qs.length} thử thách trong đề)`:' (chưa nạp đề)');
  const nx=$('#nx');nx.hidden=S.stage==3;nx.disabled=(S.stage>=0&&!S.ready)||(S.stage<0&&!S.qs.length);nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];
  $('#ro').innerHTML=TEAMS.map(t=>`<p style="margin:4px 0"><b>Nhóm ${t}</b> <small>${Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', ')||'chưa có ai'}</small></p>`).join('');
