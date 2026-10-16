@@ -48,6 +48,9 @@ const sfx={ok:()=>[0,2,4].forEach((n,i)=>tone(NT[n]*2,.4,.07,'triangle',i*.09)),
 function music(){if(mt){clearInterval(mt);mt=0;toast('Tắt nhạc nền');return}AC=AC||new AudioContext();let i=0;const P=[0,2,4,2,3,1,2,0];mt=setInterval(()=>{tone(NT[P[i%8]],1.2,.035);if(i%4==0)tone(NT[0]/2,2.4,.05);i++},650)}
 function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2400)}
 const sh=a=>a.sort(()=>Math.random()-.5),hex=()=>[...crypto.getRandomValues(new Uint8Array(6))].map(b=>b.toString(16).padStart(2,'0')).join('');
+/* TURN để player khác mạng vẫn vào được. Nên thay bằng khóa miễn phí của riêng bạn (metered.ca/stun-turn hoặc Cloudflare Calls) cho ổn định. */
+const ICE={config:{iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:openrelay.metered.ca:80'},
+ {urls:['turn:openrelay.metered.ca:80','turn:openrelay.metered.ca:443','turn:openrelay.metered.ca:443?transport=tcp','turns:openrelay.metered.ca:443?transport=tcp'],username:'openrelayproject',credential:'openrelayproject'}],iceCandidatePoolSize:4}};
 const SNDBTN='<button class="btn alt" onclick="music()" aria-label="Nhạc nền">♪ Nhạc</button>';
 /* ============================ HOST ============================ */
 let S,peer,conns={};
@@ -83,7 +86,7 @@ function onMsg(c,d){if(!d||typeof d!='object')return;
   if(!p){if(!n||!TEAMS.includes(t))return c.send({k:'err',m:'Tên hoặc nhóm không hợp lệ'});p=S.players[pid]={name:n,team:t,pts:0,cd:0};log(`${n} gia nhập Nhóm ${t}`)}
   c.pid=pid;conns[pid]=c;return bc()}
  const p=S.players[c.pid];if(!p)return;if(d.k=='ans')ans(c,p,d.v);if(d.k=='flag')flag(c,p,d.v)}
-function startHost(){peer=new Peer('trietly-'+S.room);
+function startHost(){peer=new Peer('trietly-'+S.room,ICE);
  peer.on('connection',c=>c.on('data',d=>onMsg(c,d)));
  peer.on('error',x=>alert(x.type=='unavailable-id'?'Phòng đang mở ở tab khác. Hãy đóng tab đó rồi tải lại.':'Lỗi kết nối: '+x.type));
  peer.on('open',()=>{hostUI();bc()})}
@@ -113,7 +116,7 @@ function playerJoin(){$('#app').innerHTML=`<div class="hero">${TEMPLE}<h1>Vào �
  $('#go').onclick=()=>{const n=$('#nm').value.trim();if(!n)return toast('Hãy nhập tên');me={pid:hex()+hex(),name:n,team:+$('#tm').value};LS['tl_p_'+ROOM]=JSON.stringify(me);connect()}}
 function connect(){$('#app').innerHTML='<div class="hero"><h2 class="pulse">Đang kết nối tới phòng '+e(ROOM)+'…</h2></div>';
  const retry=()=>{clearTimeout(connect.t);connect.t=setTimeout(()=>{try{pp.destroy()}catch{}connect()},2500)};
- pp=new Peer();pp.on('error',retry);
+ pp=new Peer(ICE);pp.on('error',retry);
  pp.on('open',()=>{conn=pp.connect('trietly-'+ROOM,{reliable:true});conn.on('open',()=>conn.send({k:'join',pid:me.pid,name:me.name,team:me.team}));conn.on('data',onData);conn.on('close',retry);conn.on('error',retry)})}
 function send(o){try{conn.send(o)}catch{toast('Mất kết nối, đang nối lại…')}}
 function onData(d){if(d.k=='err'){delete LS['tl_p_'+ROOM];me=null;toast(d.m);return playerJoin()}
