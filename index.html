@@ -21,7 +21,7 @@ small,.fl,table,.log{font-family:'JetBrains Mono',monospace}
 .btn.alt{background:transparent;color:var(--cy);box-shadow:inset 0 0 0 1.5px var(--cy);clip-path:none}.btn:disabled{opacity:.35;cursor:default}
 .btn:focus-visible,input:focus-visible,select:focus-visible,.opt:focus-visible{outline:3px solid var(--cy)}
 input,select{font:inherit;padding:9px;border:1px solid var(--ln);background:#09111e;color:var(--ink);max-width:100%}
-.g3{display:grid;gap:12px;grid-template-columns:1fr 1.5fr 1fr}@media(max-width:950px){.g3{grid-template-columns:1fr}}
+.g3{display:grid;gap:12px;grid-template-columns:1.25fr 1.35fr 1fr}@media(max-width:950px){.g3{grid-template-columns:1fr}}
 .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;background:#09111e;border:1px solid var(--ln);font:inherit;color:var(--ink);cursor:pointer;transition:.15s}
 .opt:hover{border-color:var(--cy);box-shadow:0 0 14px rgba(79,209,197,.25)}
@@ -34,10 +34,18 @@ small,.mut{color:var(--mut);font-size:13px}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0d1b2e;border:1px solid var(--cy);color:var(--ink);padding:10px 18px;z-index:9}
 .end{position:fixed;inset:0;background:radial-gradient(circle at 50% 20%,#14305a,#050a12);color:#f1efe9;overflow:auto;z-index:5;padding:24px;text-align:center}
 .end .r{font:700 clamp(20px,4vw,34px) 'Playfair Display',serif;margin:10px 0}.end .r:first-of-type{color:var(--gold);font-size:clamp(28px,6vw,52px)}
-table{width:100%;border-collapse:collapse;font-size:13px}td{padding:3px 4px;border-bottom:1px solid var(--ln)}
+.pod{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:10px auto 28px;max-width:780px}
+.pod>div{flex:1;max-width:230px}
+.pod .nm{font:700 clamp(16px,2.6vw,26px) 'Playfair Display',serif;padding:6px 4px;min-height:70px;display:flex;flex-direction:column;justify-content:flex-end;word-break:break-word}
+.pod .nm small{font-weight:400;color:var(--mut)}
+.pod .st{display:flex;justify-content:center;align-items:flex-start;padding-top:8px;background:rgba(79,209,197,.12);border:1px solid var(--cy);border-bottom:0;transform-origin:bottom}
+.pod .st b{font:900 clamp(32px,6vw,56px) 'Playfair Display',serif;color:var(--cy)}
+.pod .h1{height:200px;background:rgba(226,176,74,.2);border-color:var(--gold)}.pod .h1 b{color:var(--gold)}.pod .h2{height:150px}.pod .h3{height:110px}
+.end h2{margin-top:22px;color:var(--gold)}
+table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:var(--mut);font-weight:400;font-size:12px;padding:3px 4px;border-bottom:1px solid var(--gold)}td{padding:3px 4px;border-bottom:1px solid var(--ln)}
 .hero{text-align:center;padding:40px 10px}
-.shake{animation:sk .35s}@keyframes sk{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
-@media(prefers-reduced-motion:no-preference){.pulse{animation:p 2s ease-in-out infinite}@keyframes p{50%{opacity:.55}}.gl{animation:gl 4s infinite steps(1)}@keyframes gl{0%,92%,100%{text-shadow:0 0 22px rgba(226,176,74,.35)}94%{text-shadow:3px 0 var(--cy),-3px 0 var(--bad)}}}
+.shake{animation:sk .35s}@keyframes rise{from{transform:scaleY(0)}}@keyframes fi{from{opacity:0}}@keyframes sk{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@media(prefers-reduced-motion:no-preference){.pod .st{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}.pod .nm{animation:fi .6s both}.pod .h3{animation-delay:.2s}.pod .h2{animation-delay:1s}.pod .h1{animation-delay:1.8s}.pulse{animation:p 2s ease-in-out infinite}@keyframes p{50%{opacity:.55}}.gl{animation:gl 4s infinite steps(1)}@keyframes gl{0%,92%,100%{text-shadow:0 0 22px rgba(226,176,74,.35)}94%{text-shadow:3px 0 var(--cy),-3px 0 var(--bad)}}}
 </style></head><body><canvas id="bg"></canvas><canvas id="cf" style="position:fixed;inset:0;pointer-events:none;z-index:8"></canvas><div class="wrap" id="app"></div><div class="toast" id="toast" hidden></div>
 <script>
 const $=s=>document.querySelector(s),e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -55,21 +63,13 @@ function mute(){MUTE=!MUTE;LS.tl_mute=MUTE?'1':'0';toast(MUTE?'Đã tắt âm hi
 function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2400)}
 const sh=a=>a.sort(()=>Math.random()-.5),hex=()=>[...crypto.getRandomValues(new Uint8Array(6))].map(b=>b.toString(16).padStart(2,'0')).join('');
 /* ===== Firebase: dán cấu hình của bạn (Project settings > Your apps > Web app). Khóa API này vốn công khai, bảo mật nằm ở Rules. ===== */
-const FB={
-  apiKey: "AIzaSyAqaiD9tDDjl_tlk-KBMiYIpWKPn-iKfXI",
-  authDomain: "roadtotruth-1ac11.firebaseapp.com",
-  databaseURL: "https://roadtotruth-1ac11-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "roadtotruth-1ac11",
-  storageBucket: "roadtotruth-1ac11.firebasestorage.app",
-  messagingSenderId: "595058707456",
-  appId: "1:595058707456:web:13aa354adb200aac505ce5"
-};;
+const FB={apiKey:"DÁN_API_KEY",authDomain:"TEN-DU-AN.firebaseapp.com",databaseURL:"https://TEN-DU-AN-default-rtdb.firebaseio.com",projectId:"TEN-DU-AN",appId:"DÁN_APP_ID"};
 let db,auth;const fbOK=()=>!/DÁN|TEN-DU-AN/.test(JSON.stringify(FB));
 function fbInit(){if(!firebase.apps.length)firebase.initializeApp(FB);auth=firebase.auth();db=firebase.database();return new Promise(res=>{const u=auth.onAuthStateChanged(x=>{u();x?res(x):auth.signInAnonymously().then(r=>res(r.user))})})}
 const SNDBTN='<button class="btn alt" onclick="mute()">Âm hiệu</button>';
 /* ============================ HOST ============================ */
 let S,UID,sent={};const mk=pid=>({pid,send:o=>db.ref(`rooms/${S.room}/${o.k=='fb'?'fb':'st'}/${pid}`).set({...o,n:Date.now()})});
-function lb(){const t=TEAMS.map(x=>({t:x,...S.tw[x]})).sort((a,b)=>b.w-a.w||b.f-a.f);const p=Object.values(S.players).sort((a,b)=>b.pts-a.pts).slice(0,10).map(x=>({n:x.name,t:x.team,pts:x.pts}));return{t,p}}
+function lb(){const p=Object.values(S.players).sort((a,b)=>b.pts-a.pts).slice(0,10).map(x=>({n:x.name,t:x.team,pts:x.pts}));return{p}}
 const mOf=t=>S.matches.find(m=>m.a==t||m.b==t),ch=c=>S.qs[(S.stage*3+c)%S.qs.length];
 function log(m){S.log.unshift({t:new Date().toLocaleTimeString('vi-VN'),m});S.log.length=Math.min(S.log.length,80)}
 function bc(){LS.tl_host=JSON.stringify(S);hostR();for(const pid in S.players){const v=JSON.stringify(view(pid));if(sent[pid]!==v){sent[pid]=v;db.ref(`rooms/${S.room}/st/${pid}`).set(JSON.parse(v))}}}
@@ -92,8 +92,8 @@ function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)re
  const q=ch(a.c).qs[a.q];let ok=q.t=='fill'?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
  if(!ok){a.w=(a.w||0)+1;p.cd=Date.now()+2000;if(a.w%3==0)a.lk=Date.now()+Math.min(a.w*2500,20000);return c.send({k:'fb',ok:0,m:a.lk>Date.now()?'Nhóm bị khoá tạm thời vì trả lời sai liên tiếp.':'Chưa đúng, hãy thử lại.'})}
  p.pts++;a.q++;a.w=0;a.lk=0;c.send({k:'fb',ok:1});
- if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;log(`Nhóm ${p.team} giải xong thử thách và chiếm flag (${m.tag}); căn cứ đối thủ còn ${3-a.s}/3`);
-  if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;log(`Nhóm ${p.team} chiếm căn cứ Nhóm ${m.lose} (${m.tag})`);if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
+ if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a;log(`Nhóm ${p.team} ${['',`đã tấn công phủ đầu Nhóm ${o}`,`đã nả pháo vào căn cứ Nhóm ${o}`,`đã chiếm đóng thành công căn cứ Nhóm ${o}`][a.s]}`);
+  if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
 function onMsg(c,d){if(!d||typeof d!='object')return;
  if(d.k=='join'){const pid=c.pid,n=String(d.name||'').trim().slice(0,20),t=+d.team;let p=S.players[pid];
   if(!p){if(!n||!TEAMS.includes(t)||Object.keys(S.players).length>=80)return c.send({k:'err',m:'Tên hoặc nhóm không hợp lệ'});p=S.players[pid]={name:n,team:t,pts:0,cd:0};log(`${n} gia nhập Nhóm ${t}`)}
@@ -108,21 +108,23 @@ function hostLanding(){const old=LS.tl_host;$('#app').innerHTML=`<div class="her
  if(old)$('#rs').onclick=()=>{S=JSON.parse(old);startHost()}}
 function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
  $('#app').innerHTML=`<div class="top"><div style="display:flex;gap:12px;align-items:center">${TEMPLE.replace('220','90')}<div><h2>Đấu Trường Triết Học</h2><small id="stg"></small></div></div><div>${SNDBTN} <label class="btn alt">Nạp đề <input type="file" id="qf" accept=".json" hidden></label> <button class="btn" id="nx"></button></div></div>
- <div class="g3"><div><div id="jn"><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div><div class="card"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div></div>
- <div><div id="mt"></div></div>
- <div><div class="card"><h3>Bảng xếp hạng nhóm</h3><div id="lt"></div></div><div class="card"><h3>Bảng xếp hạng cá nhân</h3><div id="lp"></div></div></div></div><div id="en"></div>`;
+ <div class="g3"><div><div id="jn"><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div><div id="mt"></div></div>
+ <div><div class="card"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div></div>
+ <div><div class="card"><h3>Xếp hạng cá nhân</h3><div id="lp"></div></div></div></div><div id="en"></div>`;
  new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#000000',colorLight:'#ffffff'});
  $('#nx').onclick=nextStage;
  $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());if(!Array.isArray(j)||!j.length||!j.every(c=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&'a' in q)))throw 0;S.qs=j;log(`Đã nạp đề: ${j.length} thử thách`);bc();toast('Đã nạp đề')}catch{toast('File đề không đúng định dạng')}}}
-function hostR(){if(!$('#mt'))return;$('#jn').hidden=S.stage>=0;$('#lg').style.maxHeight=S.stage>=0?'72vh':'230px';const L=lb();
+function hostR(){if(!$('#mt'))return;$('#jn').hidden=S.stage>=0;$('#lg').style.maxHeight='75vh';const L=lb();
  $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+(S.qs.length?` (${S.qs.length} thử thách trong đề)`:' (chưa nạp đề)');
  const nx=$('#nx');nx.hidden=S.stage==3;nx.disabled=(S.stage>=0&&!S.ready)||(S.stage<0&&!S.qs.length);nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];
  $('#ro').innerHTML=TEAMS.map(t=>`<p style="margin:4px 0"><b>Nhóm ${t}</b> <small>${Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', ')||'chưa có ai'}</small></p>`).join('');
  $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3><div class="bs ${m.win&&m.win!=t?'d':''}">${BASE}</div><div class="hp">${hpb(m,t)}</div>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${Math.min(a.q+1,3)}/3`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('')||'<div class="card"><p class="mut pulse">Nạp file đề (.json), chờ các nhóm vào phòng rồi bấm "Bắt đầu vòng loại".</p></div>';
  $('#lg').innerHTML=S.log.map(l=>`<p><small>${l.t}</small> ${e(l.m)}</p>`).join('');
- $('#lt').innerHTML='<table>'+L.t.map((x,i)=>`<tr><td>${i+1}</td><td>Nhóm ${x.t}</td><td>${x.w} thắng</td><td>${x.f} flag</td></tr>`).join('')+'</table>';
- $('#lp').innerHTML='<table>'+L.p.map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join('')+'</table>';
- $('#en').innerHTML=S.stage==3?`<div class="end">${TEMPLE.replace('220','200')}<h1>Bảng Vàng</h1>${Object.entries(S.rank).sort((a,b)=>a[1]-b[1]).map(([t,r])=>`<div class="r">Hạng ${r}: Nhóm ${t}</div>`).join('')}<h3>Những người đóng góp nhiều nhất</h3>${L.p.slice(0,5).map((x,i)=>`<div>${i+1}. ${e(x.n)} (Nhóm ${x.t}): ${x.pts} điểm</div>`).join('')}<p><button class="btn alt" style="color:#fff;border-color:#fff" onclick="$('#en').innerHTML=''">Đóng</button></p></div>`:''}
+ $('#lp').innerHTML='<table><tr><th>Hạng</th><th>Họ tên</th><th>Nhóm</th><th>Điểm</th></tr>'+(L.p.length?L.p.map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join(''):'<tr><td colspan="4" class="mut">Chưa có người chơi</td></tr>')+'</table>';
+ $('#en').innerHTML=S.stage==3?endHTML(L):''}
+function podium(a){return '<div class="pod">'+[1,0,2].map(i=>{const x=a[i],d=[2.3,1.5,.7][i];return `<div><div class="nm" style="animation-delay:${d}s">${x?x.t:'—'}<small>${x?x.s:''}</small></div><div class="st h${i+1}"><b>${i+1}</b></div></div>`}).join('')+'</div>'}
+function endHTML(L){const mem=t=>Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', '),R=Object.entries(S.rank).sort((a,b)=>a[1]-b[1]);
+ return `<div class="end">${TEMPLE.replace('220','150')}<h1 class="gl">Bảng Vàng</h1><h2>Đội chiến thắng</h2>${podium(R.slice(0,3).map(([t])=>({t:'Nhóm '+t,s:mem(t)})))}<h2>Cá nhân xuất sắc</h2>${podium(L.p.slice(0,3).map(x=>({t:e(x.n),s:`Nhóm ${x.t}, ${x.pts} điểm`})))}<p class="mut">${R.slice(3).map(([t,r])=>`Hạng ${r}: Nhóm ${t}`).join('<br>')}</p><p><button class="btn alt" onclick="$('#en').innerHTML=''">Đóng</button></p></div>`}
 /* ============================ PLAYER ============================ */
 let V,sig='',me=JSON.parse(LS['tl_p_'+ROOM]||'null');
 function playerJoin(){$('#app').innerHTML=`<div class="hero">${TEMPLE}<h1>Vào đấu trường</h1><div class="card" style="max-width:380px;margin:20px auto;text-align:left"><p>Tên của bạn<br><input id="nm" maxlength="20" style="width:100%"></p><p>Nhóm của bạn<br><select id="tm" style="width:100%">${TEAMS.map(t=>`<option value="${t}">Nhóm ${t}</option>`).join('')}</select></p><button class="btn" id="go" style="width:100%">Tham gia</button></div></div>`;
@@ -138,9 +140,9 @@ function send(o){db.ref(`rooms/${ROOM}/in`).push({...o,pid:me.pid,...(o.k=='ans'
 function onData(d){if(d.k=='err'){delete LS['tl_p_'+ROOM];me=null;toast(d.m);return playerJoin()}
  if(d.k=='fb'){toast(d.m||(d.ok==1?'Chính xác!':'Cờ đã cắm vào căn cứ đối thủ!'));d.ok?sfx.ok():(sfx.bad(),shake());return}
  if(d.k=='st'){const old=V;V=d;if(!$('#qb'))skeleton();pR();fx(old,d);if(V.stage==3&&(!old||old.stage!=3)){sfx.end();boom(3)}}}
-function skeleton(){$('#app').innerHTML=`<div class="top"><div id="hd"></div>${SNDBTN}</div><div id="mi"></div><div id="qb"></div><div class="card"><h3>Bảng xếp hạng</h3><div id="pl"></div></div>`}
+function skeleton(){$('#app').innerHTML=`<div class="top"><div id="hd"></div>${SNDBTN}</div><div id="mi"></div><div id="qb"></div><div class="card"><h3>Xếp hạng cá nhân</h3><div id="pl"></div></div>`}
 function pR(){const v=V;$('#hd').innerHTML=`<h2>${e(v.me.n)}</h2><small>Nhóm ${v.me.t}, ${v.me.pts} điểm cá nhân</small>`;
- $('#pl').innerHTML='<table>'+v.lb.t.map((x,i)=>`<tr><td>${i+1}</td><td>Nhóm ${x.t}</td><td>${x.w} thắng</td><td>${x.f} flag</td></tr>`).join('')+'</table><br><table>'+(v.lb.p||[]).slice(0,5).map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>${x.pts}</td></tr>`).join('')+'</table>';
+ $('#pl').innerHTML='<table><tr><th>Hạng</th><th>Họ tên</th><th>Nhóm</th><th>Điểm</th></tr>'+(v.lb.p||[]).map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join('')+'</table>';
  const m=v.m;$('#mi').innerHTML=m?`<div class="card m"><small>${e(m.tag)}</small><div class="vs"><div><b>Nhóm ${v.me.t}</b> <small>căn cứ của ta</small><div class="hp">${[0,1,2].map(i=>`<i class="${i<3-m.op.s?'':'x'}"></i>`).join('')}</div></div><div style="text-align:right"><b>Nhóm ${m.opp}</b> <small>căn cứ đối thủ</small><div class="hp">${[0,1,2].map(i=>`<i class="${i<3-m.my.s?'':'x'}"></i>`).join('')}</div></div></div></div>`:'';
  const ns=JSON.stringify([v.stage,v.q,m&&m.my.s,m&&m.win]);if(ns==sig)return;sig=ns;const qb=$('#qb');let h='';
  if(v.stage<0)h='<div class="card"><h3 class="pulse">Phòng chờ</h3><p>Chủ trò sẽ bắt đầu trận đấu trong giây lát.</p></div>';
