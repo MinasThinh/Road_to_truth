@@ -22,6 +22,8 @@ small,.fl,table,.log{font-family:'JetBrains Mono',monospace}
 .btn:focus-visible,input:focus-visible,select:focus-visible,.opt:focus-visible{outline:3px solid var(--cy)}
 input,select{font:inherit;padding:9px;border:1px solid var(--ln);background:#09111e;color:var(--ink);max-width:100%}
 .g3{display:grid;gap:12px;grid-template-columns:1.25fr 1.35fr 1fr}@media(max-width:950px){.g3{grid-template-columns:1fr}}
+.g2{display:grid;gap:12px;grid-template-columns:1fr 2.6fr}@media(max-width:950px){.g2{grid-template-columns:1fr}}.g2[hidden],.g3[hidden]{display:none}
+#ro{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 18px}#ro small{word-break:break-word}
 .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
 .opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;background:#09111e;border:1px solid var(--ln);font:inherit;color:var(--ink);cursor:pointer;transition:.15s}
 .opt:hover{border-color:var(--cy);box-shadow:0 0 14px rgba(79,209,197,.25)}
@@ -63,15 +65,7 @@ function mute(){MUTE=!MUTE;LS.tl_mute=MUTE?'1':'0';toast(MUTE?'Đã tắt âm hi
 function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2400)}
 const sh=a=>a.sort(()=>Math.random()-.5),hex=()=>[...crypto.getRandomValues(new Uint8Array(6))].map(b=>b.toString(16).padStart(2,'0')).join('');
 /* ===== Firebase: dán cấu hình của bạn (Project settings > Your apps > Web app). Khóa API này vốn công khai, bảo mật nằm ở Rules. ===== */
-const FB={
-  apiKey: "AIzaSyAqaiD9tDDjl_tlk-KBMiYIpWKPn-iKfXI",
-  authDomain: "roadtotruth-1ac11.firebaseapp.com",
-  databaseURL: "https://roadtotruth-1ac11-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "roadtotruth-1ac11",
-  storageBucket: "roadtotruth-1ac11.firebasestorage.app",
-  messagingSenderId: "595058707456",
-  appId: "1:595058707456:web:13aa354adb200aac505ce5"
-};;
+const FB={apiKey:"DÁN_API_KEY",authDomain:"TEN-DU-AN.firebaseapp.com",databaseURL:"https://TEN-DU-AN-default-rtdb.firebaseio.com",projectId:"TEN-DU-AN",appId:"DÁN_APP_ID"};
 let db,auth;const fbOK=()=>!/DÁN|TEN-DU-AN/.test(JSON.stringify(FB));
 function fbInit(){if(!firebase.apps.length)firebase.initializeApp(FB);auth=firebase.auth();db=firebase.database();return new Promise(res=>{const u=auth.onAuthStateChanged(x=>{u();x?res(x):auth.signInAnonymously().then(r=>res(r.user))})})}
 const SNDBTN='<button class="btn alt" onclick="mute()">Âm hiệu</button>';
@@ -79,7 +73,7 @@ const SNDBTN='<button class="btn alt" onclick="mute()">Âm hiệu</button>';
 let S,UID,sent={};const mk=pid=>({pid,send:o=>db.ref(`rooms/${S.room}/${o.k=='fb'?'fb':'st'}/${pid}`).set({...o,n:Date.now()})});
 function lb(){const p=Object.values(S.players).sort((a,b)=>b.pts-a.pts).slice(0,10).map(x=>({n:x.name,t:x.team,pts:x.pts}));return{p}}
 const mOf=t=>S.matches.find(m=>m.a==t||m.b==t),ch=c=>S.qs[(S.stage*3+c)%S.qs.length];
-function log(m){S.log.unshift({t:new Date().toLocaleTimeString('vi-VN'),m});S.log.length=Math.min(S.log.length,80)}
+function log(m,j){S.log.unshift({t:new Date().toLocaleTimeString('vi-VN'),m,j});S.log.length=Math.min(S.log.length,80)}
 function bc(){LS.tl_host=JSON.stringify(S);hostR();for(const pid in S.players){const v=JSON.stringify(view(pid));if(sent[pid]!==v){sent[pid]=v;db.ref(`rooms/${S.room}/st/${pid}`).set(JSON.parse(v))}}}
 function view(pid){const p=S.players[pid],m=mOf(p.team),o={k:'st',stage:S.stage,me:{n:p.name,t:p.team,pts:p.pts},lb:lb(),rank:S.stage==3?Object.fromEntries(Object.entries(S.rank).map(([t,r])=>['t'+t,r])):null};
  if(m&&S.stage>=0&&S.stage<3){const a=m.prog[p.team],oT=m.a==p.team?m.b:m.a,b=m.prog[oT];o.m={tag:m.tag,opp:oT,my:{c:a.c,q:a.q,s:a.s,last:a.last||null},op:{c:b.c,s:b.s},win:m.win};
@@ -100,11 +94,11 @@ function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)re
  const q=ch(a.c).qs[a.q];let ok=q.t=='fill'?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
  if(!ok){a.w=(a.w||0)+1;p.cd=Date.now()+2000;if(a.w%3==0)a.lk=Date.now()+Math.min(a.w*2500,20000);return c.send({k:'fb',ok:0,m:a.lk>Date.now()?'Nhóm bị khoá tạm thời vì trả lời sai liên tiếp.':'Chưa đúng, hãy thử lại.'})}
  p.pts++;a.q++;a.w=0;a.lk=0;c.send({k:'fb',ok:1});
- if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a;log(`Nhóm ${p.team} ${['',`đã tấn công phủ đầu Nhóm ${o}`,`đã nả pháo vào căn cứ Nhóm ${o}`,`đã chiếm đóng thành công căn cứ Nhóm ${o}`][a.s]}`);
+ if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a,fbd=a.s==1&&m.prog[o].s==0;log(`Nhóm ${p.team} ${a.s>=3?'đã chiếm đóng thành công căn cứ':fbd?'đã tấn công phủ đầu':'đã nả pháo vào căn cứ'} Nhóm ${o}`);
   if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
 function onMsg(c,d){if(!d||typeof d!='object')return;
  if(d.k=='join'){const pid=c.pid,n=String(d.name||'').trim().slice(0,20),t=+d.team;let p=S.players[pid];
-  if(!p){if(!n||!TEAMS.includes(t)||Object.keys(S.players).length>=80)return c.send({k:'err',m:'Tên hoặc nhóm không hợp lệ'});p=S.players[pid]={name:n,team:t,pts:0,cd:0};log(`${n} gia nhập Nhóm ${t}`)}
+  if(!p){if(!n||!TEAMS.includes(t)||Object.keys(S.players).length>=80)return c.send({k:'err',m:'Tên hoặc nhóm không hợp lệ'});p=S.players[pid]={name:n,team:t,pts:0,cd:0};log(`${n} gia nhập Nhóm ${t}`,1)}
   c.pid=pid;delete sent[pid];return bc()}
  const p=S.players[c.pid];if(!p)return;const now=Date.now();if(now-(p.lt||0)<250)return;p.lt=now;if(d.k=='ans')ans(c,p,d.v,d.qi)}
 async function startHost(){try{UID=(await fbInit()).uid;const r=await db.ref(`rooms/${S.room}/host`).transaction(c=>c===null||c===UID?UID:undefined);
@@ -116,23 +110,23 @@ function hostLanding(){const old=LS.tl_host;$('#app').innerHTML=`<div class="her
  if(old)$('#rs').onclick=()=>{S=JSON.parse(old);startHost()}}
 function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
  $('#app').innerHTML=`<div class="top"><div style="display:flex;gap:12px;align-items:center">${TEMPLE.replace('220','90')}<div><h2>Đấu Trường Triết Học</h2><small id="stg"></small></div></div><div>${SNDBTN} <label class="btn alt">Nạp đề <input type="file" id="qf" accept=".json" hidden></label> <button class="btn" id="nx"></button></div></div>
- <div class="g3"><div><div id="jn"><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div><div id="mt"></div></div>
- <div><div class="card"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div></div>
- <div><div class="card"><h3>Xếp hạng cá nhân</h3><div id="lp"></div></div></div></div><div id="en"></div>`;
+ <div id="lobby" class="g2"><div><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block;padding:8px;background:#fff"></div><p><small style="word-break:break-all">${url}</small></p></div><div id="mt0"></div></div><div id="lr"><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div></div>
+ <div id="game" class="g3" hidden><div id="mt"></div><div id="cs"></div><div><div class="card"><h3>Xếp hạng cá nhân</h3><div id="lp"></div></div></div></div>
+ <div class="card" id="chat"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div><div id="en"></div>`;
  new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#000000',colorLight:'#ffffff'});
  $('#nx').onclick=nextStage;
  $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());if(!Array.isArray(j)||!j.length||!j.every(c=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&'a' in q)))throw 0;S.qs=j;log(`Đã nạp đề: ${j.length} thử thách`);bc();toast('Đã nạp đề')}catch{toast('File đề không đúng định dạng')}}}
-function hostR(){if(!$('#mt'))return;$('#jn').hidden=S.stage>=0;$('#lg').style.maxHeight='75vh';const L=lb();
+function hostR(){if(!$('#mt'))return;const gm=S.stage>=0,PR=gm?$('#cs'):$('#lr');$('#lobby').hidden=gm;$('#game').hidden=!gm;if($('#chat').parentNode!==PR)PR.appendChild($('#chat'));$('#lg').style.maxHeight=gm?'75vh':'40vh';const L=lb();
  $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+(S.qs.length?` (${S.qs.length} thử thách trong đề)`:' (chưa nạp đề)');
  const nx=$('#nx');nx.hidden=S.stage==3;nx.disabled=(S.stage>=0&&!S.ready)||(S.stage<0&&!S.qs.length);nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];
  $('#ro').innerHTML=TEAMS.map(t=>`<p style="margin:4px 0"><b>Nhóm ${t}</b> <small>${Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', ')||'chưa có ai'}</small></p>`).join('');
- $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3><div class="bs ${m.win&&m.win!=t?'d':''}">${BASE}</div><div class="hp">${hpb(m,t)}</div>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${Math.min(a.q+1,3)}/3`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('')||'<div class="card"><p class="mut pulse">Nạp file đề (.json), chờ các nhóm vào phòng rồi bấm "Bắt đầu vòng loại".</p></div>';
- $('#lg').innerHTML=S.log.map(l=>`<p><small>${l.t}</small> ${e(l.m)}</p>`).join('');
+ $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3><div class="bs ${m.win&&m.win!=t?'d':''}">${BASE}</div><div class="hp">${hpb(m,t)}</div>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${Math.min(a.q+1,3)}/3`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('');$('#mt0').innerHTML=S.stage<0?'<div class="card"><p class="mut pulse">Nạp file đề (.json), chờ các nhóm vào phòng rồi bấm "Bắt đầu vòng loại".</p></div>':'';
+ $('#lg').innerHTML=S.log.filter(l=>!(l.j&&S.stage>=0)).map(l=>`<p><small>${l.t}</small> ${e(l.m)}</p>`).join('');
  $('#lp').innerHTML='<table><tr><th>Hạng</th><th>Họ tên</th><th>Nhóm</th><th>Điểm</th></tr>'+(L.p.length?L.p.map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join(''):'<tr><td colspan="4" class="mut">Chưa có người chơi</td></tr>')+'</table>';
  $('#en').innerHTML=S.stage==3?endHTML(L):''}
 function podium(a){return '<div class="pod">'+[1,0,2].map(i=>{const x=a[i],d=[2.3,1.5,.7][i];return `<div><div class="nm" style="animation-delay:${d}s">${x?x.t:'—'}<small>${x?x.s:''}</small></div><div class="st h${i+1}"><b>${i+1}</b></div></div>`}).join('')+'</div>'}
 function endHTML(L){const mem=t=>Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', '),R=Object.entries(S.rank).sort((a,b)=>a[1]-b[1]);
- return `<div class="end">${TEMPLE.replace('220','150')}<h1 class="gl">Bảng Vàng</h1><h2>Đội chiến thắng</h2>${podium(R.slice(0,3).map(([t])=>({t:'Nhóm '+t,s:mem(t)})))}<h2>Cá nhân xuất sắc</h2>${podium(L.p.slice(0,3).map(x=>({t:e(x.n),s:`Nhóm ${x.t}, ${x.pts} điểm`})))}<p class="mut">${R.slice(3).map(([t,r])=>`Hạng ${r}: Nhóm ${t}`).join('<br>')}</p><p><button class="btn alt" onclick="$('#en').innerHTML=''">Đóng</button></p></div>`}
+ return `<div class="end">${TEMPLE.replace('220','150')}<h1 class="gl">Bảng Vàng</h1><h2>Đội chiến thắng</h2>${podium(R.slice(0,3).map(([t])=>({t:'Nhóm '+t,s:''})))}<h2>Cá nhân xuất sắc</h2>${podium(L.p.slice(0,3).map(x=>({t:e(x.n),s:`Nhóm ${x.t}, ${x.pts} điểm`})))}<p class="mut">${R.slice(3).map(([t,r])=>`Hạng ${r}: Nhóm ${t}`).join('<br>')}</p><p><button class="btn alt" onclick="$('#en').innerHTML=''">Đóng</button></p></div>`}
 /* ============================ PLAYER ============================ */
 let V,sig='',me=JSON.parse(LS['tl_p_'+ROOM]||'null');
 function playerJoin(){$('#app').innerHTML=`<div class="hero">${TEMPLE}<h1>Vào đấu trường</h1><div class="card" style="max-width:380px;margin:20px auto;text-align:left"><p>Tên của bạn<br><input id="nm" maxlength="20" style="width:100%"></p><p>Nhóm của bạn<br><select id="tm" style="width:100%">${TEAMS.map(t=>`<option value="${t}">Nhóm ${t}</option>`).join('')}</select></p><button class="btn" id="go" style="width:100%">Tham gia</button></div></div>`;
