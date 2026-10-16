@@ -63,7 +63,15 @@ function mute(){MUTE=!MUTE;LS.tl_mute=MUTE?'1':'0';toast(MUTE?'Đã tắt âm hi
 function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2400)}
 const sh=a=>a.sort(()=>Math.random()-.5),hex=()=>[...crypto.getRandomValues(new Uint8Array(6))].map(b=>b.toString(16).padStart(2,'0')).join('');
 /* ===== Firebase: dán cấu hình của bạn (Project settings > Your apps > Web app). Khóa API này vốn công khai, bảo mật nằm ở Rules. ===== */
-const FB={apiKey:"DÁN_API_KEY",authDomain:"TEN-DU-AN.firebaseapp.com",databaseURL:"https://TEN-DU-AN-default-rtdb.firebaseio.com",projectId:"TEN-DU-AN",appId:"DÁN_APP_ID"};
+const FB={
+  apiKey: "AIzaSyAqaiD9tDDjl_tlk-KBMiYIpWKPn-iKfXI",
+  authDomain: "roadtotruth-1ac11.firebaseapp.com",
+  databaseURL: "https://roadtotruth-1ac11-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "roadtotruth-1ac11",
+  storageBucket: "roadtotruth-1ac11.firebasestorage.app",
+  messagingSenderId: "595058707456",
+  appId: "1:595058707456:web:13aa354adb200aac505ce5"
+};;
 let db,auth;const fbOK=()=>!/DÁN|TEN-DU-AN/.test(JSON.stringify(FB));
 function fbInit(){if(!firebase.apps.length)firebase.initializeApp(FB);auth=firebase.auth();db=firebase.database();return new Promise(res=>{const u=auth.onAuthStateChanged(x=>{u();x?res(x):auth.signInAnonymously().then(r=>res(r.user))})})}
 const SNDBTN='<button class="btn alt" onclick="mute()">Âm hiệu</button>';
