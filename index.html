@@ -1,195 +1,141 @@
-<!DOCTYPE html>
-<html lang="vi"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ngôi Đền Chân Lý</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đấu Trường Triết Học</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--bg:#f1e7d0;--ink:#2a2118;--card:#fbf5e6;--line:#c9b68c;--gold:#9a6b1f;--red:#8b2e2a;--ok:#3d6b3a;--mut:#6b5a43;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120d;--ink:#efe3c8;--card:#231b13;--line:#5a4627;--gold:#d6a64a;--red:#e0705f;--ok:#8fc07f;--mut:#b5a284}}
-:root[data-theme="dark"]{--bg:#17120d;--ink:#efe3c8;--card:#231b13;--line:#5a4627;--gold:#d6a64a;--red:#e0705f;--ok:#8fc07f;--mut:#b5a284}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%}
-body{background:var(--bg);color:var(--ink);font-family:Lora,Georgia,serif;font-size:17px;line-height:1.5;background-image:radial-gradient(circle at 50% -10%,rgba(154,107,31,.18),transparent 60%)}
-h1,h2,h3,.pf{font-family:'Playfair Display',Georgia,serif;margin:0}
-header{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:2px solid var(--gold)}
-header svg{width:34px;height:34px;color:var(--gold)}header h1{font-size:22px;font-weight:900;letter-spacing:.5px}header .sp{flex:1}
-.mean{height:10px;margin:3px 0;background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 12px);opacity:.55}
-main{max-width:1200px;margin:0 auto;padding:18px 16px 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:14px 0;box-shadow:0 2px 0 var(--line)}
-.tag{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:18px;display:flex;justify-content:space-between}
-.tm{font-style:normal;font-weight:900;font-size:26px;color:var(--red)}
-h2{font-size:26px;line-height:1.3;margin:6px 0 12px}.stem{color:var(--mut);font-style:italic;margin:6px 0}
-button,input,textarea,select{font:inherit;color:inherit}
-button{cursor:pointer;background:var(--gold);color:#fff8e8;border:0;border-radius:4px;padding:10px 18px;font-weight:600}
-button.g{background:transparent;color:var(--ink);border:1px solid var(--gold)}button:disabled{opacity:.45;cursor:default}
-input,textarea,select{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;width:100%}
-textarea{height:130px;font-family:monospace;font-size:13px}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.opts{grid-template-columns:1fr}}
-.opt{background:var(--bg);color:var(--ink);border:1px solid var(--line);text-align:left;padding:12px 14px}
-.opt.sel{border:2px solid var(--gold);background:rgba(154,107,31,.18)}.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.bad{background:var(--red);color:#fff}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
-.gp{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--bg)}.gp b{font-family:'Playfair Display',serif;color:var(--gold)}
-.big{font-family:'Playfair Display',serif;font-size:60px;font-weight:900;letter-spacing:10px;color:var(--gold);text-align:center}
-.cwb{overflow-x:auto;padding-bottom:6px}.cr{display:flex;gap:4px;margin:4px 0;align-items:center;width:max-content}.cr b{width:22px;color:var(--mut)}
-.cr i{width:30px;height:30px;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:700}.cr i.key{border:2px solid var(--gold);background:rgba(154,107,31,.2)}.cr.cur i{border-color:var(--red)}
-.bar{display:flex;align-items:center;gap:8px;margin:6px 0}.bar span.n{width:70px;font-family:'Playfair Display',serif;font-weight:700}.bar div{height:18px;background:var(--gold);border-radius:3px;transition:width .6s}
-.res{font-weight:700}.pos{color:var(--ok)}.neg{color:var(--red)}
-.pod{display:flex;gap:12px;align-items:flex-end;justify-content:center;margin:20px 0}.pod div{flex:1;max-width:200px;text-align:center;background:var(--card);border:1px solid var(--gold);border-radius:6px 6px 0 0;padding:12px}
-.pod .h1{height:210px}.pod .h2{height:165px}.pod .h3{height:130px}.pod .sc{font-size:26px;font-weight:900;color:var(--gold)}
-.center{text-align:center}.mut{color:var(--mut)}.err{color:var(--red)}
-.star{border:2px dashed var(--gold);padding:10px;border-radius:6px}
-.endg{display:grid;grid-template-columns:1fr 380px;gap:16px;align-items:start}@media(max-width:820px){.endg{grid-template-columns:1fr}}
-.rk{display:flex;gap:10px;align-items:center;padding:7px 8px;border-bottom:1px dotted var(--line)}.rk .rn{width:28px;font-family:'Playfair Display',serif;font-weight:900;color:var(--mut)}.rk .rt{flex:1}
-.rk.top{background:rgba(154,107,31,.14);border-left:3px solid var(--gold)}.rk.top .rn{color:var(--gold);font-size:20px}.scr{max-height:380px;overflow-y:auto}
-</style></head>
-<body>
-<header><svg viewBox="0 0 40 40" fill="currentColor"><path d="M6 6h28v4H6zM9 12h22v3H9zM11 15h4v18h-4zM18 15h4v18h-4zM25 15h4v18h-4zM8 33h24v3H8z"/></svg><h1>Ngôi Đền Chân Lý</h1><span class="sp"></span><button class="g" id="rst" style="display:none" title="Xoá toàn bộ dữ liệu phòng đã lưu">⟲ Reset</button><button class="g" id="snd" title="Nhạc nền">♪ Nhạc</button></header>
-<div class="mean"></div>
-<main id="app"><p class="center mut">Đang kết nối…</p></main>
+:root{--mb:#e6e4de;--card:#f5f4ef;--ink:#13263b;--sea:#1f4e6b;--gold:#a07a2c;--ol:#5f7036;--bad:#8b3a3a;--ln:#c9c5b8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.6 'Be Vietnam Pro',sans-serif;background:linear-gradient(180deg,#f1efe9,var(--mb))}
+h1,h2,h3{font-family:'Playfair Display',serif;margin:.2em 0;line-height:1.2}
+h1{font-size:clamp(30px,6vw,56px);font-weight:900}h2{font-size:24px}h3{font-size:18px}
+.wrap{max-width:1250px;margin:auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-top:3px solid var(--sea);padding:14px;margin-bottom:12px}
+.btn{font:600 15px 'Be Vietnam Pro';background:var(--sea);color:#fff;border:0;padding:10px 18px;cursor:pointer}
+.btn.alt{background:none;color:var(--sea);border:1.5px solid var(--sea)}.btn:disabled{opacity:.35;cursor:default}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold)}
+input,select{font:inherit;padding:9px;border:1px solid var(--ln);background:#fff;color:var(--ink);max-width:100%}
+.g3{display:grid;gap:12px;grid-template-columns:1fr 1.5fr 1fr}@media(max-width:950px){.g3{grid-template-columns:1fr}}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;background:#fff;border:1.5px solid var(--ln);font:inherit;color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--sea)}
+.dot{width:15px;height:15px;border-radius:50%;border:2px solid var(--gold);display:inline-block;margin-right:3px}.dot.on{background:var(--gold)}
+.m{border-left:4px solid var(--gold)}.m.done{border-color:var(--ol)}
+.vs{display:flex;justify-content:space-between;gap:8px;margin:6px 0}.win{color:var(--ol);font-weight:600}
+.log{max-height:230px;overflow:auto;font-size:14px}.log p{margin:3px 0;border-bottom:1px dotted var(--ln)}
+small,.mut{color:#566474;font-size:13px}.fl{font:600 18px monospace;background:#fff;padding:8px;border:1px dashed var(--gold);word-break:break-all}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;z-index:9}
+.end{position:fixed;inset:0;background:var(--ink);color:#f1efe9;overflow:auto;z-index:5;padding:24px;text-align:center}
+.end .r{font:700 clamp(20px,4vw,34px) 'Playfair Display',serif;margin:10px 0}.end .r:first-of-type{color:#d9b560;font-size:clamp(28px,6vw,52px)}
+table{width:100%;border-collapse:collapse;font-size:14px}td{padding:3px 4px;border-bottom:1px solid var(--ln)}
+.hero{text-align:center;padding:40px 10px}
+@media(prefers-reduced-motion:no-preference){.pulse{animation:p 2s ease-in-out infinite}@keyframes p{50%{opacity:.55}}}
+</style></head><body><div class="wrap" id="app"></div><div class="toast" id="toast" hidden></div>
 <script>
-const $=s=>document.querySelector(s),app=$('#app');
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'D').replace(/[^a-zA-Z0-9]/g,'').toUpperCase();
-const GR=[1,2,3,4,6,7],CH=['Khởi động','Tăng tốc','Về đích'],TT=[20,35,45,25];
-const SAMPLE={title:"Nhập môn triết học",khoiDong:[
-{q:"Câu nói “Tôi tư duy, vậy tôi tồn tại” thuộc về ai?",opts:["Plato","Descartes","Hume","Marx"],a:1},
-{q:"Vấn đề cơ bản của triết học là quan hệ giữa:",opts:["Vật chất và ý thức","Cá nhân và xã hội","Lý thuyết và thực tiễn","Chân và giả"],a:0},
-{q:"Phép biện chứng của Hegel thường được tóm lược bằng bộ ba nào?",opts:["Nhân – quả – duyên","Chính đề – phản đề – hợp đề","Thực thể – thuộc tính – dạng thức","Tự do – bình đẳng – bác ái"],a:1},
-{q:"Trường phái nào chủ trương “tồn tại có trước bản chất”?",opts:["Chủ nghĩa hiện sinh","Chủ nghĩa duy lý","Chủ nghĩa kinh nghiệm","Chủ nghĩa Khắc kỷ"],a:0}],
-tangToc:{keyword:"LOGIC",hint:"Môn học nghiên cứu các quy luật của tư duy đúng đắn (5 chữ cái).",rows:[
-{clue:"Học trò của Plato, người đặt nền móng cho logic học hình thức.",answer:"Aristotle",k:8},
-{clue:"Triết gia Athens, thường nói mình chỉ biết rằng mình không biết gì.",answer:"Socrates",k:2},
-{clue:"Triết gia Đức, đại diện của phép biện chứng duy tâm.",answer:"Hegel",k:3},
-{clue:"Tác giả “Zarathustra đã nói như thế”, người tuyên bố “Chúa đã chết”.",answer:"Nietzsche",k:2},
-{clue:"Nhà triết học Pháp, cha đẻ của chủ nghĩa duy lý hiện đại.",answer:"Descartes",k:4}]},
-veDich:[
-{stem:"Về phạm trù vật chất trong triết học Mác – Lênin:",q:"Vật chất là thực tại khách quan, tồn tại độc lập với ý thức của con người.",a:true},
-{stem:"Về chủ nghĩa duy tâm chủ quan:",q:"Chủ nghĩa duy tâm chủ quan cho rằng thế giới tồn tại hoàn toàn độc lập với cảm giác của con người.",a:false},
-{stem:"Về Socrates:",q:"Socrates để lại nhiều tác phẩm triết học do chính ông viết ra.",a:false},
-{stem:"Về chủ nghĩa Khắc kỷ:",q:"Chủ nghĩa Khắc kỷ đề cao việc dùng lý trí để giữ tâm bình thản trước điều nằm ngoài tầm kiểm soát.",a:true}]};
-let uid=null,isHost=false,S=null,PL={},AN={},bank=null,frozen=null,mine=JSON.parse(sessionStorage.mine||'{}'),star=false,busy=false,lastSig='',lastSfx=0,err='';
-const prof=JSON.parse(localStorage.prof||'{}');
-const seq=b=>{const a=[];b.khoiDong.forEach(q=>a.push({c:1,t:'mc',q}));b.tangToc.rows.forEach((r,i)=>a.push({c:2,t:'row',r,i}));a.push({c:2,t:'kw'});b.veDich.forEach(q=>a.push({c:3,t:'tf',q}));return a};
-function valid(b){try{if(!b.khoiDong.every(q=>q.q&&q.opts.length==4&&q.a>=0&&q.a<4))return 0;if(!b.tangToc.rows.length||!b.tangToc.keyword||!b.tangToc.rows.every(r=>r.clue&&r.answer))return 0;return b.veDich.every(q=>q.q&&typeof q.a=='boolean')}catch(e){return 0}}
-/* ---------- âm thanh ---------- */
-let AC,mute=false;
-function tone(f,t,d,v,ty='sine'){const o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.06);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.m);o.start(t);o.stop(t+d)}
-function music(){if(AC)return;AC=new(window.AudioContext||window.webkitAudioContext)();AC.m=AC.createGain();AC.m.gain.value=.7;AC.m.connect(AC.destination);const N=[220,261.6,293.7,329.6,392,440];let n=0;
-setInterval(()=>{if(mute)return;const t=AC.currentTime;tone(N[[0,2,4,3,1,5,3,2][n%8]],t,2.6,.9);tone(N[[0,2,4,3,1,5,3,2][n%8]]*2,t,1.8,.25);if(n%8==0)tone(110,t,6,.8,'triangle');if(n%16==0)tone(165,t,6,.5,'triangle');n++},650)}
-function sfx(k){if(!AC||mute)return;const t=AC.currentTime;(k?[523,659,784,1047]:[247,196,147]).forEach((f,i)=>tone(f,t+i*.13,.7,1,'triangle'))}
-document.addEventListener('pointerdown',music,{once:true});
-$('#snd').onclick=e=>{music();mute=!mute;e.target.textContent=mute?'✕ Tắt nhạc':'♪ Nhạc';e.stopPropagation()};
-/* ---------- mạng (PeerJS / WebRTC): chủ phòng là máy chủ duy nhất, giữ mọi đáp án ---------- */
-let peer,role=null,conns={},conn=null,SEC={},nextId=1,status='',pend=0;
-const PFX='triethoc-';
-const save=()=>{if(isHost)try{localStorage.host=JSON.stringify({S,bank,SEC,nextId,AN})}catch(e){}};
-const bc=()=>{const m={t:'S',S};Object.values(conns).forEach(c=>c.open&&c.send(m))};
-async function put(o){S={...S,...o,v:(S.v||0)+1,pl:PL};save();bc();render()}
-function hostStart(code){isHost=true;role='host';try{peer&&peer.destroy()}catch(e){}
- peer=new Peer(PFX+code);peer.on('open',()=>{status='';render()});
- peer.on('disconnected',()=>{try{peer.reconnect()}catch(e){}});
- peer.on('error',e=>{status='Lỗi kết nối: '+e.type;if(e.type=='unavailable-id')setTimeout(()=>hostStart(code),3000);render()});
- peer.on('connection',c=>{c.on('data',d=>onMsg(c,d));c.on('close',()=>{if(conns[c._p]===c)delete conns[c._p]})})}
-function onMsg(c,d){if(!d||typeof d!='object'||!S)return;
- if(d.t=='join'){if(norm(d.code)!=S.code)return c.send({t:'no',m:'Mã phòng không đúng.'});
-  const n=String(d.n||'').trim().slice(0,24),g=+d.g;if(!n||!GR.includes(g)||typeof d.sec!='string'||d.sec.length<8||d.sec.length>80)return c.send({t:'no',m:'Thông tin không hợp lệ.'});
-  const p=SEC[d.sec]||(SEC[d.sec]='p'+nextId++);PL[p]={n,g};conns[p]=c;c._p=p;c.send({t:'ok',pub:p});put({})}
- else if(d.t=='a'){const p=c._p;if(!p||!PL[p]||!S.q||S.stage!='q'||d.k!==S.q.k)return;let v=d.v;
-  if(S.q.c==1){if(!Number.isInteger(v)||v<0||v>3)return}else if(S.q.c==2){if(typeof v!='string')return;v=v.slice(0,40)}else if(typeof v!='boolean')return;
-  AN[p]={t:Date.now(),k:d.k,v,star:S.q.c==3&&!!d.star&&!S.used[PL[p].g]};save();render()}}
-function resetHost(){try{peer.destroy()}catch(e){}localStorage.removeItem('host');S=null;PL={};AN={};SEC={};conns={};role=null;isHost=false;bank=null;lastSig='';render()}
-function create(){if(!bank)return;const c=new Uint8Array(5);crypto.getRandomValues(c);const code=[...c].map(x=>'ABCDEFGHJKLMNPQRSTUVWXYZ'[x%24]).join('');
- PL={};AN={};SEC={};nextId=1;S={code,phase:'lobby',i:-1,stage:'',q:null,rev:null,gs:{},ps:{},used:{},solved:{},end:0,title:bank.title||'',v:1,pl:PL,cw:bank.tangToc.rows.map(r=>({len:norm(r.answer).length,k:r.k||0}))};
- save();hostStart(code);render()}
-async function openStep(i){const st=seq(bank)[i];let q;AN={};
- if(st.t=='mc')q={c:1,text:st.q.q,opts:st.q.opts};else if(st.t=='row')q={c:2,t:'row',n:st.i+1,text:st.r.clue,len:norm(st.r.answer).length};
- else if(st.t=='kw')q={c:2,t:'kw',text:bank.tangToc.hint||'Tìm từ khoá hàng dọc!',len:norm(bank.tangToc.keyword).length};else q={c:3,text:st.q.q,stem:st.q.stem||''};
- q.k='s'+i;frozen=null;busy=false;const dur=TT[st.t=='kw'?1:st.c]*1000*(st.t=='kw'?1.3:1),t0=Date.now();await put({phase:'play',i,stage:'q',q,rev:null,t0,dur,end:t0+dur})}
-async function lock(){if(busy||S.stage!='q')return;busy=true;frozen={...AN};await put({stage:'lock'});busy=false}
-async function reveal(){const st=seq(bank)[S.i],A=frozen||AN,gs={...S.gs},ps={...S.ps},used={...S.used},solved={...S.solved},res={},dg={};const L=[];const sg=new Set();
- Object.entries(A).forEach(([u,a])=>{if(a.k!==S.q.k||!PL[u])return;L.push([u,a]);if(st.c==3&&a.star&&!used[PL[u].g])sg.add(PL[u].g)});
- sg.forEach(g=>used[g]=1);
- L.forEach(([u,a])=>{const g=PL[u].g,m=sg.has(g)?2:1;let d=0;
-  if(st.t=='mc')d=a.v===st.q.a?100:0;else if(st.t=='row'){const t=norm(a.v);if(t)d=t==norm(st.r.answer)?100:-10}
-  else if(st.t=='kw')d=norm(a.v)==norm(bank.tangToc.keyword)?1000:0;else d=(a.v===st.q.a?200:-20)*m;
-  if(d>0){const f=Math.min(1,Math.max(.5,.5+.5*((S.end-(a.t||S.t0))/(S.dur||1))));d=Math.round(d*f/10)*10}
-  gs[g]=(gs[g]||0)+d;ps[u]=(ps[u]||0)+d/2;res[u]=d/2;dg[g]=(dg[g]||0)+d});
- let ans='';if(st.t=='mc')ans=String.fromCharCode(65+st.q.a)+'. '+st.q.opts[st.q.a];else if(st.t=='row'){ans=st.r.answer;solved[st.i]=st.r.answer}else if(st.t=='kw')ans=bank.tangToc.keyword;else ans=st.q.a?'ĐÚNG':'SAI';
- await put({stage:'rev',gs,ps,used,solved,rev:{a:ans,res,dg,sg:[...sg],c:st.q?st.q.a:null}})}
-async function next(){const n=seq(bank).length;if(S.i+1<n)openStep(S.i+1);else put({phase:'end',stage:'',q:null})}
-/* ---------- người chơi ---------- */
-function playerStart(code){role='player';isHost=false;try{peer&&peer.destroy()}catch(e){}
- peer=new Peer();peer.on('open',()=>connect(code));
- peer.on('error',e=>{status=e.type=='peer-unavailable'?'Chưa tìm thấy phòng '+code+'. Đang thử lại…':'Lỗi kết nối: '+e.type;render();if(e.type=='peer-unavailable')setTimeout(()=>connect(code),3000)})}
-function connect(code){if(!peer||peer.destroyed||!peer.open)return;status='Đang kết nối…';render();conn=peer.connect(PFX+code,{reliable:true});const c=conn;
- c.on('open',()=>{status='';if(prof.n&&prof.code==code)sendJoin();render()});
- c.on('data',d=>{if(!d)return;if(d.t=='S'){S=d.S;PL=S.pl||{};render()}else if(d.t=='ok'){uid=d.pub;localStorage.room=code;err='';render()}else if(d.t=='no'){err=d.m;render()}});
- c.on('close',()=>{if(conn!==c)return;status='Mất kết nối, đang thử lại…';render();setTimeout(()=>connect(code),2500)})}
-const sendJoin=()=>conn&&conn.open&&conn.send({t:'join',code:prof.code,sec:localStorage.sec||(localStorage.sec=(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)+Date.now().toString(36))),n:prof.n,g:prof.g});
-function join(){const code=norm($('#jc').value),n=$('#jn').value.trim().slice(0,24),g=+$('#jg').value;
- if(!code)return err='Hãy nhập mã phòng.',render();if(!n)return err='Hãy nhập tên của bạn.',render();err='';
- Object.assign(prof,{n,g,code});localStorage.prof=JSON.stringify(prof);
- if(conn&&conn.open&&conn.peer==PFX+code)sendJoin();else if(peer&&!peer.destroyed&&peer.open)connect(code);else playerStart(code);render()}
-function answer(v){if(S.stage!='q'||!conn||!conn.open)return;mine={k:S.q.k,v,star};sessionStorage.mine=JSON.stringify(mine);conn.send({t:'a',k:S.q.k,v,star});render()}
-function toggleStar(){if(S.used[PL[uid].g])return;star=!star;if(mine.k==S.q.k)answer(mine.v);else render()}
-function setRole(r){role=r;isHost=r=='host';lastSig='';render()}
-function landH(){return `<div class="card center"><h2>Chào mừng đến Ngôi Đền Chân Lý</h2><p class="mut">Chủ phòng tạo phòng; người chơi quét QR hoặc nhập mã để tham gia.</p><div class="row" style="justify-content:center"><button onclick="setRole('host')">Tôi là chủ phòng</button><button class="g" onclick="setRole('player')">Tôi là người chơi</button></div></div>`}
-function init(){
- try{const o=JSON.parse(localStorage.host||'null');if(o&&o.S&&!location.hash.slice(1)){S=o.S;bank=o.bank;SEC=o.SEC||{};nextId=o.nextId||1;AN=o.AN||{};PL=S.pl||{};hostStart(S.code)}
-  else if(location.hash.length>1)playerStart(norm(location.hash.slice(1)));else if(localStorage.room&&prof.n)playerStart(localStorage.room)}catch(e){}
- render();
- setInterval(()=>{const e=$('#tm');if(!S||S.stage!='q'||!e)return;const r=Math.max(0,Math.ceil((S.end-Date.now())/1000));e.textContent=r;if(isHost&&r==0&&!busy)lock()},300)}
-/* ---------- hiển thị ---------- */
-const cur=()=>mine.k===(S.q&&S.q.k)?mine:null;
-function boardH(){const cw=S.cw,mk=Math.max(...cw.map(r=>r.k||1));return '<div class="cwb">'+cw.map((r,i)=>{const a=S.solved[i]?norm(S.solved[i]):'';return `<div class="cr ${S.q&&S.q.c==2&&S.q.n==i+1&&S.stage!='rev'?'cur':''}" style="margin-left:${(mk-(r.k||1))*34}px"><b>${i+1}</b>`+Array.from({length:r.len},(_,j)=>`<i class="${j+1==r.k?'key':''}">${a[j]||''}</i>`).join('')+'</div>'}).join('')+'</div>'}
-function scoreH(){const t=GR.map(g=>[g,S.gs[g]||0]),mx=Math.max(100,...t.map(x=>Math.abs(x[1])));
- return '<div class="card"><h3>Bảng điểm các nhóm</h3>'+t.sort((a,b)=>b[1]-a[1]).map(([g,s])=>`<div class="bar"><span class="n">Nhóm ${g}</span><div style="width:${Math.max(2,Math.abs(s)/mx*60)}%;${s<0?'background:var(--red)':''}"></div><b>${s}</b></div>`).join('')+'</div>'}
-function qH(){const q=S.q,r=S.rev,me=cur(),h=[];
- h.push(`<div class="card"><div class="tag"><span>Thử thách ${q.c}: ${CH[q.c-1]}${q.n?' · Hàng '+q.n:q.t=='kw'?' · Từ khoá':''}</span><span class="tm" id="tm">${S.stage=='q'?Math.max(0,Math.ceil((S.end-Date.now())/1000)):''}</span></div>`);
- if(q.stem)h.push(`<p class="stem">${esc(q.stem)}</p>`);h.push(`<h2>${esc(q.text)}</h2>`);if(S.stage=='q')h.push('<p class="mut" style="margin:-6px 0 10px">⏱ Trả lời càng nhanh, điểm cộng càng cao (từ 50% đến 100%).</p>');
- if(q.c==1)h.push('<div class="opts">'+q.opts.map((o,i)=>`<button class="opt ${r?(i==r.c?'ok':me&&me.v===i?'bad':''):me&&me.v===i?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${i})"`}><b>${'ABCD'[i]}.</b> ${esc(o)}</button>`).join('')+'</div>');
- if(q.c==2){if(q.t=='row'||q.t=='kw'){if(!isHost&&S.stage=='q')h.push(`<div class="row"><input id="ai" maxlength="40" placeholder="${q.len} chữ cái" value="${esc(me?me.v:'')}" style="flex:1;min-width:180px"><button onclick="answer($('#ai').value.trim())">Gửi đáp án</button></div>${me?'<p class="mut">Đã gửi: <b>'+esc(me.v)+'</b> (có thể sửa trước khi hết giờ)</p>':''}`);else h.push(`<p class="mut">${q.len} chữ cái</p>`)}}
- if(q.c==3){h.push('<div class="opts">'+[true,false].map(b=>`<button class="opt ${r?(b===r.c?'ok':me&&me.v===b?'bad':''):me&&me.v===b?'sel':''}" ${isHost||S.stage!='q'?'disabled':`onclick="answer(${b})"`}><b>${b?'ĐÚNG':'SAI'}</b></button>`).join('')+'</div>');
-  if(!isHost){const u=S.used[PL[uid].g];h.push(`<div class="star" style="margin-top:12px"><button class="${star?'':'g'}" ${u||S.stage!='q'?'disabled':''} onclick="toggleStar()">☀ Ánh Sáng Chân Lý ${u?'(nhóm đã dùng)':star?'(đang bật)':''}</button><div class="mut">Mỗi nhóm một lượt: đúng nhân đôi điểm, sai trừ gấp đôi.</div></div>`)}}
- if(r){h.push(`<p class="pf" style="font-size:22px;margin-top:14px">Đáp án: <b style="color:var(--ok)">${esc(r.a)}</b></p>`);if(r.sg&&r.sg.length)h.push(`<p>☀ Ánh Sáng Chân Lý được dùng bởi nhóm ${r.sg.join(', ')}</p>`);
-  const d=Object.entries(r.dg||{}).map(([g,v])=>`Nhóm ${g}: <span class="res ${v>=0?'pos':'neg'}">${v>0?'+':''}${v}</span>`).join(' · ');if(d)h.push(`<p>${d}</p>`)}
- h.push('</div>');return h.join('')}
-function finalH(){
- const t=GR.map(g=>[g,S.gs[g]||0]).sort((a,b)=>b[1]-a[1]),p=Object.keys(PL).map(u=>[u,S.ps[u]||0]).sort((a,b)=>b[1]-a[1]),R=['Ⅰ','Ⅱ','Ⅲ'];
- const pod=[1,0,2].map(i=>t[i]?`<div class="h${i+1}"><div class="pf" style="font-size:34px;color:var(--gold)">${R[i]}</div><h3>Nhóm ${t[i][0]}</h3><div class="sc">${t[i][1]}</div></div>`:'').join('');
- const row=(i,n,sub,s)=>`<div class="rk ${i<3?'top':''}"><span class="rn">${i<3?R[i]:i+1}</span><span class="rt">${n}${sub?` <small class="mut">${sub}</small>`:''}</span><b class="${s<0?'neg':''}">${s}</b></div>`;
- return `<div class="endg"><div class="card center"><svg viewBox="0 0 120 60" width="150" fill="none" stroke="var(--gold)" stroke-width="3"><path d="M20 50C5 35 8 15 25 8M100 50c15-15 12-35-5-42M22 44c-6-6-6-14-2-20M98 44c6-6 6-14 2-20"/><circle cx="60" cy="30" r="12" fill="var(--gold)" stroke="none"/></svg><h2>Kết quả chung cuộc</h2><p class="mut">${esc(S.title)}</p><div class="pod">${pod}</div></div>
- <aside><div class="card"><h3>Xếp hạng nhóm</h3>${t.map((x,i)=>row(i,'Nhóm '+x[0],'',x[1])).join('')}</div>
- <div class="card"><h3>Xếp hạng cá nhân</h3><div class="scr">${p.map(([u,s],i)=>row(i,esc(PL[u].n),'Nhóm '+PL[u].g,s)).join('')||'<p class="mut">Chưa có người chơi.</p>'}</div></div></aside></div>`}
-function rosterH(){return '<div class="card"><h3>Người chơi ('+Object.keys(PL).length+')</h3><div class="grid">'+GR.map(g=>`<div class="gp"><b>Nhóm ${g}</b><br>${Object.values(PL).filter(p=>p.g==g).map(p=>esc(p.n)).join(', ')||'<span class=mut>—</span>'}</div>`).join('')+'</div></div>'}
-function hostH(){
- if(!S){return `<div class="card"><h2>Thiết lập phòng</h2><p>Nạp bộ đề (JSON) rồi tạo phòng. Đáp án chỉ nằm trong trình duyệt của chủ phòng, người chơi không thể đọc được.</p>
- <textarea id="bj" placeholder='{"khoiDong":[{"q":"…","opts":["A","B","C","D"],"a":1}],"tangToc":{"keyword":"…","hint":"…","rows":[{"clue":"…","answer":"…","k":3}]},"veDich":[{"stem":"…","q":"…","a":true}]}'></textarea>
- <div class="row" style="margin-top:10px"><button class="g" onclick="loadTxt()">Nạp từ ô văn bản</button><label class="g" style="border:1px solid var(--gold);padding:9px 14px;border-radius:4px;cursor:pointer">Chọn tệp .json<input type="file" accept=".json" hidden onchange="loadFile(this)"></label><button class="g" onclick="bank=SAMPLE;render()">Dùng đề mẫu</button></div>
- <p class="err">${err}</p>${bank?`<p class="pos">✔ Đã nạp: ${esc(bank.title||'bộ đề')} — ${bank.khoiDong.length} câu khởi động, ${bank.tangToc.rows.length} hàng ngang + từ khoá, ${bank.veDich.length} mệnh đề.</p><button onclick="create()">Tạo phòng</button>`:''}</div>`}
- const url=location.href.split('#')[0]+'#'+S.code;let h='';
- if(S.phase=='lobby')h=`<div class="card center"><h2>Mời người chơi vào phòng</h2><div class="big">${S.code}</div><div id="qr" style="display:inline-block;background:#fff;padding:10px"></div><p class="err">${esc(status)}</p><p class="mut" style="word-break:break-all">${esc(url)}</p></div>${rosterH()}<div class="center"><button onclick="openStep(0)" ${Object.keys(PL).length?'':'disabled'}>Bắt đầu thử thách Khởi động</button></div>`;
- else if(S.phase=='play'){const n=Object.values(AN).filter(a=>a.k==S.q.k).length,last=S.i+1>=seq(bank).length;
-  h=qH()+`<div class="card row"><span>Đã trả lời: <b>${n}/${Object.keys(PL).length}</b></span><span class="sp" style="flex:1"></span>${S.stage=='q'?'<button onclick="lock()">Khoá đáp án</button>':S.stage=='lock'?'<button onclick="reveal()">Công bố đáp án</button>':`<button onclick="next()">${last?'Xem kết quả cuối':'Câu tiếp theo'}</button>`}</div>`+(S.q.c==2?'<div class="card"><h3>Ô chữ</h3>'+boardH()+'</div>':'')+scoreH()}
- else h=finalH();
- return h+(S.phase!='end'?'':`<div class="center"><button class="g" onclick="if(confirm('Xoá phòng này và tạo phòng mới?')){resetHost()}">Phòng mới</button></div>`)}
-function playerH(){
-  if(!uid||!PL[uid]){const c=decodeURIComponent(location.hash.slice(1))||prof.code||'';return `<div class="card"><h2>Vào phòng</h2><p class="mut">Nhập mã phòng, tên và chọn nhóm.</p><p><input id="jc" placeholder="Mã phòng" value="${esc(c)}" maxlength="8" style="text-transform:uppercase;letter-spacing:4px"></p><p><input id="jn" placeholder="Tên của bạn" maxlength="24" value="${esc(prof.n||'')}"></p><p><select id="jg">${GR.map(g=>`<option value="${g}" ${prof.g==g?'selected':''}>Nhóm ${g}</option>`).join('')}</select></p><p class="err">${esc(err||status)}</p><button onclick="join()">Tham gia</button></div>`}
- const p=PL[uid],head=`<div class="card row"><b>${esc(p.n)}</b><span class="mut">Nhóm ${p.g}</span><span style="flex:1"></span><span>Cá nhân: <b>${S.ps[uid]||0}</b></span><span>Nhóm: <b>${S.gs[p.g]||0}</b></span></div>`;
- if(S.phase=='lobby')return head+'<div class="card center"><h2>Bạn đã vào phòng</h2><p class="mut">Hãy chờ chủ phòng bắt đầu…</p></div>'+rosterH();
- if(S.phase=='end')return head+finalH();
- let m='';if(S.stage=='lock')m='<p class="center mut">Đã khoá đáp án — chờ công bố…</p>';
- if(S.stage=='rev'){const d=S.rev.res[uid];m=`<p class="center res ${d>0?'pos':d<0?'neg':''}">${d==null?'Bạn không trả lời':'Bạn '+(d>=0?'+':'')+d+' điểm'}</p>`;if(lastSfx!=S.v){lastSfx=S.v;if(d!=null)sfx(d>0)}}
- return head+qH()+m+scoreH()}
-function render(){
- const rb=$('#rst');if(rb)rb.style.display=isHost?'':'none';
- const sig=JSON.stringify([S&&S.v,Object.keys(PL).length,isHost?Object.keys(AN).length:0,uid,!!bank,err,status,role,star,mine]);if(sig==lastSig)return;lastSig=sig;
- app.innerHTML=role==null?landH():isHost?hostH():playerH();
- const q=$('#qr');if(q&&window.QRCode){try{new QRCode(q,{text:location.href.split('#')[0]+'#'+S.code,width:200,height:200})}catch(e){}}}
-function loadTxt(){try{const b=JSON.parse($('#bj').value);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Bộ đề không hợp lệ. Hãy kiểm tra lại định dạng JSON.'}lastSig='';render()}
-function loadFile(i){const f=i.files[0];if(!f)return;f.text().then(t=>{try{const b=JSON.parse(t);if(!valid(b))throw 0;bank=b;err=''}catch(e){err='Tệp đề không hợp lệ.'}lastSig='';render()})}
-$('#rst').onclick=()=>{if(!confirm('Reset sẽ xoá toàn bộ phòng, đề, điểm và dữ liệu đã lưu trong trình duyệt này (localStorage + sessionStorage), rồi tải lại trang. Tiếp tục?'))return;try{peer&&peer.destroy()}catch(e){}try{localStorage.clear();sessionStorage.clear()}catch(e){}location.href=location.pathname};
-init();
+const $=s=>document.querySelector(s),e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const TEAMS=[1,2,3,4,6,7],ROOM=new URLSearchParams(location.search).get('room'),LS=localStorage;
+const TEMPLE=`<svg viewBox="0 0 200 90" width="220" aria-hidden="true"><path d="M10 28 100 6l90 22z" fill="#a07a2c"/><rect x="14" y="30" width="172" height="6" fill="#13263b"/>${[30,62,94,126,158].map(x=>`<rect x="${x}" y="38" width="12" height="40" fill="#f5f4ef" stroke="#13263b" stroke-width="2"/>`).join('')}<rect x="8" y="78" width="184" height="8" fill="#1f4e6b"/></svg>`;
+const QUOTES=['Tôi chỉ biết rằng tôi không biết gì. — Socrates','Cuộc đời chưa được xem xét thì không đáng sống. — Socrates','Triết học bắt đầu từ sự ngạc nhiên. — Aristotle'];
+/* ---------- Đề mẫu: [{title,qs:[{t:'mcq'|'tf'|'fill',q,o,a}]}]  fill: dùng {0},{1} và o=[[..],[..]], a=[idx,idx] ---------- */
+const SAMPLE=[{title:"Vấn đề cơ bản của triết học",qs:[{t:"mcq",q:"Vấn đề cơ bản của triết học là quan hệ giữa:",o:["Con người và xã hội","Lý luận và thực tiễn","Tư duy và tồn tại","Vật chất và năng lượng"],a:2},{t:"tf",q:"Chủ nghĩa duy vật cho rằng ý thức có trước vật chất.",a:false},{t:"fill",q:"Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",o:[["duy vật","duy tâm","hoài nghi"],["trước","sau","song song"]],a:[0,1]}]},
+{title:"Phép biện chứng",qs:[{t:"mcq",q:"Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",o:["Lượng – chất","Phủ định của phủ định","Nhân quả","Thống nhất và đấu tranh của các mặt đối lập"],a:3},{t:"tf",q:"Phương pháp siêu hình xem xét sự vật trong trạng thái vận động, phát triển không ngừng.",a:false},{t:"fill",q:"Quy luật chuyển hoá từ những thay đổi về {0} thành những thay đổi về {1} và ngược lại.",o:[["chất","lượng","hình thức"],["lượng","vị trí","chất"]],a:[1,2]}]},
+{title:"Thực tiễn và nhận thức",qs:[{t:"mcq",q:"Tiêu chuẩn của chân lý là:",o:["Thực tiễn","Số đông","Kinh điển","Ý chí"],a:0},{t:"tf",q:"Nhận thức đi từ trực quan sinh động đến tư duy trừu tượng, rồi trở về thực tiễn.",a:true},{t:"fill",q:"Triết học là hệ thống tri thức {0} về thế giới và vị trí của {1} trong thế giới ấy.",o:[["cảm tính","lý luận chung nhất","cụ thể nhất"],["thần linh","tự nhiên","con người"]],a:[1,2]}]}];
+/* ---------- âm thanh (WebAudio, không cần file) ---------- */
+let AC,mt=0;const NT=[293.66,329.63,369.99,440,493.88,587.33];
+addEventListener('pointerdown',()=>AC=AC||new AudioContext(),{once:true});
+function tone(f,d=.5,v=.06,ty='sine',t0=0){if(!AC)return;const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+t0;o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(AC.destination);o.start(t);o.stop(t+d+.05)}
+const sfx={ok:()=>[0,2,4].forEach((n,i)=>tone(NT[n]*2,.4,.07,'triangle',i*.09)),bad:()=>tone(170,.35,.06,'triangle'),flag:()=>[0,2,3,5].forEach((n,i)=>tone(NT[n]*2,.7,.07,'triangle',i*.12)),end:()=>[0,3,5,3,5].forEach((n,i)=>tone(NT[n]*2,.9,.07,'triangle',i*.25))};
+function music(){if(mt){clearInterval(mt);mt=0;toast('Tắt nhạc nền');return}AC=AC||new AudioContext();let i=0;const P=[0,2,4,2,3,1,2,0];mt=setInterval(()=>{tone(NT[P[i%8]],1.2,.035);if(i%4==0)tone(NT[0]/2,2.4,.05);i++},650)}
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2400)}
+const sh=a=>a.sort(()=>Math.random()-.5),hex=()=>[...crypto.getRandomValues(new Uint8Array(6))].map(b=>b.toString(16).padStart(2,'0')).join('');
+const SNDBTN='<button class="btn alt" onclick="music()" aria-label="Nhạc nền">♪ Nhạc</button>';
+/* ============================ HOST ============================ */
+let S,peer,conns={};
+function lb(){const t=TEAMS.map(x=>({t:x,...S.tw[x]})).sort((a,b)=>b.w-a.w||b.f-a.f);const p=Object.values(S.players).sort((a,b)=>b.pts-a.pts).slice(0,10).map(x=>({n:x.name,t:x.team,pts:x.pts}));return{t,p}}
+const mOf=t=>S.matches.find(m=>m.a==t||m.b==t),ch=c=>S.qs[(S.stage*3+c)%S.qs.length];
+function log(m){S.log.unshift({t:new Date().toLocaleTimeString('vi-VN'),m});S.log.length=Math.min(S.log.length,80)}
+function bc(){LS.tl_host=JSON.stringify(S);hostR();for(const pid in conns)try{conns[pid].send(view(pid))}catch{}}
+function view(pid){const p=S.players[pid],m=mOf(p.team),o={k:'st',stage:S.stage,me:{n:p.name,t:p.team,pts:p.pts},lb:lb(),rank:S.stage==3?S.rank:null};
+ if(m&&S.stage>=0&&S.stage<3){const a=m.prog[p.team],oT=m.a==p.team?m.b:m.a,b=m.prog[oT];o.m={tag:m.tag,opp:oT,my:{c:a.c,q:a.q,s:a.s,flag:a.flag},op:{c:b.c,s:b.s},win:m.win};
+  if(!m.win&&!a.flag&&a.c<3){const x=ch(a.c),q=x.qs[a.q];o.m.title=x.title;o.q={t:q.t,q:q.q,o:q.o}}}   // KHÔNG bao giờ gửi đáp án
+ return o}
+function startStage(n){const T=sh(TEAMS.slice());let pr;
+ if(n==0)pr=[[T[0],T[1],'Vòng loại'],[T[2],T[3],'Vòng loại'],[T[4],T[5],'Vòng loại']];
+ else{const W=sh(S.matches.map(m=>m.win)),L=sh(S.matches.map(m=>m.lose));
+  if(n==1)pr=[[W[0],W[1],'Bán kết: nhánh thắng'],[L[0],L[1],'Bán kết: nhánh thua'],[W[2],L[2],'Bán kết: giao thoa']];
+  else{const[ww,ll,wl]=S.matches;S.rank[ll.win]=5;S.rank[ll.lose]=6;pr=[[ww.win,wl.win,'Chung kết: tranh hạng 1-2'],[ww.lose,wl.lose,'Tranh hạng 3-4']]}}
+ S.stage=n;S.ready=false;S.matches=pr.map(([a,b,tag])=>({a,b,tag,win:0,lose:0,prog:{[a]:{c:0,q:0,s:0,flag:null},[b]:{c:0,q:0,s:0,flag:null}}}));
+ log(`Bắt đầu ${['vòng loại','bán kết','chung kết'][n]}: `+S.matches.map(m=>`Nhóm ${m.a} đấu Nhóm ${m.b}`).join(', '));bc()}
+function nextStage(){if(S.stage<0){const miss=TEAMS.filter(t=>!Object.values(S.players).some(p=>p.team==t));if(miss.length&&!confirm('Nhóm '+miss.join(', ')+' chưa có người chơi. Vẫn bắt đầu?'))return}
+ if(S.stage>=0&&!S.ready)return;if(S.stage<2)startStage(S.stage+1);else{const[a,b]=S.matches;S.rank[a.win]=1;S.rank[a.lose]=2;S.rank[b.win]=3;S.rank[b.lose]=4;S.stage=3;log('Kết thúc giải đấu!');bc();sfx.end()}}
+function ans(c,p,v){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)return;const a=m.prog[p.team];if(a.flag||a.c>2)return;
+ if(Date.now()<p.cd)return c.send({k:'fb',ok:0,m:'Hãy suy ngẫm thêm chút rồi trả lời.'});   // chống dò đáp án
+ const q=ch(a.c).qs[a.q];let ok=q.t=='fill'?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
+ if(!ok){p.cd=Date.now()+2000;return c.send({k:'fb',ok:0,m:'Chưa đúng, hãy thử lại.'})}
+ p.pts++;a.q++;c.send({k:'fb',ok:1});
+ if(a.q>2){a.flag='FLAG{'+hex()+'}';log(`Nhóm ${p.team} giải xong thử thách ${a.c+1} (${m.tag}), flag đã rơi!`)}bc()}
+function flag(c,p,v){const m=mOf(p.team);if(!m||m.win)return;const a=m.prog[p.team];if(!a.flag||String(v).trim()!==a.flag)return c.send({k:'fb',ok:0,m:'Flag chưa chính xác.'});
+ a.s++;a.c++;a.q=0;a.flag=null;S.tw[p.team].f++;log(`Nhóm ${p.team} cắm flag thứ ${a.s}/3 vào căn cứ đối thủ (${m.tag})`);
+ if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;log(`Nhóm ${p.team} chiếm căn cứ Nhóm ${m.lose} (${m.tag})`);if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}
+ bc();c.send({k:'fb',ok:2})}
+function onMsg(c,d){if(!d||typeof d!='object')return;
+ if(d.k=='join'){const pid=String(d.pid||'').slice(0,40),n=String(d.name||'').trim().slice(0,20),t=+d.team;let p=S.players[pid];
+  if(!p){if(!n||!TEAMS.includes(t))return c.send({k:'err',m:'Tên hoặc nhóm không hợp lệ'});p=S.players[pid]={name:n,team:t,pts:0,cd:0};log(`${n} gia nhập Nhóm ${t}`)}
+  c.pid=pid;conns[pid]=c;return bc()}
+ const p=S.players[c.pid];if(!p)return;if(d.k=='ans')ans(c,p,d.v);if(d.k=='flag')flag(c,p,d.v)}
+function startHost(){peer=new Peer('trietly-'+S.room);
+ peer.on('connection',c=>c.on('data',d=>onMsg(c,d)));
+ peer.on('error',x=>alert(x.type=='unavailable-id'?'Phòng đang mở ở tab khác. Hãy đóng tab đó rồi tải lại.':'Lỗi kết nối: '+x.type));
+ peer.on('open',()=>{hostUI();bc()})}
+function hostLanding(){const old=LS.tl_host;$('#app').innerHTML=`<div class="hero">${TEMPLE}<h1>Đấu Trường Triết Học</h1><p style="max-width:560px;margin:auto">Sáu nhóm tấn công căn cứ của nhau bằng tri thức. Ai giải xong ba thử thách và cắm đủ ba flag trước sẽ thắng.</p><p><button class="btn" id="nr">Tạo phòng mới</button> ${old?'<button class="btn alt" id="rs">Mở lại phòng đang dở</button>':''}</p><p class="mut">${QUOTES[Math.random()*3|0]}</p></div>`;
+ $('#nr').onclick=()=>{S={room:Math.random().toString(36).slice(2,6).toUpperCase(),qs:SAMPLE,stage:-1,ready:false,matches:[],players:{},tw:{},rank:{},log:[]};TEAMS.forEach(t=>S.tw[t]={w:0,f:0});startHost()};
+ if(old)$('#rs').onclick=()=>{S=JSON.parse(old);startHost()}}
+function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
+ $('#app').innerHTML=`<div class="top"><div style="display:flex;gap:12px;align-items:center">${TEMPLE.replace('220','90')}<div><h2>Đấu Trường Triết Học</h2><small id="stg"></small></div></div><div>${SNDBTN} <label class="btn alt">Nạp đề <input type="file" id="qf" accept=".json" hidden></label> <button class="btn" id="nx"></button></div></div>
+ <div class="g3"><div><div class="card" style="text-align:center"><h3>Mã phòng ${S.room}</h3><div id="qr" style="display:inline-block"></div><p><small style="word-break:break-all">${url}</small></p></div><div class="card"><h3>Người chơi</h3><div id="ro"></div></div></div>
+ <div><div id="mt"></div><div class="card"><h3>Nhật ký trận đấu</h3><div class="log" id="lg"></div></div></div>
+ <div><div class="card"><h3>Bảng xếp hạng nhóm</h3><div id="lt"></div></div><div class="card"><h3>Bảng xếp hạng cá nhân</h3><div id="lp"></div></div></div></div><div id="en"></div>`;
+ new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#13263b',colorLight:'#f5f4ef'});
+ $('#nx').onclick=nextStage;
+ $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());if(!Array.isArray(j)||!j.length||!j.every(c=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&'a' in q)))throw 0;S.qs=j;log(`Đã nạp đề: ${j.length} thử thách`);bc();toast('Đã nạp đề')}catch{toast('File đề không đúng định dạng')}}}
+function hostR(){if(!$('#mt'))return;const L=lb();
+ $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+` (${S.qs.length} thử thách trong đề)`;
+ const nx=$('#nx');nx.hidden=S.stage==3;nx.disabled=S.stage>=0&&!S.ready;nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];
+ $('#ro').innerHTML=TEAMS.map(t=>`<p style="margin:4px 0"><b>Nhóm ${t}</b> <small>${Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', ')||'chưa có ai'}</small></p>`).join('');
+ $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${Math.min(a.q+1,3)}/3${a.flag?', đã có flag':''}`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('')||'<div class="card"><p class="mut pulse">Đang chờ các nhóm vào phòng. Bấm "Bắt đầu vòng loại" khi sẵn sàng.</p></div>';
+ $('#lg').innerHTML=S.log.map(l=>`<p><small>${l.t}</small> ${e(l.m)}</p>`).join('');
+ $('#lt').innerHTML='<table>'+L.t.map((x,i)=>`<tr><td>${i+1}</td><td>Nhóm ${x.t}</td><td>${x.w} thắng</td><td>${x.f} flag</td></tr>`).join('')+'</table>';
+ $('#lp').innerHTML='<table>'+L.p.map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join('')+'</table>';
+ $('#en').innerHTML=S.stage==3?`<div class="end">${TEMPLE.replace('220','200')}<h1>Bảng Vàng</h1>${Object.entries(S.rank).sort((a,b)=>a[1]-b[1]).map(([t,r])=>`<div class="r">Hạng ${r}: Nhóm ${t}</div>`).join('')}<h3>Những người đóng góp nhiều nhất</h3>${L.p.slice(0,5).map((x,i)=>`<div>${i+1}. ${e(x.n)} (Nhóm ${x.t}): ${x.pts} điểm</div>`).join('')}<p><button class="btn alt" style="color:#fff;border-color:#fff" onclick="$('#en').innerHTML=''">Đóng</button></p></div>`:''}
+/* ============================ PLAYER ============================ */
+let conn,pp,V,sig='',me=JSON.parse(LS['tl_p_'+ROOM]||'null');
+function playerJoin(){$('#app').innerHTML=`<div class="hero">${TEMPLE}<h1>Vào đấu trường</h1><div class="card" style="max-width:380px;margin:20px auto;text-align:left"><p>Tên của bạn<br><input id="nm" maxlength="20" style="width:100%"></p><p>Nhóm của bạn<br><select id="tm" style="width:100%">${TEAMS.map(t=>`<option value="${t}">Nhóm ${t}</option>`).join('')}</select></p><button class="btn" id="go" style="width:100%">Tham gia</button></div></div>`;
+ $('#go').onclick=()=>{const n=$('#nm').value.trim();if(!n)return toast('Hãy nhập tên');me={pid:hex()+hex(),name:n,team:+$('#tm').value};LS['tl_p_'+ROOM]=JSON.stringify(me);connect()}}
+function connect(){$('#app').innerHTML='<div class="hero"><h2 class="pulse">Đang kết nối tới phòng '+e(ROOM)+'…</h2></div>';
+ const retry=()=>{clearTimeout(connect.t);connect.t=setTimeout(()=>{try{pp.destroy()}catch{}connect()},2500)};
+ pp=new Peer();pp.on('error',retry);
+ pp.on('open',()=>{conn=pp.connect('trietly-'+ROOM,{reliable:true});conn.on('open',()=>conn.send({k:'join',pid:me.pid,name:me.name,team:me.team}));conn.on('data',onData);conn.on('close',retry);conn.on('error',retry)})}
+function send(o){try{conn.send(o)}catch{toast('Mất kết nối, đang nối lại…')}}
+function onData(d){if(d.k=='err'){delete LS['tl_p_'+ROOM];me=null;toast(d.m);return playerJoin()}
+ if(d.k=='fb'){toast(d.m||(d.ok==1?'Chính xác!':'Cờ đã cắm vào căn cứ đối thủ!'));(d.ok?d.ok==2?sfx.flag:sfx.ok:sfx.bad)();return}
+ if(d.k=='st'){const old=V;V=d;if(!$('#qb'))skeleton();pR();if(V.stage==3&&(!old||old.stage!=3))sfx.end()}}
+function skeleton(){$('#app').innerHTML=`<div class="top"><div id="hd"></div>${SNDBTN}</div><div id="mi"></div><div id="qb"></div><div class="card"><h3>Bảng xếp hạng</h3><div id="pl"></div></div>`}
+function pR(){const v=V;$('#hd').innerHTML=`<h2>${e(v.me.n)}</h2><small>Nhóm ${v.me.t}, ${v.me.pts} điểm cá nhân</small>`;
+ $('#pl').innerHTML='<table>'+v.lb.t.map((x,i)=>`<tr><td>${i+1}</td><td>Nhóm ${x.t}</td><td>${x.w} thắng</td><td>${x.f} flag</td></tr>`).join('')+'</table><br><table>'+v.lb.p.slice(0,5).map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>${x.pts}</td></tr>`).join('')+'</table>';
+ const m=v.m;$('#mi').innerHTML=m?`<div class="card m"><small>${e(m.tag)}</small><div class="vs"><div><b>Nhóm ${v.me.t}</b><br>${[0,1,2].map(i=>`<span class="dot ${i<m.my.s?'on':''}"></span>`).join('')}</div><div style="text-align:right"><b>Nhóm ${m.opp}</b><br>${[0,1,2].map(i=>`<span class="dot ${i<m.op.s?'on':''}"></span>`).join('')}</div></div></div>`:'';
+ const ns=JSON.stringify([v.stage,v.q,m&&m.my.flag,m&&m.win]);if(ns==sig)return;sig=ns;const qb=$('#qb');let h='';
+ if(v.stage<0)h='<div class="card"><h3 class="pulse">Phòng chờ</h3><p>Chủ trò sẽ bắt đầu trận đấu trong giây lát.</p></div>';
+ else if(v.stage==3)h=`<div class="card"><h2>Kết quả chung cuộc</h2>${Object.entries(v.rank).sort((a,b)=>a[1]-b[1]).map(([t,r])=>`<p class="${t==v.me.t?'win':''}">Hạng ${r}: Nhóm ${t}</p>`).join('')}</div>`;
+ else if(m&&m.win)h=`<div class="card"><h2 class="${m.win==v.me.t?'win':''}">${m.win==v.me.t?'Nhóm bạn đã chiếm được căn cứ!':'Căn cứ của nhóm bạn đã thất thủ.'}</h2><p>Hãy chờ chủ trò mở vòng tiếp theo.</p></div>`;
+ else if(m&&m.my.flag)h=`<div class="card"><h3>Thử thách hoàn thành, flag đã rơi</h3><div class="fl">${e(m.my.flag)}</div><p>Điền flag để cắm vào căn cứ đối thủ:</p><input id="fi" style="width:100%" autocomplete="off"><p><button class="btn" onclick="send({k:'flag',v:$('#fi').value})">Cắm flag</button></p></div>`;
+ else if(v.q){const q=v.q;h=`<div class="card"><small>${e(m.title)}, câu ${m.my.q+1}/3</small><h3 style="font-weight:500;font-size:20px">`;
+  if(q.t=='fill')h+=e(q.q).replace(/\{(\d)\}/g,(_,i)=>`<select data-i="${i}"><option value="">…</option>${q.o[i].map((o,j)=>`<option value="${j}">${e(o)}</option>`).join('')}</select>`)+`</h3><button class="btn" id="fs">Gửi đáp án</button>`;
+  else if(q.t=='tf')h+=e(q.q)+`</h3><button class="opt" data-v="1">Đúng</button><button class="opt" data-v="0">Sai</button>`;
+  else h+=e(q.q)+'</h3>'+q.o.map((o,i)=>`<button class="opt" data-v="${i}">${e(o)}</button>`).join('');
+  qb.innerHTML=h+'</div>';
+  qb.querySelectorAll('.opt').forEach(b=>b.onclick=()=>send({k:'ans',v:q.t=='tf'?b.dataset.v=='1':+b.dataset.v}));
+  const fs=$('#fs');if(fs)fs.onclick=()=>{const s=[...qb.querySelectorAll('select')];if(s.some(x=>x.value===''))return toast('Hãy chọn đủ các chỗ trống');send({k:'ans',v:s.map(x=>+x.value)})};return}
+ qb.innerHTML=h}
+/* ---------- khởi động ---------- */
+if(!ROOM)hostLanding();else if(me)connect();else playerJoin();
 </script></body></html>
