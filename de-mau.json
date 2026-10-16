@@ -1,0 +1,125 @@
+[
+ {
+  "title": "Vấn đề cơ bản của triết học",
+  "qs": [
+   {
+    "t": "mcq",
+    "q": "Vấn đề cơ bản của triết học là quan hệ giữa:",
+    "o": [
+     "Con người và xã hội",
+     "Lý luận và thực tiễn",
+     "Tư duy và tồn tại",
+     "Vật chất và năng lượng"
+    ],
+    "a": 2
+   },
+   {
+    "t": "tf",
+    "q": "Chủ nghĩa duy vật cho rằng ý thức có trước vật chất.",
+    "a": false
+   },
+   {
+    "t": "fill",
+    "q": "Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",
+    "o": [
+     [
+      "duy vật",
+      "duy tâm",
+      "hoài nghi"
+     ],
+     [
+      "trước",
+      "sau",
+      "song song"
+     ]
+    ],
+    "a": [
+     0,
+     1
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Phép biện chứng",
+  "qs": [
+   {
+    "t": "mcq",
+    "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
+    "o": [
+     "Lượng – chất",
+     "Phủ định của phủ định",
+     "Nhân quả",
+     "Thống nhất và đấu tranh của các mặt đối lập"
+    ],
+    "a": 3
+   },
+   {
+    "t": "tf",
+    "q": "Phương pháp siêu hình xem xét sự vật trong trạng thái vận động, phát triển không ngừng.",
+    "a": false
+   },
+   {
+    "t": "fill",
+    "q": "Quy luật chuyển hoá từ những thay đổi về {0} thành những thay đổi về {1} và ngược lại.",
+    "o": [
+     [
+      "chất",
+      "lượng",
+      "hình thức"
+     ],
+     [
+      "lượng",
+      "vị trí",
+      "chất"
+     ]
+    ],
+    "a": [
+     1,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "title": "Thực tiễn và nhận thức",
+  "qs": [
+   {
+    "t": "mcq",
+    "q": "Tiêu chuẩn của chân lý là:",
+    "o": [
+     "Thực tiễn",
+     "Số đông",
+     "Kinh điển",
+     "Ý chí"
+    ],
+    "a": 0
+   },
+   {
+    "t": "tf",
+    "q": "Nhận thức đi từ trực quan sinh động đến tư duy trừu tượng, rồi trở về thực tiễn.",
+    "a": true
+   },
+   {
+    "t": "fill",
+    "q": "Triết học là hệ thống tri thức {0} về thế giới và vị trí của {1} trong thế giới ấy.",
+    "o": [
+     [
+      "cảm tính",
+      "lý luận chung nhất",
+      "cụ thể nhất"
+     ],
+     [
+      "thần linh",
+      "tự nhiên",
+      "con người"
+     ]
+    ],
+    "a": [
+     1,
+     2
+    ]
+   }
+  ]
+ }
+]
