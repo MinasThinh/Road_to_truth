@@ -17,6 +17,7 @@ small,.val,.ch em,.tx,textarea,select,input{font-family:'JetBrains Mono',monospa
 #side{display:flex;flex-direction:column;gap:6px;align-self:start;position:sticky;top:12px}@media(max-width:800px){#side{position:static}}
 .ch{display:flex;gap:10px;align-items:center;text-align:left;width:100%;padding:9px 10px;background:var(--pn);border:1px solid var(--ln);color:var(--ink);font:inherit;cursor:pointer}
 .ch.on{border-color:var(--gold);background:#12233a}.ch b{font-family:'Playfair Display',serif;color:var(--gold);font-size:18px}.ch span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tabs{display:flex;gap:4px;margin-bottom:6px}.tab{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 4px;background:var(--pn);border:1px solid var(--ln);color:var(--ink);font:600 13px 'Be Vietnam Pro',sans-serif;cursor:pointer}.tab.on{border-color:var(--gold);color:var(--gold)}.tab:focus-visible{outline:3px solid var(--cy)}.tab em{font:normal 12px 'JetBrains Mono',monospace}
 .ch em{font-style:normal;font-size:12px}.ok{color:var(--cy)}.bad{color:var(--bad)}
 .val{font-size:12.5px;border:1px solid var(--ln);padding:10px;margin-top:6px;background:var(--pn)}.val ul{margin:6px 0 0;padding-left:18px}.val.ok{border-color:var(--cy)}.val.bad{border-color:var(--bad)}
 .top2{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
@@ -30,63 +31,66 @@ textarea{width:100%;resize:vertical;font-family:'Be Vietnam Pro',sans-serif;font
 .empty{border:1px dashed var(--ln);padding:40px 20px;text-align:center;background:var(--pn)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0d1b2e;border:1px solid var(--cy);padding:10px 18px;z-index:9}
 </style></head><body>
-<header class="hd"><div><h1>Soạn đề thi</h1><small>Tạo file .json để nạp vào trò chơi bằng nút "Nạp đề". File chứa đáp án, hãy giữ riêng tư, đừng đưa lên GitHub.</small></div>
+<header class="hd"><div><h1>Soạn đề thi</h1><small>Đề chia theo 3 vòng (vòng loại, bán kết, chung kết), mỗi vòng 3 thử thách riêng, rồi nạp vào trò chơi bằng nút "Nạp đề". File chứa đáp án, hãy giữ riêng tư, đừng đưa lên GitHub.</small></div>
 <div class="act"><button class="btn alt" onclick="newBank()">Tạo đề mới</button><button class="btn alt" onclick="load('replace')">Nạp đề có sẵn</button><button class="btn alt" onclick="load('append')">Nạp thêm vào đề này</button><button class="btn alt" onclick="cp()">Sao chép JSON</button><button class="btn" onclick="dl()">Tải xuống</button></div></header>
 <div class="lay"><aside id="side"></aside><section id="main"></section></div>
 <input type="file" id="fi" accept=".json,application/json" hidden><div class="toast" id="toast" hidden></div>
 <script>
 const $=s=>document.querySelector(s),e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let B=[],sel=0,mode='replace';try{B=JSON.parse(localStorage.tl_editor||'[]')}catch{}if(!Array.isArray(B))B=[];
+const RN=['Vòng loại','Bán kết','Chung kết'];let B=[[],[],[]],sel=0,rd=0,mode='replace';try{const x=JSON.parse(localStorage.tl_editor2||'null');if(x&&Array.isArray(x.rounds))B=x.rounds}catch{}
 function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(t.h);t.h=setTimeout(()=>t.hidden=true,2500)}
 /* ---------- mô hình dữ liệu ---------- */
 const blanks=q=>{const m=[...q.q.matchAll(/\{(\d+)\}/g)].map(x=>+x[1]);return m.length?Math.min(8,Math.max(...m)+1):0};
 function sync(q){const n=blanks(q);q.o=(q.o||[]).slice(0,n);q.a=(q.a||[]).slice(0,n);for(let b=0;b<n;b++){if(!Array.isArray(q.o[b]))q.o[b]=['',''];if(!Number.isInteger(q.a[b]))q.a[b]=0}return q}
 const mkQ=(t='mcq',q='')=>t=='tf'?{t,q,a:true}:t=='fill'?sync({t,q,o:[],a:[]}):{t:'mcq',q,o:['','','',''],a:0};
 const mkC=()=>({title:'',qs:[mkQ('mcq'),mkQ('tf'),mkQ('fill')]});
-function val(){const E=[];if(!B.length)E.push('Đề chưa có thử thách nào');B.forEach((c,i)=>{const L=`Thử thách ${i+1}`;if(!c.title.trim())E.push(`${L}: chưa có tên`);if(c.qs.length!=3)E.push(`${L}: có ${c.qs.length}/3 câu`);
+function val(){const E=[];B.forEach((Rn,r)=>{if(Rn.length!=3)E.push(`${RN[r]}: có ${Rn.length}/3 thử thách`);Rn.forEach((c,i)=>{const L=`${RN[r]}, thử thách ${i+1}`;if(!c.title.trim())E.push(`${L}: chưa có tên`);if(c.qs.length!=3)E.push(`${L}: có ${c.qs.length}/3 câu`);
  c.qs.forEach((q,j)=>{const P=`${L}, câu ${j+1}`;if(!q.q.trim())E.push(`${P}: chưa có nội dung`);
   if(q.t=='mcq'&&q.o.some(o=>!o.trim()))E.push(`${P}: còn đáp án trống`);
-  if(q.t=='fill'){const n=blanks(q);if(!n)E.push(`${P}: chưa có chỗ trống {0}`);for(let b=0;b<n;b++){if(!q.q.includes(`{${b}}`))E.push(`${P}: thiếu chỗ trống {${b}} trong câu`);const f=q.o[b].filter(x=>x.trim());if(f.length<2)E.push(`${P}: chỗ trống {${b}} cần ít nhất 2 lựa chọn`);else if(!(q.o[b][q.a[b]]||'').trim())E.push(`${P}: đáp án đúng của {${b}} đang trống`)}}})});return E}
-function clean(){return B.map(c=>({title:c.title.trim(),qs:c.qs.map(q=>{const o={t:q.t,q:q.q.trim()};if(q.t=='mcq'){o.o=q.o.map(s=>s.trim());o.a=q.a}else if(q.t=='tf')o.a=q.a;else{o.o=[];o.a=[];for(let b=0;b<blanks(q);b++){const ok=q.o[b]||[],cor=(ok[q.a[b]]||'').trim(),f=ok.map(s=>s.trim()).filter(Boolean);o.o.push(f);o.a.push(Math.max(0,f.indexOf(cor)))}}return o})}))}
+  if(q.t=='fill'){const n=blanks(q);if(!n)E.push(`${P}: chưa có chỗ trống {0}`);for(let b=0;b<n;b++){if(!q.q.includes(`{${b}}`))E.push(`${P}: thiếu chỗ trống {${b}} trong câu`);const f=q.o[b].filter(x=>x.trim());if(f.length<2)E.push(`${P}: chỗ trống {${b}} cần ít nhất 2 lựa chọn`);else if(!(q.o[b][q.a[b]]||'').trim())E.push(`${P}: đáp án đúng của {${b}} đang trống`)}}})})});return E}
+const clean=()=>({rounds:RN.map((n,r)=>({name:n,challenges:cleanL(B[r])}))});
+function cleanL(L){return L.map(c=>({title:c.title.trim(),qs:c.qs.map(q=>{const o={t:q.t,q:q.q.trim()};if(q.t=='mcq'){o.o=q.o.map(s=>s.trim());o.a=q.a}else if(q.t=='tf')o.a=q.a;else{o.o=[];o.a=[];for(let b=0;b<blanks(q);b++){const ok=q.o[b]||[],cor=(ok[q.a[b]]||'').trim(),f=ok.map(s=>s.trim()).filter(Boolean);o.o.push(f);o.a.push(Math.max(0,f.indexOf(cor)))}}return o})}))}
 /* ---------- hiển thị ---------- */
-function touch(){localStorage.tl_editor=JSON.stringify(B);side()}
-function side(){const E=val();$('#side').innerHTML=`<h3>Thử thách (${B.length})</h3>`+B.map((c,i)=>`<button class="ch ${i==sel?'on':''}" onclick="pick(${i})"><b>${i+1}</b><span>${e(c.title||'(chưa đặt tên)')}</span><em class="${c.qs.length==3?'ok':'bad'}">${c.qs.length}/3</em></button>`).join('')+'<button class="btn" onclick="addC()">+ Thêm thử thách</button>'+
- `<div class="val ${E.length?'bad':'ok'}">${E.length?`<b>${E.length} vấn đề cần sửa</b><ul>${E.slice(0,12).map(x=>`<li>${e(x)}</li>`).join('')}${E.length>12?'<li>…</li>':''}</ul>`:`<b>Đề hợp lệ:</b> ${B.length} thử thách, ${B.length*3} câu`}${B.length&&B.length<9?`<br><small>Mỗi vòng dùng 3 thử thách kế tiếp. Có 9 thử thách thì 3 vòng không lặp đề (hiện có ${B.length}).</small>`:''}</div>`}
-function main(){const c=B[sel];if(!c){$('#main').innerHTML='<div class="empty"><h3>Chưa có thử thách nào</h3><p>Tạo thử thách đầu tiên hoặc nạp một file đề có sẵn.</p><button class="btn" onclick="addC()">+ Thêm thử thách</button> <button class="btn alt" onclick="load(\'replace\')">Nạp đề có sẵn</button></div>';return}
- $('#main').innerHTML=`<div class="top2"><input class="ti" value="${e(c.title)}" placeholder="Tên thử thách" aria-label="Tên thử thách" oninput="B[sel].title=this.value;touch()"><button class="btn alt sm" onclick="mvC(-1)" ${sel==0?'disabled':''} aria-label="Đưa lên">↑</button><button class="btn alt sm" onclick="mvC(1)" ${sel==B.length-1?'disabled':''} aria-label="Đưa xuống">↓</button><button class="btn alt sm" onclick="dupC()">Nhân bản</button><button class="btn danger sm" onclick="delC()">Xóa thử thách</button></div>`+
+function touch(){localStorage.tl_editor2=JSON.stringify({rounds:B});side()}
+function side(){const E=val(),n=B.flat().length;$('#side').innerHTML=`<div class="tabs">${RN.map((nm,r)=>`<button class="tab ${r==rd?'on':''}" onclick="pickR(${r})">${nm}<em class="${B[r].length==3?'ok':'bad'}">${B[r].length}/3</em></button>`).join('')}</div><h3>${RN[rd]}: các thử thách</h3>`+B[rd].map((c,i)=>`<button class="ch ${i==sel?'on':''}" onclick="pick(${i})"><b>${i+1}</b><span>${e(c.title||'(chưa đặt tên)')}</span><em class="${c.qs.length==3?'ok':'bad'}">${c.qs.length}/3</em></button>`).join('')+`<button class="btn" onclick="addC()" ${B[rd].length>=3?'disabled':''}>+ Thêm thử thách</button>`+
+ `<div class="val ${E.length?'bad':'ok'}">${E.length?`<b>${E.length} vấn đề cần sửa</b><ul>${E.slice(0,12).map(x=>`<li>${e(x)}</li>`).join('')}${E.length>12?'<li>…</li>':''}</ul>`:`<b>Đề hợp lệ:</b> 3 vòng, ${n} thử thách, ${n*3} câu`}<br><small>Mỗi vòng có bộ thử thách riêng, mọi đội trong vòng đó thi cùng bộ này. Không dùng lại đề giữa các vòng.</small></div>`}
+function main(){const c=B[rd][sel];if(!c){$('#main').innerHTML='<div class="empty"><h3>Chưa có thử thách nào</h3><p>Tạo thử thách đầu tiên hoặc nạp một file đề có sẵn.</p><button class="btn" onclick="addC()">+ Thêm thử thách</button> <button class="btn alt" onclick="load(\'replace\')">Nạp đề có sẵn</button></div>';return}
+ $('#main').innerHTML=`<div class="top2"><small style="width:100%">${RN[rd]}, thử thách ${sel+1}</small><input class="ti" value="${e(c.title)}" placeholder="Tên thử thách" aria-label="Tên thử thách" oninput="B[rd][sel].title=this.value;touch()"><button class="btn alt sm" onclick="mvC(-1)" ${sel==0?'disabled':''} aria-label="Đưa lên">↑</button><button class="btn alt sm" onclick="mvC(1)" ${sel==B[rd].length-1?'disabled':''} aria-label="Đưa xuống">↓</button><button class="btn alt sm" onclick="dupC()" ${B[rd].length>=3?'disabled':''}>Nhân bản</button><button class="btn danger sm" onclick="delC()">Xóa thử thách</button></div>`+
  c.qs.map(qCard).join('')+`<button class="btn" onclick="addQ()" ${c.qs.length>=3?'disabled':''}>+ Thêm câu hỏi</button> <small>Mỗi thử thách cần đúng 3 câu.</small>`}
 const R=()=>{side();main()};
-function qCard(q,i){const T={mcq:'Trắc nghiệm 4 đáp án',tf:'Đúng / Sai',fill:'Điền khuyết'},c=B[sel];
+function qCard(q,i){const T={mcq:'Trắc nghiệm 4 đáp án',tf:'Đúng / Sai',fill:'Điền khuyết'},c=B[rd][sel];
  return `<div class="qc"><div class="qh"><b>Câu ${i+1}</b><select aria-label="Dạng câu hỏi" onchange="setType(${i},this.value)">${Object.entries(T).map(([k,v])=>`<option value="${k}" ${q.t==k?'selected':''}>${v}</option>`).join('')}</select><span class="sp"></span><button class="btn alt sm" onclick="mvQ(${i},-1)" ${i==0?'disabled':''} aria-label="Đưa lên">↑</button><button class="btn alt sm" onclick="mvQ(${i},1)" ${i==c.qs.length-1?'disabled':''} aria-label="Đưa xuống">↓</button><button class="btn danger sm" onclick="delQ(${i})">Xóa</button></div>
  <textarea rows="2" aria-label="Nội dung câu hỏi" placeholder="${q.t=='fill'?'Ví dụ: Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1}.':'Nội dung câu hỏi'}" oninput="setQ(${i},this.value)">${e(q.q)}</textarea>`+
- (q.t=='mcq'?`<small>Chọn nút tròn ở đáp án đúng.</small>`+q.o.map((o,k)=>`<label class="ro"><input type="radio" name="c${i}" aria-label="Đáp án đúng" ${q.a==k?'checked':''} onchange="B[sel].qs[${i}].a=${k};touch()"><input class="tx" value="${e(o)}" placeholder="Đáp án ${'ABCD'[k]}" oninput="B[sel].qs[${i}].o[${k}]=this.value;touch()"></label>`).join('')
- :q.t=='tf'?`<div class="ro">${[[true,'Đúng'],[false,'Sai']].map(([v,l])=>`<label class="ro"><input type="radio" name="c${i}" ${q.a===v?'checked':''} onchange="B[sel].qs[${i}].a=${v};touch()"> ${l}</label>`).join('')}</div>`
+ (q.t=='mcq'?`<small>Chọn nút tròn ở đáp án đúng.</small>`+q.o.map((o,k)=>`<label class="ro"><input type="radio" name="c${i}" aria-label="Đáp án đúng" ${q.a==k?'checked':''} onchange="B[rd][sel].qs[${i}].a=${k};touch()"><input class="tx" value="${e(o)}" placeholder="Đáp án ${'ABCD'[k]}" oninput="B[rd][sel].qs[${i}].o[${k}]=this.value;touch()"></label>`).join('')
+ :q.t=='tf'?`<div class="ro">${[[true,'Đúng'],[false,'Sai']].map(([v,l])=>`<label class="ro"><input type="radio" name="c${i}" ${q.a===v?'checked':''} onchange="B[rd][sel].qs[${i}].a=${v};touch()"> ${l}</label>`).join('')}</div>`
  :`<div class="fh"><button class="btn alt sm" onclick="insBlank(${i})">+ Chèn chỗ trống</button><small>Dùng {0}, {1}… trong câu rồi nhập các lựa chọn bên dưới.</small></div><div id="fb${i}">${fillB(q,i)}</div>`)+'</div>'}
-function fillB(q,i){const n=blanks(q);if(!n)return '<small>Chưa có chỗ trống nào trong câu.</small>';let h='';for(let b=0;b<n;b++){h+=`<div class="bl"><b>Chỗ trống {${b}}</b>`+q.o[b].map((o,k)=>`<div class="ro"><input type="radio" name="f${i}_${b}" aria-label="Lựa chọn đúng" ${q.a[b]==k?'checked':''} onchange="B[sel].qs[${i}].a[${b}]=${k};touch()"><input class="tx" value="${e(o)}" placeholder="Lựa chọn ${k+1}" oninput="B[sel].qs[${i}].o[${b}][${k}]=this.value;touch()">${q.o[b].length>2?`<button class="btn danger sm" onclick="delFo(${i},${b},${k})" aria-label="Xóa lựa chọn">✕</button>`:''}</div>`).join('')+(q.o[b].length<6?`<button class="btn alt sm" onclick="addFo(${i},${b})">+ Lựa chọn</button>`:'')+'</div>'}return h}
+function fillB(q,i){const n=blanks(q);if(!n)return '<small>Chưa có chỗ trống nào trong câu.</small>';let h='';for(let b=0;b<n;b++){h+=`<div class="bl"><b>Chỗ trống {${b}}</b>`+q.o[b].map((o,k)=>`<div class="ro"><input type="radio" name="f${i}_${b}" aria-label="Lựa chọn đúng" ${q.a[b]==k?'checked':''} onchange="B[rd][sel].qs[${i}].a[${b}]=${k};touch()"><input class="tx" value="${e(o)}" placeholder="Lựa chọn ${k+1}" oninput="B[rd][sel].qs[${i}].o[${b}][${k}]=this.value;touch()">${q.o[b].length>2?`<button class="btn danger sm" onclick="delFo(${i},${b},${k})" aria-label="Xóa lựa chọn">✕</button>`:''}</div>`).join('')+(q.o[b].length<6?`<button class="btn alt sm" onclick="addFo(${i},${b})">+ Lựa chọn</button>`:'')+'</div>'}return h}
 /* ---------- thao tác ---------- */
-const Q=i=>B[sel].qs[i],refill=i=>{const q=Q(i);$('#fb'+i).innerHTML=fillB(q,i)};
+const Q=i=>B[rd][sel].qs[i],refill=i=>{const q=Q(i);$('#fb'+i).innerHTML=fillB(q,i)};
 function pick(i){sel=i;R()}
-function addC(){B.push(mkC());sel=B.length-1;R();touch()}
-function delC(){if(!confirm('Xóa thử thách này?'))return;B.splice(sel,1);sel=Math.max(0,Math.min(sel,B.length-1));R();touch()}
-function dupC(){const c=JSON.parse(JSON.stringify(B[sel]));c.title+=' (bản sao)';B.splice(sel+1,0,c);sel++;R();touch()}
-function mvC(d){const j=sel+d;[B[sel],B[j]]=[B[j],B[sel]];sel=j;R();touch()}
-function addQ(){if(B[sel].qs.length<3){B[sel].qs.push(mkQ());main();touch()}}
-function delQ(i){if(!confirm('Xóa câu này?'))return;B[sel].qs.splice(i,1);main();touch()}
-function mvQ(i,d){const a=B[sel].qs;[a[i],a[i+d]]=[a[i+d],a[i]];main();touch()}
-function setType(i,t){B[sel].qs[i]=mkQ(t,Q(i).q);main();touch()}
+function pickR(r){rd=r;sel=0;R()}
+function addC(){if(B[rd].length>=3)return;B[rd].push(mkC());sel=B[rd].length-1;R();touch()}
+function delC(){if(!confirm('Xóa thử thách này?'))return;B[rd].splice(sel,1);sel=Math.max(0,Math.min(sel,B[rd].length-1));R();touch()}
+function dupC(){if(B[rd].length>=3)return;const c=JSON.parse(JSON.stringify(B[rd][sel]));c.title+=' (bản sao)';B[rd].splice(sel+1,0,c);sel++;R();touch()}
+function mvC(d){const L=B[rd],j=sel+d;[L[sel],L[j]]=[L[j],L[sel]];sel=j;R();touch()}
+function addQ(){if(B[rd][sel].qs.length<3){B[rd][sel].qs.push(mkQ());main();touch()}}
+function delQ(i){if(!confirm('Xóa câu này?'))return;B[rd][sel].qs.splice(i,1);main();touch()}
+function mvQ(i,d){const a=B[rd][sel].qs;[a[i],a[i+d]]=[a[i+d],a[i]];main();touch()}
+function setType(i,t){B[rd][sel].qs[i]=mkQ(t,Q(i).q);main();touch()}
 function setQ(i,v){const q=Q(i);q.q=v;if(q.t=='fill'){sync(q);refill(i)}touch()}
 function insBlank(i){const q=Q(i),ta=document.querySelectorAll('.qc')[i].querySelector('textarea'),p=ta.selectionStart??ta.value.length,tag=`{${blanks({q:ta.value})}}`;ta.value=ta.value.slice(0,p)+tag+ta.value.slice(p);ta.focus();ta.setSelectionRange(p+tag.length,p+tag.length);setQ(i,ta.value)}
 function addFo(i,b){Q(i).o[b].push('');refill(i);touch()}
 function delFo(i,b,k){const q=Q(i);q.o[b].splice(k,1);if(q.a[b]>k)q.a[b]--;else if(q.a[b]==k)q.a[b]=0;refill(i);touch()}
-function newBank(){if(B.length&&!confirm('Bỏ đề hiện tại và tạo đề mới? (Hãy tải xuống trước nếu cần giữ)'))return;B=[mkC()];sel=0;R();touch()}
+function newBank(){if(B.some(Rn=>Rn.length)&&!confirm('Bỏ đề hiện tại và tạo đề mới? (Hãy tải xuống trước nếu cần giữ)'))return;B=[0,1,2].map(()=>[mkC(),mkC(),mkC()]);rd=0;sel=0;R();touch()}
 /* ---------- nạp / xuất file ---------- */
 function norm(x){if(!Array.isArray(x))throw 0;return x.map(c=>({title:String(c.title||''),qs:(Array.isArray(c.qs)?c.qs:[]).map(q=>{if(!q||!['mcq','tf','fill'].includes(q.t))return null;const o={t:q.t,q:String(q.q||'')};
  if(q.t=='mcq'){o.o=[0,1,2,3].map(k=>String((q.o||[])[k]||''));o.a=Number.isInteger(q.a)?q.a:0}else if(q.t=='tf')o.a=q.a===true;else{o.o=(q.o||[]).map(a=>(a||[]).map(String));o.a=(q.a||[]).map(n=>+n||0);sync(o)}return o}).filter(Boolean)}))}
 function load(m){mode=m;$('#fi').click()}
-$('#fi').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;try{const L=norm(JSON.parse(await f.text()));
- if(mode=='replace'){if(B.length&&!confirm('Thay thế đề hiện tại bằng file này?'))return;B=L;sel=0}else{B=B.concat(L);sel=B.length-L.length}
- R();touch();toast(`Đã nạp ${L.length} thử thách`)}catch{toast('File không đúng định dạng đề thi')}};
-function dl(){const E=val();if(E.length&&!confirm(`Còn ${E.length} vấn đề chưa sửa (game cần mỗi thử thách đúng 3 câu). Vẫn tải xuống?`))return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(clean(),null,1)],{type:'application/json'}));a.download='de-thi.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function parseBank(j){if(Array.isArray(j)){const L=norm(j);return[0,1,2].map(r=>L.slice(r*3,r*3+3))}if(j&&Array.isArray(j.rounds))return[0,1,2].map(r=>norm((j.rounds[r]||{}).challenges||[]));throw 0}
+$('#fi').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;try{const L=parseBank(JSON.parse(await f.text())),n=L.reduce((a,Rn)=>a+Rn.length,0);
+ if(mode=='replace'){if(B.some(Rn=>Rn.length)&&!confirm('Thay thế đề hiện tại bằng file này?'))return;B=L}else B=B.map((Rn,r)=>Rn.concat(L[r]));
+ rd=0;sel=0;R();touch();toast(`Đã nạp ${n} thử thách`)}catch{toast('File không đúng định dạng đề thi')}};
+function dl(){const E=val();if(E.length&&!confirm(`Còn ${E.length} vấn đề chưa sửa (mỗi vòng cần đúng 3 thử thách, mỗi thử thách đúng 3 câu). Vẫn tải xuống?`))return;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(clean(),null,1)],{type:'application/json'}));a.download='de-thi.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function cp(){navigator.clipboard.writeText(JSON.stringify(clean(),null,1)).then(()=>toast('Đã sao chép JSON'),()=>toast('Không sao chép được'))}
-B=B.length?norm(B):B;R();
+while(B.length<3)B.push([]);B=B.slice(0,3).map(norm);R();
 </script></body></html>

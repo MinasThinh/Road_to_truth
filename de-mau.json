@@ -1,125 +1,388 @@
-[
- {
-  "title": "Vấn đề cơ bản của triết học",
-  "qs": [
-   {
-    "t": "mcq",
-    "q": "Vấn đề cơ bản của triết học là quan hệ giữa:",
-    "o": [
-     "Con người và xã hội",
-     "Lý luận và thực tiễn",
-     "Tư duy và tồn tại",
-     "Vật chất và năng lượng"
-    ],
-    "a": 2
-   },
-   {
-    "t": "tf",
-    "q": "Chủ nghĩa duy vật cho rằng ý thức có trước vật chất.",
-    "a": false
-   },
-   {
-    "t": "fill",
-    "q": "Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",
-    "o": [
-     [
-      "duy vật",
-      "duy tâm",
-      "hoài nghi"
-     ],
-     [
-      "trước",
-      "sau",
-      "song song"
+{
+ "rounds": [
+  {
+   "name": "Vòng loại",
+   "challenges": [
+    {
+     "title": "Vấn đề cơ bản của triết học",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Vấn đề cơ bản của triết học là quan hệ giữa:",
+       "o": [
+        "Con người và xã hội",
+        "Lý luận và thực tiễn",
+        "Tư duy và tồn tại",
+        "Vật chất và năng lượng"
+       ],
+       "a": 2
+      },
+      {
+       "t": "tf",
+       "q": "Chủ nghĩa duy vật cho rằng ý thức có trước vật chất.",
+       "a": false
+      },
+      {
+       "t": "fill",
+       "q": "Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",
+       "o": [
+        [
+         "duy vật",
+         "duy tâm",
+         "hoài nghi"
+        ],
+        [
+         "trước",
+         "sau",
+         "song song"
+        ]
+       ],
+       "a": [
+        0,
+        1
+       ]
+      }
      ]
-    ],
-    "a": [
-     0,
-     1
-    ]
-   }
-  ]
- },
- {
-  "title": "Phép biện chứng",
-  "qs": [
-   {
-    "t": "mcq",
-    "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
-    "o": [
-     "Lượng – chất",
-     "Phủ định của phủ định",
-     "Nhân quả",
-     "Thống nhất và đấu tranh của các mặt đối lập"
-    ],
-    "a": 3
-   },
-   {
-    "t": "tf",
-    "q": "Phương pháp siêu hình xem xét sự vật trong trạng thái vận động, phát triển không ngừng.",
-    "a": false
-   },
-   {
-    "t": "fill",
-    "q": "Quy luật chuyển hoá từ những thay đổi về {0} thành những thay đổi về {1} và ngược lại.",
-    "o": [
-     [
-      "chất",
-      "lượng",
-      "hình thức"
-     ],
-     [
-      "lượng",
-      "vị trí",
-      "chất"
+    },
+    {
+     "title": "Phép biện chứng",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
+       "o": [
+        "Lượng – chất",
+        "Phủ định của phủ định",
+        "Nhân quả",
+        "Thống nhất và đấu tranh của các mặt đối lập"
+       ],
+       "a": 3
+      },
+      {
+       "t": "tf",
+       "q": "Phương pháp siêu hình xem xét sự vật trong trạng thái vận động, phát triển không ngừng.",
+       "a": false
+      },
+      {
+       "t": "fill",
+       "q": "Quy luật chuyển hoá từ những thay đổi về {0} thành những thay đổi về {1} và ngược lại.",
+       "o": [
+        [
+         "chất",
+         "lượng",
+         "hình thức"
+        ],
+        [
+         "lượng",
+         "vị trí",
+         "chất"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
      ]
-    ],
-    "a": [
-     1,
-     2
-    ]
-   }
-  ]
- },
- {
-  "title": "Thực tiễn và nhận thức",
-  "qs": [
-   {
-    "t": "mcq",
-    "q": "Tiêu chuẩn của chân lý là:",
-    "o": [
-     "Thực tiễn",
-     "Số đông",
-     "Kinh điển",
-     "Ý chí"
-    ],
-    "a": 0
-   },
-   {
-    "t": "tf",
-    "q": "Nhận thức đi từ trực quan sinh động đến tư duy trừu tượng, rồi trở về thực tiễn.",
-    "a": true
-   },
-   {
-    "t": "fill",
-    "q": "Triết học là hệ thống tri thức {0} về thế giới và vị trí của {1} trong thế giới ấy.",
-    "o": [
-     [
-      "cảm tính",
-      "lý luận chung nhất",
-      "cụ thể nhất"
-     ],
-     [
-      "thần linh",
-      "tự nhiên",
-      "con người"
+    },
+    {
+     "title": "Thực tiễn và nhận thức",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Tiêu chuẩn của chân lý là:",
+       "o": [
+        "Thực tiễn",
+        "Số đông",
+        "Kinh điển",
+        "Ý chí"
+       ],
+       "a": 0
+      },
+      {
+       "t": "tf",
+       "q": "Nhận thức đi từ trực quan sinh động đến tư duy trừu tượng, rồi trở về thực tiễn.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Triết học là hệ thống tri thức {0} về thế giới và vị trí của {1} trong thế giới ấy.",
+       "o": [
+        [
+         "cảm tính",
+         "lý luận chung nhất",
+         "cụ thể nhất"
+        ],
+        [
+         "thần linh",
+         "tự nhiên",
+         "con người"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
      ]
-    ],
-    "a": [
-     1,
-     2
-    ]
-   }
-  ]
- }
-]
+    }
+   ]
+  },
+  {
+   "name": "Bán kết",
+   "challenges": [
+    {
+     "title": "Vật chất và ý thức",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Định nghĩa vật chất của Lênin nhấn mạnh thuộc tính cơ bản nào?",
+       "o": [
+        "Có khối lượng",
+        "Là thực tại khách quan tồn tại độc lập với ý thức",
+        "Có thể nhìn thấy",
+        "Do con người tạo ra"
+       ],
+       "a": 1
+      },
+      {
+       "t": "tf",
+       "q": "Ý thức là sự phản ánh thế giới khách quan vào bộ óc con người.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Vận động là {0} tồn tại của vật chất; không gian và thời gian là {1} tồn tại của vật chất.",
+       "o": [
+        [
+         "kết quả",
+         "phương thức",
+         "mục đích"
+        ],
+        [
+         "nguồn gốc",
+         "nguyên nhân",
+         "hình thức"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Quy luật phát triển",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Quy luật phủ định của phủ định chỉ ra:",
+       "o": [
+        "Nguồn gốc của sự phát triển",
+        "Cách thức của sự phát triển",
+        "Khuynh hướng của sự phát triển",
+        "Nguyên nhân của sự vận động"
+       ],
+       "a": 2
+      },
+      {
+       "t": "tf",
+       "q": "Mâu thuẫn biện chứng là sự thống nhất và đấu tranh của các mặt đối lập.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Sự thay đổi về {0} đến một giới hạn nhất định sẽ dẫn đến bước {1}.",
+       "o": [
+        [
+         "chất",
+         "lượng",
+         "vị trí"
+        ],
+        [
+         "đứng im",
+         "thụt lùi",
+         "nhảy vọt"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Cặp phạm trù",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Cặp phạm trù nào phản ánh mối quan hệ sinh ra nhau?",
+       "o": [
+        "Nguyên nhân – kết quả",
+        "Nội dung – hình thức",
+        "Bản chất – hiện tượng",
+        "Tất nhiên – ngẫu nhiên"
+       ],
+       "a": 0
+      },
+      {
+       "t": "tf",
+       "q": "Nội dung quyết định hình thức.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Bản chất là cái {0} bên trong, hiện tượng là cái {1} ra bên ngoài.",
+       "o": [
+        [
+         "biểu hiện",
+         "tương đối ổn định",
+         "ngẫu nhiên"
+        ],
+        [
+         "bộc lộ",
+         "che giấu",
+         "tiêu biến"
+        ]
+       ],
+       "a": [
+        1,
+        0
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Chung kết",
+   "challenges": [
+    {
+     "title": "Triết học cổ đại",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Ai nói câu \"mọi thứ đều trôi chảy\", đặt nền móng cho phép biện chứng cổ đại?",
+       "o": [
+        "Heraclitus",
+        "Parmenides",
+        "Plato",
+        "Democritus"
+       ],
+       "a": 0
+      },
+      {
+       "t": "tf",
+       "q": "Democritus là đại biểu của chủ nghĩa duy vật cổ đại với thuyết nguyên tử.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Socrates nổi tiếng với phương pháp {0}, còn Plato là đại biểu của chủ nghĩa duy {1} khách quan.",
+       "o": [
+        [
+         "đối thoại",
+         "thực nghiệm",
+         "suy diễn"
+        ],
+        [
+         "vật",
+         "tâm",
+         "cảm"
+        ]
+       ],
+       "a": [
+        0,
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Hình thái kinh tế – xã hội",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Yếu tố quyết định sự vận động, phát triển của xã hội theo chủ nghĩa Mác – Lênin là:",
+       "o": [
+        "Lực lượng sản xuất",
+        "Kiến trúc thượng tầng",
+        "Ý chí cá nhân",
+        "Tôn giáo"
+       ],
+       "a": 0
+      },
+      {
+       "t": "tf",
+       "q": "Quan hệ sản xuất phải phù hợp với trình độ phát triển của lực lượng sản xuất.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Cơ sở hạ tầng quyết định {0}, và kiến trúc thượng tầng tác động trở lại {1}.",
+       "o": [
+        [
+         "lực lượng sản xuất",
+         "kiến trúc thượng tầng",
+         "tự nhiên"
+        ],
+        [
+         "tự nhiên",
+         "lịch sử",
+         "cơ sở hạ tầng"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Con người và lịch sử",
+     "qs": [
+      {
+       "t": "mcq",
+       "q": "Quần chúng nhân dân là:",
+       "o": [
+        "Chủ thể sáng tạo chân chính ra lịch sử",
+        "Chỉ những người giàu có",
+        "Các nhà lãnh đạo",
+        "Lực lượng không ảnh hưởng"
+       ],
+       "a": 0
+      },
+      {
+       "t": "tf",
+       "q": "Theo triết học Mác – Lênin, bản chất con người là tổng hòa các quan hệ xã hội.",
+       "a": true
+      },
+      {
+       "t": "fill",
+       "q": "Con người vừa là {0} vừa là {1} của lịch sử.",
+       "o": [
+        [
+         "khán giả",
+         "sản phẩm",
+         "kẻ thù"
+        ],
+        [
+         "nạn nhân",
+         "vật chứng",
+         "chủ thể"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
