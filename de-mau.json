@@ -4,7 +4,7 @@
    "name": "Vòng loại",
    "challenges": [
     {
-     "title": "Vấn đề cơ bản của triết học",
+     "title": "Trắc nghiệm 4 đáp án",
      "qs": [
       {
        "t": "mcq",
@@ -18,10 +18,32 @@
        "a": 2
       },
       {
-       "t": "tf",
-       "q": "Chủ nghĩa duy vật cho rằng ý thức có trước vật chất.",
-       "a": false
+       "t": "mcq",
+       "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
+       "o": [
+        "Lượng – chất",
+        "Phủ định của phủ định",
+        "Nhân quả",
+        "Thống nhất và đấu tranh của các mặt đối lập"
+       ],
+       "a": 3
       },
+      {
+       "t": "mcq",
+       "q": "Tiêu chuẩn của chân lý là:",
+       "o": [
+        "Thực tiễn",
+        "Số đông",
+        "Kinh điển",
+        "Ý chí"
+       ],
+       "a": 0
+      }
+     ]
+    },
+    {
+     "title": "Điền khuyết",
+     "qs": [
       {
        "t": "fill",
        "q": "Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",
@@ -41,27 +63,6 @@
         0,
         1
        ]
-      }
-     ]
-    },
-    {
-     "title": "Phép biện chứng",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
-       "o": [
-        "Lượng – chất",
-        "Phủ định của phủ định",
-        "Nhân quả",
-        "Thống nhất và đấu tranh của các mặt đối lập"
-       ],
-       "a": 3
-      },
-      {
-       "t": "tf",
-       "q": "Phương pháp siêu hình xem xét sự vật trong trạng thái vận động, phát triển không ngừng.",
-       "a": false
       },
       {
        "t": "fill",
@@ -82,27 +83,6 @@
         1,
         2
        ]
-      }
-     ]
-    },
-    {
-     "title": "Thực tiễn và nhận thức",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Tiêu chuẩn của chân lý là:",
-       "o": [
-        "Thực tiễn",
-        "Số đông",
-        "Kinh điển",
-        "Ý chí"
-       ],
-       "a": 0
-      },
-      {
-       "t": "tf",
-       "q": "Nhận thức đi từ trực quan sinh động đến tư duy trừu tượng, rồi trở về thực tiễn.",
-       "a": true
       },
       {
        "t": "fill",
@@ -125,6 +105,59 @@
        ]
       }
      ]
+    },
+    {
+     "title": "Đúng sai 4 ý",
+     "qs": [
+      {
+       "t": "tf",
+       "q": "Về vấn đề cơ bản của triết học:",
+       "o": [
+        "Mặt thứ nhất trả lời câu hỏi: giữa vật chất và ý thức, cái nào có trước.",
+        "Mặt thứ hai trả lời câu hỏi: con người có nhận thức được thế giới hay không.",
+        "Chủ nghĩa duy tâm cho rằng vật chất có trước, ý thức có sau.",
+        "Thuyết bất khả tri phủ nhận khả năng nhận thức thế giới của con người."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về phương pháp luận triết học:",
+       "o": [
+        "Phương pháp siêu hình xem xét sự vật trong trạng thái tĩnh tại, cô lập.",
+        "Phương pháp biện chứng xem xét sự vật trong sự vận động và phát triển.",
+        "Phép biện chứng chỉ có trong triết học Mác – Lênin.",
+        "Triết học Mác – Lênin thống nhất chủ nghĩa duy vật với phép biện chứng."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về thực tiễn và nhận thức:",
+       "o": [
+        "Thực tiễn là toàn bộ hoạt động vật chất có mục đích của con người.",
+        "Nhận thức bắt đầu từ thực tiễn và quay trở lại phục vụ thực tiễn.",
+        "Nhận thức cảm tính phản ánh đầy đủ bản chất của sự vật.",
+        "Thực tiễn là tiêu chuẩn của chân lý."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      }
+     ]
     }
    ]
   },
@@ -132,7 +165,7 @@
    "name": "Bán kết",
    "challenges": [
     {
-     "title": "Vật chất và ý thức",
+     "title": "Trắc nghiệm 4 đáp án",
      "qs": [
       {
        "t": "mcq",
@@ -146,10 +179,32 @@
        "a": 1
       },
       {
-       "t": "tf",
-       "q": "Ý thức là sự phản ánh thế giới khách quan vào bộ óc con người.",
-       "a": true
+       "t": "mcq",
+       "q": "Quy luật phủ định của phủ định chỉ ra:",
+       "o": [
+        "Nguồn gốc của sự phát triển",
+        "Cách thức của sự phát triển",
+        "Khuynh hướng của sự phát triển",
+        "Nguyên nhân của sự vận động"
+       ],
+       "a": 2
       },
+      {
+       "t": "mcq",
+       "q": "Cặp phạm trù nào phản ánh mối quan hệ sinh ra nhau?",
+       "o": [
+        "Nguyên nhân – kết quả",
+        "Nội dung – hình thức",
+        "Bản chất – hiện tượng",
+        "Tất nhiên – ngẫu nhiên"
+       ],
+       "a": 0
+      }
+     ]
+    },
+    {
+     "title": "Điền khuyết",
+     "qs": [
       {
        "t": "fill",
        "q": "Vận động là {0} tồn tại của vật chất; không gian và thời gian là {1} tồn tại của vật chất.",
@@ -169,27 +224,6 @@
         1,
         2
        ]
-      }
-     ]
-    },
-    {
-     "title": "Quy luật phát triển",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Quy luật phủ định của phủ định chỉ ra:",
-       "o": [
-        "Nguồn gốc của sự phát triển",
-        "Cách thức của sự phát triển",
-        "Khuynh hướng của sự phát triển",
-        "Nguyên nhân của sự vận động"
-       ],
-       "a": 2
-      },
-      {
-       "t": "tf",
-       "q": "Mâu thuẫn biện chứng là sự thống nhất và đấu tranh của các mặt đối lập.",
-       "a": true
       },
       {
        "t": "fill",
@@ -210,27 +244,6 @@
         1,
         2
        ]
-      }
-     ]
-    },
-    {
-     "title": "Cặp phạm trù",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Cặp phạm trù nào phản ánh mối quan hệ sinh ra nhau?",
-       "o": [
-        "Nguyên nhân – kết quả",
-        "Nội dung – hình thức",
-        "Bản chất – hiện tượng",
-        "Tất nhiên – ngẫu nhiên"
-       ],
-       "a": 0
-      },
-      {
-       "t": "tf",
-       "q": "Nội dung quyết định hình thức.",
-       "a": true
       },
       {
        "t": "fill",
@@ -253,6 +266,59 @@
        ]
       }
      ]
+    },
+    {
+     "title": "Đúng sai 4 ý",
+     "qs": [
+      {
+       "t": "tf",
+       "q": "Về vật chất:",
+       "o": [
+        "Vật chất chỉ tồn tại ở dạng nhìn thấy được.",
+        "Vận động là phương thức tồn tại của vật chất.",
+        "Vật chất là một phạm trù triết học dùng để chỉ thực tại khách quan.",
+        "Vật chất tồn tại độc lập với cảm giác của con người."
+       ],
+       "a": [
+        false,
+        true,
+        true,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về các quy luật cơ bản của phép biện chứng duy vật:",
+       "o": [
+        "Quy luật mâu thuẫn chỉ ra nguồn gốc, động lực của sự phát triển.",
+        "Sự phát triển có tính chất xoáy ốc.",
+        "Quy luật lượng – chất chỉ ra cách thức của sự phát triển.",
+        "Quy luật phủ định của phủ định chỉ ra nguyên nhân của sự phát triển."
+       ],
+       "a": [
+        true,
+        true,
+        true,
+        false
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về các cặp phạm trù:",
+       "o": [
+        "Cái tất nhiên là cái nhất định phải xảy ra theo quy luật nội tại.",
+        "Nội dung quyết định hình thức, nhưng hình thức tác động trở lại nội dung.",
+        "Hiện tượng luôn phản ánh đầy đủ và trực tiếp bản chất.",
+        "Nguyên nhân sinh ra kết quả."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      }
+     ]
     }
    ]
   },
@@ -260,7 +326,7 @@
    "name": "Chung kết",
    "challenges": [
     {
-     "title": "Triết học cổ đại",
+     "title": "Trắc nghiệm 4 đáp án",
      "qs": [
       {
        "t": "mcq",
@@ -274,10 +340,32 @@
        "a": 0
       },
       {
-       "t": "tf",
-       "q": "Democritus là đại biểu của chủ nghĩa duy vật cổ đại với thuyết nguyên tử.",
-       "a": true
+       "t": "mcq",
+       "q": "Yếu tố quyết định sự vận động, phát triển của xã hội theo chủ nghĩa Mác – Lênin là:",
+       "o": [
+        "Lực lượng sản xuất",
+        "Kiến trúc thượng tầng",
+        "Ý chí cá nhân",
+        "Tôn giáo"
+       ],
+       "a": 0
       },
+      {
+       "t": "mcq",
+       "q": "Quần chúng nhân dân là:",
+       "o": [
+        "Chủ thể sáng tạo chân chính ra lịch sử",
+        "Chỉ những người giàu có",
+        "Các nhà lãnh đạo",
+        "Lực lượng không ảnh hưởng"
+       ],
+       "a": 0
+      }
+     ]
+    },
+    {
+     "title": "Điền khuyết",
+     "qs": [
       {
        "t": "fill",
        "q": "Socrates nổi tiếng với phương pháp {0}, còn Plato là đại biểu của chủ nghĩa duy {1} khách quan.",
@@ -297,27 +385,6 @@
         0,
         1
        ]
-      }
-     ]
-    },
-    {
-     "title": "Hình thái kinh tế – xã hội",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Yếu tố quyết định sự vận động, phát triển của xã hội theo chủ nghĩa Mác – Lênin là:",
-       "o": [
-        "Lực lượng sản xuất",
-        "Kiến trúc thượng tầng",
-        "Ý chí cá nhân",
-        "Tôn giáo"
-       ],
-       "a": 0
-      },
-      {
-       "t": "tf",
-       "q": "Quan hệ sản xuất phải phù hợp với trình độ phát triển của lực lượng sản xuất.",
-       "a": true
       },
       {
        "t": "fill",
@@ -338,27 +405,6 @@
         1,
         2
        ]
-      }
-     ]
-    },
-    {
-     "title": "Con người và lịch sử",
-     "qs": [
-      {
-       "t": "mcq",
-       "q": "Quần chúng nhân dân là:",
-       "o": [
-        "Chủ thể sáng tạo chân chính ra lịch sử",
-        "Chỉ những người giàu có",
-        "Các nhà lãnh đạo",
-        "Lực lượng không ảnh hưởng"
-       ],
-       "a": 0
-      },
-      {
-       "t": "tf",
-       "q": "Theo triết học Mác – Lênin, bản chất con người là tổng hòa các quan hệ xã hội.",
-       "a": true
       },
       {
        "t": "fill",
@@ -378,6 +424,59 @@
        "a": [
         1,
         2
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Đúng sai 4 ý",
+     "qs": [
+      {
+       "t": "tf",
+       "q": "Về triết học cổ đại:",
+       "o": [
+        "Democritus là đại biểu của chủ nghĩa duy vật với thuyết nguyên tử.",
+        "Heraclitus cho rằng mọi thứ đều vận động, biến đổi.",
+        "Plato là đại biểu của chủ nghĩa duy vật cổ đại.",
+        "Socrates dùng phương pháp đối thoại để tìm ra chân lý."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về lý luận hình thái kinh tế – xã hội:",
+       "o": [
+        "Quan hệ sản xuất phải phù hợp với trình độ của lực lượng sản xuất.",
+        "Đấu tranh giai cấp là một động lực của sự phát triển xã hội có giai cấp.",
+        "Kiến trúc thượng tầng quyết định cơ sở hạ tầng.",
+        "Lực lượng sản xuất là nội dung vật chất của quá trình sản xuất."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về con người và lịch sử:",
+       "o": [
+        "Con người vừa là sản phẩm vừa là chủ thể của lịch sử.",
+        "Cá nhân kiệt xuất không có vai trò gì trong lịch sử.",
+        "Bản chất con người là tổng hòa các quan hệ xã hội.",
+        "Quần chúng nhân dân là chủ thể sáng tạo ra lịch sử."
+       ],
+       "a": [
+        true,
+        false,
+        true,
+        true
        ]
       }
      ]

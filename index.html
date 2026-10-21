@@ -47,6 +47,9 @@ small,.mut{color:var(--mut);font-size:13px}
 table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:var(--mut);font-weight:400;font-size:12px;padding:3px 4px;border-bottom:1px solid var(--gold)}td{padding:3px 4px;border-bottom:1px solid var(--ln)}
 .sc{display:flex;justify-content:flex-end;align-items:baseline;font:600 12px 'JetBrains Mono',monospace;color:var(--mut)}.sc b{font-size:28px;color:var(--gold);margin-left:8px;min-width:2.2ch;text-align:right}
 .hero{text-align:center;padding:40px 10px}
+.tfr{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}.tg{display:flex;gap:6px;flex:none}
+.tb{font:600 14px 'Be Vietnam Pro',sans-serif;padding:8px 14px;background:#09111e;border:1px solid var(--ln);color:var(--ink);cursor:pointer}.tb.on{background:var(--cy);border-color:var(--cy);color:#04211e}.tb[data-v="0"].on{background:var(--bad);border-color:var(--bad);color:#2a0606}
+@media(max-width:520px){.tfr{flex-direction:column;align-items:stretch}}
 .wrap.full{max-width:none;padding:12px 16px}
 #game{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;text-shadow:0 1px 3px #000,0 0 10px #000}#game[hidden]{display:none}
 #gl{width:min(340px,27vw)}#gr{width:min(280px,21vw)}
@@ -105,10 +108,9 @@ function nextStage(){if(S.stage<0&&!S.qs.length)return toast('Hãy nạp file đ
  if(S.stage>=0&&!S.ready)return;if(S.stage<2)startStage(S.stage+1);else{const[a,b]=S.matches;S.rank[a.win]=1;S.rank[a.lose]=2;S.rank[b.win]=3;S.rank[b.lose]=4;S.stage=3;log('Kết thúc giải đấu!');bc();sfx.end();boom(3)}}
 function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)return;const a=m.prog[p.team];if(a.flag||a.c>2)return;
  if(qi!==a.c*3+a.q)return c.send({k:'fb',ok:0,m:'Đồng đội vừa trả lời câu này rồi.'});
- if(Date.now()<p.cd||Date.now()<(a.lk||0))return c.send({k:'fb',ok:0,m:'Hãy suy ngẫm thêm chút rồi trả lời.'});
- const q=ch(a.c).qs[a.q];let ok=q.t=='fill'?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
- if(!ok){a.w=(a.w||0)+1;p.cd=Date.now()+2000;if(a.w%3==0)a.lk=Date.now()+Math.min(a.w*2500,20000);return c.send({k:'fb',ok:0,m:a.lk>Date.now()?'Nhóm bị khoá tạm thời vì trả lời sai liên tiếp.':'Chưa đúng, hãy thử lại.'})}
- const pt=SC((now()-(a.t0||now()))/1000);p.pts+=pt;a.q++;a.w=0;a.lk=0;a.t0=now();c.send({k:'fb',ok:1,m:'+'+pt+' điểm'});
+ const q=ch(a.c).qs[a.q];let ok=(q.t=='fill'||q.t=='tf')?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
+ if(!ok){p.pts-=10;bc();return c.send({k:'fb',ok:0,m:'Chưa đúng, bị trừ 10 điểm.'})}
+ const pt=SC((now()-(a.t0||now()))/1000);p.pts+=pt;a.q++;a.t0=now();c.send({k:'fb',ok:1,m:'+'+pt+' điểm'});
  if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a,fbd=a.s==1&&m.prog[o].s==0;log(`Nhóm ${p.team} ${a.s>=3?'đã chiếm đóng thành công căn cứ':fbd?'đã tấn công phủ đầu':'đã nả pháo vào căn cứ'} Nhóm ${o}`);shoot(p.team,o,a.s);
   if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
 function onMsg(c,d){if(!d||typeof d!='object')return;
@@ -130,7 +132,7 @@ function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
  <div class="card" id="chat"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div><div id="en"></div>`;
  new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#000000',colorLight:'#ffffff'});
  $('#nx').onclick=nextStage;
- $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());const RR=Array.isArray(j)?(j.length==9?[0,1,2].map(i=>j.slice(i*3,i*3+3)):null):(j.rounds||[]).map(x=>x.challenges);if(!RR||RR.length!=3||!RR.every(R=>Array.isArray(R)&&R.length==3&&R.every(c=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&'a' in q))))throw 0;S.qs=RR;log('Đã nạp đề: 3 vòng, mỗi vòng 3 thử thách riêng');bc();toast('Đã nạp đề')}catch{toast('Đề cần đủ 3 vòng, mỗi vòng 3 thử thách, mỗi thử thách 3 câu')}}}
+ $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());const RR=Array.isArray(j)?(j.length==9?[0,1,2].map(i=>j.slice(i*3,i*3+3)):null):(j.rounds||[]).map(x=>x.challenges);if(!RR||RR.length!=3||!RR.every(R=>Array.isArray(R)&&R.length==3&&R.every((c,ci)=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&q.t==['mcq','fill','tf'][ci]&&'a' in q&&(q.t!='tf'||(Array.isArray(q.o)&&q.o.length==4&&Array.isArray(q.a)&&q.a.length==4))))))throw 0;S.qs=RR.map(Rn=>Rn.map(c=>({...c,qs:c.qs.map(q=>q.t=='tf'&&!Array.isArray(q.a)?{t:'tf',q:'Xét ý sau:',o:[q.q],a:[q.a===true]}:q)})));log('Đã nạp đề: 3 vòng, mỗi vòng 3 thử thách riêng');bc();toast('Đã nạp đề')}catch{toast('Đề cần 3 vòng; mỗi vòng 3 thử thách theo thứ tự trắc nghiệm, điền khuyết, đúng sai 4 ý; mỗi thử thách 3 câu')}}}
 function hostR(){if(!$('#mt'))return;const gm=S.stage>=0,PR=gm?$('#cs'):$('#lr'),dm=gm&&S.stage<3;$('#app').classList.toggle('full',dm);if(dm!==DM){DM=dm;drawMap()}$('#lobby').hidden=gm;$('#game').hidden=!gm;if($('#chat').parentNode!==PR)PR.appendChild($('#chat'));$('#lg').style.maxHeight=gm?'34vh':'40vh';const L=lb();
  $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+(S.qs.length?' (đã nạp đề)':' (chưa nạp đề)');
  const nx=$('#nx');nx.hidden=S.stage==3;nx.disabled=(S.stage>=0&&!S.ready)||(S.stage<0&&!S.qs.length);nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];
@@ -167,11 +169,12 @@ function pR(){const v=V;$('#hd').innerHTML=`<h2>${e(v.me.n)}</h2><small>Nhóm ${
  else if(m&&m.win)h=`<div class="card"><h2 class="${m.win==v.me.t?'win':''}">${m.win==v.me.t?'Nhóm bạn đã chiếm được căn cứ!':'Căn cứ của nhóm bạn đã thất thủ.'}</h2><p>Hãy chờ chủ trò mở vòng tiếp theo.</p></div>`;
  else if(v.q){const q=v.q;h=`<div class="card"><small>${e(m.title)}, câu ${m.my.q+1}/3</small><div class="sc">Điểm nếu đúng<b id="sc">100</b></div><h3 style="font-weight:500;font-size:20px">`;
   if(q.t=='fill')h+=e(q.q).replace(/\{(\d)\}/g,(_,i)=>`<select data-i="${i}"><option value="">…</option>${q.o[i].map((o,j)=>`<option value="${j}">${e(o)}</option>`).join('')}</select>`)+`</h3><button class="btn" id="fs">Gửi đáp án</button>`;
-  else if(q.t=='tf')h+=e(q.q)+`</h3><button class="opt" data-v="1">Đúng</button><button class="opt" data-v="0">Sai</button>`;
+  else if(q.t=='tf')h+=e(q.q)+'</h3>'+q.o.map((t,i)=>`<div class="tfr"><span>${e(t)}</span><span class="tg"><button class="tb" data-i="${i}" data-v="1">Đúng</button><button class="tb" data-i="${i}" data-v="0">Sai</button></span></div>`).join('')+'<p><button class="btn" id="fs">Gửi đáp án</button></p>';
   else h+=e(q.q)+'</h3>'+q.o.map((o,i)=>`<button class="opt" data-v="${i}">${e(o)}</button>`).join('');
   qb.innerHTML=h+'</div>';
   qb.querySelectorAll('.opt').forEach(b=>b.onclick=()=>send({k:'ans',v:q.t=='tf'?b.dataset.v=='1':+b.dataset.v}));
-  const fs=$('#fs');if(fs)fs.onclick=()=>{const s=[...qb.querySelectorAll('select')];if(s.some(x=>x.value===''))return toast('Hãy chọn đủ các chỗ trống');send({k:'ans',v:s.map(x=>+x.value)})};return}
+  qb.querySelectorAll('.tb').forEach(b=>b.onclick=()=>{qb.querySelectorAll('.tb[data-i="'+b.dataset.i+'"]').forEach(x=>x.classList.remove('on'));b.classList.add('on')});
+  const fs=$('#fs');if(fs)fs.onclick=()=>{if(q.t=='tf'){const rr=q.o.map((_,i)=>qb.querySelector('.tb.on[data-i="'+i+'"]'));if(rr.some(x=>!x))return toast('Hãy chọn Đúng hoặc Sai cho cả '+q.o.length+' ý');return send({k:'ans',v:rr.map(x=>x.dataset.v=='1')})}const s=[...qb.querySelectorAll('select')];if(s.some(x=>x.value===''))return toast('Hãy chọn đủ các chỗ trống');send({k:'ans',v:s.map(x=>+x.value)})};return}
  qb.innerHTML=h}
 const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function shake(q='#qb'){const x=$(q);if(!x)return;x.classList.remove('shake');void x.offsetWidth;x.classList.add('shake')}
