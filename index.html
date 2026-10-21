@@ -95,7 +95,7 @@ function log(m,j){S.log.unshift({t:new Date().toLocaleTimeString('vi-VN'),m,j});
 function bc(){LS.tl_host=JSON.stringify(S);hostR();for(const pid in S.players){const v=JSON.stringify(view(pid));if(sent[pid]!==v){sent[pid]=v;db.ref(`rooms/${S.room}/st/${pid}`).set(JSON.parse(v))}}}
 function view(pid){const p=S.players[pid],m=mOf(p.team),o={k:'st',stage:S.stage,me:{n:p.name,t:p.team,pts:p.pts},lb:lb(),rank:S.stage==3?Object.fromEntries(Object.entries(S.rank).map(([t,r])=>['t'+t,r])):null};
  if(m&&S.stage>=0&&S.stage<3){const a=m.prog[p.team],oT=m.a==p.team?m.b:m.a,b=m.prog[oT];o.m={tag:m.tag,opp:oT,my:{c:a.c,q:a.q,s:a.s,last:a.last||null,t0:a.t0},op:{c:b.c,s:b.s},win:m.win};
-  if(!m.win&&!a.flag&&a.c<3){const x=ch(a.c),q=x.qs[a.q];o.m.title=x.title;o.q={t:q.t,q:q.q,o:q.o}}}   // KHÔNG bao giờ gửi đáp án
+  if(!m.win&&!a.flag&&a.c<3){const x=ch(a.c),q=x.qs[a.q];o.m.title=x.title;o.m.n=x.qs.length;o.q={t:q.t,q:q.q,o:q.o}}}   // KHÔNG bao giờ gửi đáp án
  return o}
 function startStage(n){const T=sh(TEAMS.slice());let pr;
  if(n==0)pr=[[T[0],T[1],'Vòng loại'],[T[2],T[3],'Vòng loại'],[T[4],T[5],'Vòng loại']];
@@ -107,11 +107,11 @@ function startStage(n){const T=sh(TEAMS.slice());let pr;
 function nextStage(){if(S.stage==3){endClosed=false;endShown=false;hostR();return}if(S.stage<0&&!S.qs.length)return toast('Hãy nạp file đề (.json) trước');if(S.stage<0){const miss=TEAMS.filter(t=>!Object.values(S.players).some(p=>p.team==t));if(miss.length&&!confirm('Nhóm '+miss.join(', ')+' chưa có người chơi. Vẫn bắt đầu?'))return}
  if(S.stage>=0&&!S.ready)return;if(S.stage<2)startStage(S.stage+1);else{const[a,b]=S.matches;S.rank[a.win]=1;S.rank[a.lose]=2;S.rank[b.win]=3;S.rank[b.lose]=4;S.stage=3;log('Kết thúc giải đấu!');bc();sfx.end();boom(3)}}
 function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)return;const a=m.prog[p.team];if(a.flag||a.c>2)return;
- if(qi!==a.c*3+a.q)return c.send({k:'fb',ok:0,m:'Đồng đội vừa trả lời câu này rồi.'});
+ if(qi!==a.c*10+a.q)return c.send({k:'fb',ok:0,m:'Đồng đội vừa trả lời câu này rồi.'});
  const q=ch(a.c).qs[a.q];let ok=(q.t=='fill'||q.t=='tf')?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
  if(!ok){p.pts-=10;bc();return c.send({k:'fb',ok:0,m:'Chưa đúng, bị trừ 10 điểm.'})}
  const pt=SC((now()-(a.t0||now()))/1000);p.pts+=pt;a.q++;a.t0=now();c.send({k:'fb',ok:1,m:'+'+pt+' điểm'});
- if(a.q>2){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a,fbd=a.s==1&&m.prog[o].s==0;log(`Nhóm ${p.team} ${a.s>=3?'đã chiếm đóng thành công căn cứ':fbd?'đã tấn công phủ đầu':'đã nả pháo vào căn cứ'} Nhóm ${o}`);shoot(p.team,o,a.s);
+ if(a.q>=ch(a.c).qs.length){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;const o=m.a==p.team?m.b:m.a,fbd=a.s==1&&m.prog[o].s==0;log(`Nhóm ${p.team} ${a.s>=3?'đã chiếm đóng thành công căn cứ':fbd?'đã tấn công phủ đầu':'đã nả pháo vào căn cứ'} Nhóm ${o}`);shoot(p.team,o,a.s);
   if(a.s>=3){m.win=p.team;m.lose=m.a==p.team?m.b:m.a;S.tw[p.team].w++;if(S.ready=S.matches.every(x=>x.win))log('Mọi trận trong vòng đã kết thúc.')}}bc()}
 function onMsg(c,d){if(!d||typeof d!='object')return;
  if(d.k=='join'){const pid=c.pid,n=String(d.name||'').trim().slice(0,20),t=+d.team;let p=S.players[pid];
@@ -132,12 +132,12 @@ function hostUI(){const url=location.origin+location.pathname+'?room='+S.room;
  <div class="card" id="chat"><h3>Khung chat trận đấu</h3><div class="log" id="lg"></div></div><div id="en"></div>`;
  new QRCode($('#qr'),{text:url,width:170,height:170,colorDark:'#000000',colorLight:'#ffffff'});
  $('#nx').onclick=nextStage;
- $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());const RR=Array.isArray(j)?(j.length==9?[0,1,2].map(i=>j.slice(i*3,i*3+3)):null):(j.rounds||[]).map(x=>x.challenges);if(!RR||RR.length!=3||!RR.every(R=>Array.isArray(R)&&R.length==3&&R.every((c,ci)=>c.title&&Array.isArray(c.qs)&&c.qs.length==3&&c.qs.every(q=>q.q&&q.t==['mcq','fill','tf'][ci]&&'a' in q&&(q.t!='tf'||(Array.isArray(q.o)&&q.o.length==4&&Array.isArray(q.a)&&q.a.length==4))))))throw 0;S.qs=RR.map(Rn=>Rn.map(c=>({...c,qs:c.qs.map(q=>q.t=='tf'&&!Array.isArray(q.a)?{t:'tf',q:'Xét ý sau:',o:[q.q],a:[q.a===true]}:q)})));log('Đã nạp đề: 3 vòng, mỗi vòng 3 thử thách riêng');bc();toast('Đã nạp đề')}catch{toast('Đề cần 3 vòng; mỗi vòng 3 thử thách theo thứ tự trắc nghiệm, điền khuyết, đúng sai 4 ý; mỗi thử thách 3 câu')}}}
+ $('#qf').onchange=async ev=>{try{const j=JSON.parse(await ev.target.files[0].text());const RR=Array.isArray(j)?(j.length==9?[0,1,2].map(i=>j.slice(i*3,i*3+3)):null):(j.rounds||[]).map(x=>x.challenges);if(!RR||RR.length!=3||!RR.every(R=>Array.isArray(R)&&R.length==3&&R.every((c,ci)=>c.title&&Array.isArray(c.qs)&&c.qs.length==[10,3,3][ci]&&c.qs.every(q=>q.q&&q.t==['mcq','fill','tf'][ci]&&'a' in q&&(q.t!='tf'||(Array.isArray(q.o)&&q.o.length==4&&Array.isArray(q.a)&&q.a.length==4))))))throw 0;S.qs=RR.map(Rn=>Rn.map(c=>({...c,qs:c.qs.map(q=>q.t=='tf'&&!Array.isArray(q.a)?{t:'tf',q:'Xét ý sau:',o:[q.q],a:[q.a===true]}:q)})));log('Đã nạp đề: 3 vòng, mỗi vòng 3 thử thách riêng');bc();toast('Đã nạp đề')}catch{toast('Đề cần 3 vòng; mỗi vòng 3 thử thách theo thứ tự: trắc nghiệm (10 câu), điền khuyết (3 câu), đúng sai 4 ý (3 câu)')}}}
 function hostR(){if(!$('#mt'))return;const gm=S.stage>=0,PR=gm?$('#cs'):$('#lr'),dm=gm&&S.stage<3;$('#app').classList.toggle('full',dm);if(dm!==DM){DM=dm;drawMap()}$('#lobby').hidden=gm;$('#game').hidden=!gm;if($('#chat').parentNode!==PR)PR.appendChild($('#chat'));$('#lg').style.maxHeight=gm?'34vh':'40vh';const L=lb();
  $('#stg').textContent=['Phòng chờ','Vòng loại','Bán kết','Chung kết','Kết thúc'][S.stage+1]+(S.qs.length?' (đã nạp đề)':' (chưa nạp đề)');
  const nx=$('#nx');nx.hidden=false;nx.disabled=(S.stage>=0&&!S.ready)||(S.stage<0&&!S.qs.length);nx.textContent=['Bắt đầu vòng loại','Sang bán kết','Sang chung kết','Công bố kết quả'][S.stage<0?0:S.stage+1>3?3:S.stage+1];if(S.stage==3)nx.textContent='Xem lại bảng vàng';
  $('#ro').innerHTML=TEAMS.map(t=>`<p style="margin:4px 0"><b>Nhóm ${t}</b> <small>${Object.values(S.players).filter(p=>p.team==t).map(p=>e(p.name)).join(', ')||'chưa có ai'}</small></p>`).join('');
- $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3><div class="bs ${m.win&&m.win!=t?'d':''}">${BASE}</div><div class="hp">${hpb(m,t)}</div>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${Math.min(a.q+1,3)}/3`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('');$('#mt0').innerHTML=S.stage<0?'<div class="card"><p class="mut pulse">Nạp file đề (.json), chờ các nhóm vào phòng rồi bấm "Bắt đầu vòng loại".</p></div>':'';
+ $('#mt').innerHTML=S.matches.map(m=>`<div class="card m ${m.win?'done':''}"><small>${e(m.tag)}</small><div class="vs">${[m.a,m.b].map(t=>{const a=m.prog[t];return`<div><h3 class="${m.win==t?'win':''}">Nhóm ${t}${m.win==t?' (thắng)':''}</h3><div class="bs ${m.win&&m.win!=t?'d':''}">${BASE}</div><div class="hp">${hpb(m,t)}</div>${[0,1,2].map(i=>`<span class="dot ${i<a.s?'on':''}"></span>`).join('')}<br><small>${m.win?'':`Thử thách ${a.c+1}/3, câu ${a.q+1}/${ch(a.c).qs.length}`}</small></div>`}).join('<h3 class="mut">đấu</h3>')}</div></div>`).join('');$('#mt0').innerHTML=S.stage<0?'<div class="card"><p class="mut pulse">Nạp file đề (.json), chờ các nhóm vào phòng rồi bấm "Bắt đầu vòng loại".</p></div>':'';
  $('#lg').innerHTML=S.log.filter(l=>!(l.j&&S.stage>=0)).map(l=>`<p><small>${l.t}</small> ${e(l.m)}</p>`).join('');
  $('#lp').innerHTML='<table><tr><th>Hạng</th><th>Họ tên</th><th>Nhóm</th><th>Điểm</th></tr>'+(L.p.length?L.p.map((x,i)=>`<tr><td>${i+1}</td><td>${e(x.n)}</td><td>Nhóm ${x.t}</td><td>${x.pts}</td></tr>`).join(''):'<tr><td colspan="4" class="mut">Chưa có người chơi</td></tr>')+'</table>';
  if(S.stage!=3){endShown=endClosed=false;$('#en').innerHTML=''}else if(!endShown&&!endClosed){endShown=true;$('#en').innerHTML=endHTML(L)}}
@@ -155,7 +155,7 @@ async function connect(){$('#app').innerHTML='<div class="hero"><h2 class="pulse
  db.ref(`${b}/fb/${me.pid}`).on('value',s=>{if(first){first=0;return}const v=s.val();if(v)onData(v)});
  send({k:'join',name:me.name,team:me.team});
  setTimeout(()=>{if(!V)$('#app').innerHTML+='<p class="mut" style="text-align:center">Chưa thấy chủ trò phản hồi. Hãy kiểm tra mã phòng hoặc chờ thêm.</p>'},8000)}
-function send(o){db.ref(`rooms/${ROOM}/in`).push({...o,pid:me.pid,...(o.k=='ans'&&V&&V.m?{qi:V.m.my.c*3+V.m.my.q}:{})}).catch(()=>toast('Không gửi được, kiểm tra kết nối mạng'))}
+function send(o){db.ref(`rooms/${ROOM}/in`).push({...o,pid:me.pid,...(o.k=='ans'&&V&&V.m?{qi:V.m.my.c*10+V.m.my.q}:{})}).catch(()=>toast('Không gửi được, kiểm tra kết nối mạng'))}
 function onData(d){if(d.k=='err'){delete LS['tl_p_'+ROOM];me=null;toast(d.m);return playerJoin()}
  if(d.k=='fb'){toast(d.m||(d.ok==1?'Chính xác!':'Cờ đã cắm vào căn cứ đối thủ!'));d.ok?sfx.ok():(sfx.bad(),shake());return}
  if(d.k=='st'){const old=V;V=d;if(!$('#qb'))skeleton();pR();fx(old,d);if(V.stage==3&&(!old||old.stage!=3)){sfx.end();boom(3)}}}
@@ -167,7 +167,7 @@ function pR(){const v=V;$('#hd').innerHTML=`<h2>${e(v.me.n)}</h2><small>Nhóm ${
  if(v.stage<0)h='<div class="card"><h3 class="pulse">Phòng chờ</h3><p>Chủ trò sẽ bắt đầu trận đấu trong giây lát.</p></div>';
  else if(v.stage==3)h=`<div class="card"><h2>Kết quả chung cuộc</h2>${Object.entries(v.rank).map(([t,r])=>[t.slice(1),r]).sort((a,b)=>a[1]-b[1]).map(([t,r])=>`<p class="${t==v.me.t?'win':''}">Hạng ${r}: Nhóm ${t}</p>`).join('')}</div>`;
  else if(m&&m.win)h=`<div class="card"><h2 class="${m.win==v.me.t?'win':''}">${m.win==v.me.t?'Nhóm bạn đã chiếm được căn cứ!':'Căn cứ của nhóm bạn đã thất thủ.'}</h2><p>Hãy chờ chủ trò mở vòng tiếp theo.</p></div>`;
- else if(v.q){const q=v.q;h=`<div class="card"><small>${e(m.title)}, câu ${m.my.q+1}/3</small><div class="sc">Điểm nếu đúng<b id="sc">100</b></div><h3 style="font-weight:500;font-size:20px">`;
+ else if(v.q){const q=v.q;h=`<div class="card"><small>${e(m.title)}, câu ${m.my.q+1}/${m.n||3}</small><div class="sc">Điểm nếu đúng<b id="sc">100</b></div><h3 style="font-weight:500;font-size:20px">`;
   if(q.t=='fill')h+=e(q.q).replace(/\{(\d)\}/g,(_,i)=>`<select data-i="${i}"><option value="">…</option>${q.o[i].map((o,j)=>`<option value="${j}">${e(o)}</option>`).join('')}</select>`)+`</h3><button class="btn" id="fs">Gửi đáp án</button>`;
   else if(q.t=='tf')h+=e(q.q)+'</h3>'+q.o.map((t,i)=>`<div class="tfr"><span>${e(t)}</span><span class="tg"><button class="tb" data-i="${i}" data-v="1">Đúng</button><button class="tb" data-i="${i}" data-v="0">Sai</button></span></div>`).join('')+'<p><button class="btn" id="fs">Gửi đáp án</button></p>';
   else h+=e(q.q)+'</h3>'+q.o.map((o,i)=>`<button class="opt" data-v="${i}">${e(o)}</button>`).join('');
