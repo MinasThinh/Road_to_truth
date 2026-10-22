@@ -63,7 +63,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;colo
 </style></head><body><canvas id="bg"></canvas><canvas id="sh" style="position:fixed;inset:0;pointer-events:none;z-index:7"></canvas><canvas id="cf" style="position:fixed;inset:0;pointer-events:none;z-index:8"></canvas><div class="wrap" id="app"></div><div class="toast" id="toast" hidden></div>
 <script>
 const $=s=>document.querySelector(s),e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const VER='2026-10-22a',TEAMS=[1,2,3,4,6,7],ROOM=(new URLSearchParams(location.search).get('room')||'').replace(/[^A-Za-z0-9]/g,''),LS=localStorage;
+const VER='2026-10-22b',TEAMS=[1,2,3,4,6,7],ROOM=(new URLSearchParams(location.search).get('room')||'').replace(/[^A-Za-z0-9]/g,''),LS=localStorage;
 const TEMPLE=`<svg viewBox="0 0 200 90" width="220" aria-hidden="true"><path d="M10 28 100 6l90 22z" fill="#e2b04a"/><rect x="14" y="30" width="172" height="6" fill="#4fd1c5"/>${[30,62,94,126,158].map(x=>`<rect x="${x}" y="38" width="12" height="40" fill="#12233a" stroke="#4fd1c5" stroke-width="2"/>`).join('')}<rect x="8" y="78" width="184" height="8" fill="#e2b04a"/></svg>`;
 const BASE=TEMPLE.replace('220','56'),hpb=(m,t)=>[0,1,2].map(i=>`<i class="${i<3-m.prog[t==m.a?m.b:m.a].s?'':'x'}"></i>`).join('');
 const QUOTES=['Tôi chỉ biết rằng tôi không biết gì. — Socrates','Cuộc đời chưa được xem xét thì không đáng sống. — Socrates','Triết học bắt đầu từ sự ngạc nhiên. — Aristotle'];
@@ -110,7 +110,7 @@ function nextStage(){if(S.stage==3){endClosed=false;endShown=false;hostR();retur
 function ans(c,p,v,qi){const m=mOf(p.team);if(!m||m.win||S.stage<0||S.stage>2)return;const a=m.prog[p.team];if(a.flag||a.c>2)return;
  if(qi!==a.c*100+a.q)return c.send({k:'fb',ok:0,m:'Đồng đội vừa trả lời câu này rồi.'});
  const q=ch(a.c).qs[a.q];let ok=(q.t=='fill'||q.t=='tf')?Array.isArray(v)&&v.length==q.a.length&&v.every((x,i)=>x===q.a[i]):v===q.a;
- if(!ok){p.pts-=10;bc();return c.send({k:'fb',ok:0,pen:1,m:'Chưa đúng, bị trừ 10 điểm.'})}
+ if(!ok){p.pts-=30;bc();return c.send({k:'fb',ok:0,pen:1,m:'Chưa đúng, bị trừ 30 điểm.'})}
  const pt=SC((now()-(a.t0||now()))/1000),o=m.a==p.team?m.b:m.a;p.pts+=pt;a.q++;a.t0=now();c.send({k:'fb',ok:1,m:'+'+pt+' điểm'});
  if(a.q>=ch(a.c).qs.length){const f='FLAG{'+hex()+'}';a.last=f;a.s++;a.c++;a.q=0;S.tw[p.team].f++;
   if(a.s>=3){m.win=p.team;m.lose=o;S.tw[p.team].w++;S.ready=S.matches.every(x=>x.win);shoot(p.team,o,'nuke')}else shoot(p.team,o,'big')}
@@ -159,7 +159,7 @@ async function connect(){$('#app').innerHTML='<div class="hero"><h2 class="pulse
  setTimeout(()=>{if(!V)$('#app').innerHTML+='<p class="mut" style="text-align:center">Chưa thấy chủ trò phản hồi. Hãy kiểm tra mã phòng hoặc chờ thêm.</p>'},8000)}
 function send(o){db.ref(`rooms/${ROOM}/in`).push({...o,pid:me.pid,...(o.k=='ans'&&V&&V.m?{qi:V.m.my.c*100+V.m.my.q}:{})}).catch(()=>toast('Không gửi được, kiểm tra kết nối mạng'))}
 function onData(d){if(d.k=='err'){delete LS['tl_p_'+ROOM];me=null;toast(d.m);return playerJoin()}
- if(d.k=='fb'){toast(d.m||(d.ok==1?'Chính xác!':'Cờ đã cắm vào căn cứ đối thủ!'));d.ok?sfx.ok():(sfx.bad(),shake(),flash());if(d.pen)floatTxt('−10','#ff6b6b');else if(d.ok==1)floatTxt((d.m||'').replace(' điểm',''),'#e2b04a');return}
+ if(d.k=='fb'){toast(d.m||(d.ok==1?'Chính xác!':'Cờ đã cắm vào căn cứ đối thủ!'));d.ok?sfx.ok():(sfx.bad(),shake(),flash());if(d.pen)floatTxt('−30','#ff6b6b');else if(d.ok==1)floatTxt((d.m||'').replace(' điểm',''),'#e2b04a');return}
  if(d.k=='st'){const old=V;V=d;if(!$('#qb'))skeleton();pR();fx(old,d);if(V.stage==3&&(!old||old.stage!=3)){sfx.end();boom(3)}}}
 function skeleton(){$('#app').innerHTML=`<div class="top"><div id="hd"></div>${SNDBTN}</div><div id="vb"></div><div id="mi"></div><div id="qb"></div><div class="card"><h3>Xếp hạng cá nhân</h3><div id="pl"></div></div>`}
 function pR(){const v=V;$('#vb').innerHTML=v.ver===VER?'':'<div class="card" style="border-left:3px solid var(--bad)"><b>Máy host đang chạy phiên bản khác với trang của bạn.</b><br><small>Nhờ host tải lại trang (Ctrl+F5) rồi bấm "Mở lại phòng đang dở"; bạn cũng tải lại trang của mình.</small></div>';$('#hd').innerHTML=`<h2>${e(v.me.n)}</h2><small>Nhóm ${v.me.t}, ${v.me.pts} điểm cá nhân</small>`;
