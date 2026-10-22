@@ -4,119 +4,394 @@
    "name": "Vòng loại",
    "challenges": [
     {
-     "title": "Trắc nghiệm 4 đáp án",
+     "title": "Nhà nước: trắc nghiệm",
      "qs": [
       {
        "t": "mcq",
-       "q": "Vấn đề cơ bản của triết học là quan hệ giữa:",
+       "q": "Theo Ph.Ăngghen, nhà nước là sản phẩm của:",
        "o": [
-        "Con người và xã hội",
-        "Lý luận và thực tiễn",
-        "Tư duy và tồn tại",
-        "Vật chất và năng lượng"
+        "Sự thực hiện ý niệm và là sự ngự trị của thượng đế trên trái đất",
+        "Sự thỏa thuận tự nguyện giữa các thành viên của cộng đồng thị tộc",
+        "Một xã hội đã phát triển tới giai đoạn nhất định, bị phân thành những mặt đối lập không thể điều hòa",
+        "Sự tiến hóa tự nhiên của quan hệ huyết thống trong bộ lạc"
        ],
        "a": 2
       },
       {
        "t": "mcq",
-       "q": "Quy luật nào chỉ ra nguồn gốc, động lực của sự phát triển?",
+       "q": "Nguyên nhân trực tiếp dẫn tới sự xuất hiện nhà nước là:",
        "o": [
-        "Lượng – chất",
-        "Phủ định của phủ định",
-        "Nhân quả",
-        "Thống nhất và đấu tranh của các mặt đối lập"
+        "Sự phát triển của lực lượng sản xuất",
+        "Sự dư thừa tương đối của cải",
+        "Sự xuất hiện chế độ tư hữu về tư liệu sản xuất",
+        "Mâu thuẫn giai cấp trong xã hội gay gắt, không thể điều hòa được"
        ],
        "a": 3
       },
       {
        "t": "mcq",
-       "q": "Tiêu chuẩn của chân lý là:",
+       "q": "Về bản chất, nhà nước là:",
        "o": [
-        "Thực tiễn",
-        "Số đông",
-        "Kinh điển",
-        "Ý chí"
+        "Tổ chức chính trị của toàn thể nhân dân lao động",
+        "Tổ chức chính trị của giai cấp thống trị về kinh tế, nhằm bảo vệ trật tự hiện hành và đàn áp sự phản kháng của các giai cấp khác",
+        "Cơ quan trung gian đứng ngoài và đứng trên mọi giai cấp",
+        "Công cụ của thượng đế để duy trì chân lý vĩnh cửu"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo V.I.Lênin, khi nào nhà nước ra đời?",
+       "o": [
+        "Khi xã hội xuất hiện sự phân công lao động đầu tiên",
+        "Khi trong xã hội xuất hiện biểu hiện của mâu thuẫn giai cấp không thể điều hòa được",
+        "Khi con người bắt đầu biết sử dụng công cụ lao động",
+        "Khi cộng đồng thị tộc, bộ lạc mở rộng quy mô"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước ra đời nhằm mục đích gì đối với cuộc đấu tranh giai cấp?",
+       "o": [
+        "Chuyển quyền lực từ giai cấp thống trị sang giai cấp bị trị",
+        "Bảo vệ quyền lợi như nhau cho mọi giai cấp",
+        "Giữ cho đấu tranh giai cấp không đi đến chỗ tiêu diệt lẫn nhau và tiêu diệt cả xã hội, duy trì xã hội trong vòng \"trật tự\"",
+        "Xóa bỏ hoàn toàn mâu thuẫn giữa các giai cấp"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Xã hội nguyên thủy với cộng đồng thị tộc, bộ lạc tồn tại theo thể chế nào?",
+       "o": [
+        "Thể chế chuyên chế",
+        "Thể chế tự quản",
+        "Thể chế quân chủ",
+        "Thể chế cộng hòa"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo Ph.Ăngghen, nhà nước \"chẳng qua chỉ là\" gì?",
+       "o": [
+        "Một cơ quan trọng tài trung lập giữa các giai cấp",
+        "Một bộ máy của một giai cấp này dùng để trấn áp một giai cấp khác",
+        "Một thiết chế phục vụ lợi ích chung của nhân loại",
+        "Một tổ chức xã hội của mọi thành viên trong cộng đồng"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Hệ thống thuế khóa của nhà nước dùng để làm gì?",
+       "o": [
+        "Duy trì các tổ chức thị tộc",
+        "Xóa bỏ chế độ tư hữu",
+        "Nuôi bộ máy chính quyền",
+        "Phân phối đều của cải cho các công dân"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Khác với cộng đồng thị tộc, bộ lạc, cư dân trong cộng đồng nhà nước:",
+       "o": [
+        "Không có bất kỳ quan hệ kinh tế nào với nhau",
+        "Luôn thuộc cùng một giai cấp",
+        "Không chỉ có quan hệ huyết thống mà còn có quan hệ ngoài huyết thống (kinh tế, xã hội, chính trị…)",
+        "Chỉ gắn bó với nhau bằng quan hệ huyết thống"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước quản lý xã hội chủ yếu dựa vào:",
+       "o": [
+        "Pháp luật",
+        "Tín ngưỡng tôn giáo",
+        "Uy tín cá nhân của người đứng đầu",
+        "Phong tục tập quán"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng xã hội của nhà nước được biểu hiện ở chỗ nhà nước:",
+       "o": [
+        "Nhân danh xã hội làm nhiệm vụ quản lý về xã hội, điều hành các công việc chung như thủy lợi, giao thông, y tế, giáo dục",
+        "Triển khai chính sách đối ngoại với các quốc gia khác",
+        "Thu thuế để nuôi bộ máy chính quyền",
+        "Đàn áp sự phản kháng của giai cấp bị trị bằng lực lượng vũ trang"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng thống trị chính trị của nhà nước chịu sự quy định bởi:",
+       "o": [
+        "Quan hệ ngoại giao với các quốc gia khác",
+        "Truyền thống văn hóa dân tộc",
+        "Tính giai cấp của nhà nước",
+        "Nhu cầu chung của toàn xã hội"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng đối nội của nhà nước là sự thực hiện:",
+       "o": [
+        "Việc thu thuế và phát hành quốc trái",
+        "Đường lối đối nội nhằm duy trì trật tự xã hội thông qua chính sách xã hội, luật pháp, truyền thông, văn hóa, giáo dục",
+        "Chính sách đối ngoại nhằm giải quyết quan hệ với các nhà nước khác",
+        "Việc trấn áp các cuộc nổi dậy của nô lệ"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng đối ngoại của nhà nước nhằm:",
+       "o": [
+        "Thủ tiêu chủ quyền của các quốc gia khác",
+        "Duy trì trật tự xã hội trong nội bộ quốc gia",
+        "Điều hòa mâu thuẫn giữa các giai cấp trong nước",
+        "Giải quyết quan hệ với các nhà nước khác, bảo vệ lãnh thổ quốc gia, đáp ứng nhu cầu trao đổi kinh tế, văn hóa, khoa học kỹ thuật"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Trong mối quan hệ giữa chức năng đối nội và đối ngoại, chức năng nào giữ vai trò chủ yếu?",
+       "o": [
+        "Chức năng đối nội",
+        "Hai chức năng có vai trò hoàn toàn như nhau",
+        "Không chức năng nào giữ vai trò chủ yếu",
+        "Chức năng đối ngoại"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Ph.Ăngghen chứng minh các chính quyền chuyên chế ở Ba Tư và Ấn Độ cổ đại suy vong là do không chú ý tới việc:",
+       "o": [
+        "Xây dựng quân đội thường trực",
+        "Tưới nước cho các thung lũng để đảm bảo nền sản xuất nông nghiệp",
+        "Thu thuế nặng đối với nông dân",
+        "Mở rộng quan hệ thương mại với nước ngoài"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo Ph.Ăngghen, nhà nước là đại biểu chính thức của toàn xã hội chỉ trong chừng mực nó là:",
+       "o": [
+        "Nhà nước thu được nhiều thuế nhất",
+        "Nhà nước có quân đội mạnh nhất",
+        "Nhà nước của giai cấp đại diện cho toàn xã hội trong thời đại tương ứng",
+        "Nhà nước đứng ngoài mọi giai cấp"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Quyền lực nhà nước trong xã hội có giai cấp thuộc về:",
+       "o": [
+        "Toàn thể nhân dân",
+        "Giai cấp bị trị",
+        "Giai cấp thống trị",
+        "Các tổ chức tôn giáo"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Bộ máy chính quyền được nhà nước trả lương từ ngân sách nên thường:",
+       "o": [
+        "Trung thành với giai cấp bị trị",
+        "Trung thành với giai cấp thống trị",
+        "Hoạt động độc lập với nhà nước",
+        "Đứng ngoài mọi mâu thuẫn giai cấp"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Nguồn tài chính được nhà nước huy động chủ yếu là do:",
+       "o": [
+        "Thu thuế, sau đó là quốc trái",
+        "Viện trợ của các nhà nước khác",
+        "Buôn bán hàng hóa của nhà nước",
+        "Quyên góp tự nguyện của công dân"
        ],
        "a": 0
       }
      ]
     },
     {
-     "title": "Điền khuyết",
+     "title": "Nhà nước: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Theo chủ nghĩa {0}, vật chất có trước, ý thức có {1} và phụ thuộc vào vật chất.",
+       "q": "Theo V.I.Lênin, nhà nước là một cơ quan {0} giai cấp, là một cơ quan {1} của một giai cấp này đối với một giai cấp khác.",
        "o": [
         [
-         "duy vật",
-         "duy tâm",
-         "hoài nghi"
+         "điều hòa",
+         "thống trị",
+         "trung gian"
         ],
         [
-         "trước",
-         "sau",
-         "song song"
+         "áp bức",
+         "hòa giải",
+         "bảo trợ"
         ]
        ],
        "a": [
+        1,
+        0
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Ba đặc trưng cơ bản của nhà nước: quản lý cư dân trên một vùng {0} nhất định; có hệ thống cơ quan quyền lực chuyên nghiệp mang tính {1}; có hệ thống {2} để nuôi bộ máy chính quyền.",
+       "o": [
+        [
+         "huyết thống",
+         "lãnh thổ",
+         "tôn giáo"
+        ],
+        [
+         "cưỡng chế",
+         "tự nguyện",
+         "thương lượng"
+        ],
+        [
+         "quyên góp",
+         "viện trợ",
+         "thuế khóa"
+        ]
+       ],
+       "a": [
+        1,
+        0,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Nhà nước có chức năng thống trị {0} và chức năng {1}; trong đó chức năng thống trị chính trị giữ vai trò {2}.",
+       "o": [
+        [
+         "kinh tế",
+         "văn hóa",
+         "chính trị"
+        ],
+        [
+         "xã hội",
+         "quốc phòng",
+         "tôn giáo"
+        ],
+        [
+         "phụ thuộc",
+         "quyết định",
+         "thứ yếu"
+        ]
+       ],
+       "a": [
+        2,
         0,
         1
        ]
       },
       {
        "t": "fill",
-       "q": "Quy luật chuyển hoá từ những thay đổi về {0} thành những thay đổi về {1} và ngược lại.",
+       "q": "Nhà nước dù tồn tại dưới hình thức nào cũng phản ánh và mang bản chất {0}; hình thức nhà nước thực chất là hình thức {1} của giai cấp thống trị.",
        "o": [
         [
-         "chất",
-         "lượng",
-         "hình thức"
+         "tôn giáo",
+         "giai cấp",
+         "dân tộc"
         ],
         [
-         "lượng",
-         "vị trí",
-         "chất"
+         "cầm quyền",
+         "kinh doanh",
+         "giáo dục"
         ]
        ],
        "a": [
         1,
-        2
+        0
        ]
       },
       {
        "t": "fill",
-       "q": "Triết học là hệ thống tri thức {0} về thế giới và vị trí của {1} trong thế giới ấy.",
+       "q": "Một nhà nước {0} khi giai cấp thống trị biết giải quyết ổn thỏa lợi ích của {1} và lợi ích của toàn xã hội.",
        "o": [
         [
-         "cảm tính",
-         "lý luận chung nhất",
-         "cụ thể nhất"
+         "sụp đổ ngay",
+         "mất chức năng",
+         "tồn tại lâu dài"
         ],
         [
-         "thần linh",
-         "tự nhiên",
-         "con người"
+         "cá nhân",
+         "giai cấp",
+         "tôn giáo"
+        ]
+       ],
+       "a": [
+        2,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Chức năng đối nội được nhà nước thực hiện một cách {0}, liên tục thông qua lăng kính {1} của giai cấp thống trị.",
+       "o": [
+        [
+         "tùy tiện",
+         "thường xuyên",
+         "ngẫu nhiên"
+        ],
+        [
+         "giai cấp",
+         "tôn giáo",
+         "dân tộc"
         ]
        ],
        "a": [
         1,
-        2
+        0
        ]
       }
      ]
     },
     {
-     "title": "Đúng sai 4 ý",
+     "title": "Nhà nước: đúng sai 4 ý",
      "qs": [
       {
        "t": "tf",
-       "q": "Về vấn đề cơ bản của triết học:",
+       "q": "Về nguồn gốc của nhà nước:",
        "o": [
-        "Mặt thứ nhất trả lời câu hỏi: giữa vật chất và ý thức, cái nào có trước.",
-        "Mặt thứ hai trả lời câu hỏi: con người có nhận thức được thế giới hay không.",
-        "Chủ nghĩa duy tâm cho rằng vật chất có trước, ý thức có sau.",
-        "Thuyết bất khả tri phủ nhận khả năng nhận thức thế giới của con người."
+        "Nhà nước xuất hiện ngay từ khi con người xuất hiện, không gắn với giai cấp.",
+        "Cuộc đấu tranh giữa giai cấp nô lệ và giai cấp chủ nô thời cổ đại dẫn đến sự ra đời của nhà nước.",
+        "Nguyên nhân sâu xa của sự xuất hiện nhà nước là sự phát triển của lực lượng sản xuất dẫn đến sự dư thừa tương đối của cải.",
+        "Trong xã hội nguyên thủy với cộng đồng thị tộc, bộ lạc, chưa xuất hiện nhà nước."
+       ],
+       "a": [
+        false,
+        true,
+        true,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về bản chất của nhà nước:",
+       "o": [
+        "Nhà nước chỉ ra đời và tồn tại trong xã hội có mâu thuẫn giai cấp và đấu tranh giai cấp.",
+        "Nhà nước dù tồn tại dưới hình thức nào cũng phản ánh và mang bản chất giai cấp.",
+        "Có thể có nhà nước đứng trên hoặc đứng ngoài giai cấp.",
+        "Nhà nước là công cụ chuyên chính của một giai cấp."
        ],
        "a": [
         true,
@@ -127,28 +402,12 @@
       },
       {
        "t": "tf",
-       "q": "Về phương pháp luận triết học:",
+       "q": "Về chức năng của nhà nước:",
        "o": [
-        "Phương pháp siêu hình xem xét sự vật trong trạng thái tĩnh tại, cô lập.",
-        "Phương pháp biện chứng xem xét sự vật trong sự vận động và phát triển.",
-        "Phép biện chứng chỉ có trong triết học Mác – Lênin.",
-        "Triết học Mác – Lênin thống nhất chủ nghĩa duy vật với phép biện chứng."
-       ],
-       "a": [
-        true,
-        true,
-        false,
-        true
-       ]
-      },
-      {
-       "t": "tf",
-       "q": "Về thực tiễn và nhận thức:",
-       "o": [
-        "Thực tiễn là toàn bộ hoạt động vật chất có mục đích của con người.",
-        "Nhận thức bắt đầu từ thực tiễn và quay trở lại phục vụ thực tiễn.",
-        "Nhận thức cảm tính phản ánh đầy đủ bản chất của sự vật.",
-        "Thực tiễn là tiêu chuẩn của chân lý."
+        "Theo Ph.Ăngghen, chức năng xã hội là cơ sở của sự thống trị chính trị.",
+        "Chức năng đối nội và đối ngoại là hai mặt của một thực thể thống nhất, hỗ trợ và tác động lẫn nhau.",
+        "Trong mối quan hệ giữa hai chức năng này, chức năng đối ngoại giữ vai trò chủ yếu.",
+        "Sự phân định các chức năng của nhà nước chỉ có ý nghĩa tương đối."
        ],
        "a": [
         true,
@@ -165,59 +424,246 @@
    "name": "Bán kết",
    "challenges": [
     {
-     "title": "Trắc nghiệm 4 đáp án",
+     "title": "Cách mạng và nhà nước: trắc nghiệm",
      "qs": [
       {
        "t": "mcq",
-       "q": "Định nghĩa vật chất của Lênin nhấn mạnh thuộc tính cơ bản nào?",
+       "q": "Trong lịch sử đã từng tồn tại những kiểu nhà nước nào?",
        "o": [
-        "Có khối lượng",
-        "Là thực tại khách quan tồn tại độc lập với ý thức",
-        "Có thể nhìn thấy",
-        "Do con người tạo ra"
+        "Nguyên thủy, chủ nô, phong kiến, tư sản",
+        "Chủ nô, phong kiến, tư sản, xã hội dân chủ",
+        "Phong kiến, tư sản, vô sản, cộng sản",
+        "Chủ nô, phong kiến, tư sản, vô sản"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Nguồn gốc sâu xa của cách mạng xã hội là mâu thuẫn giữa:",
+       "o": [
+        "Giai cấp thống trị và giai cấp bị trị về quyền lực chính trị",
+        "Lực lượng sản xuất tiến bộ đòi hỏi được giải phóng với quan hệ sản xuất đã lỗi thời, lạc hậu",
+        "Nhà nước và pháp luật",
+        "Tồn tại xã hội và ý thức xã hội"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Quy luật phủ định của phủ định chỉ ra:",
+       "q": "Giai cấp lãnh đạo cách mạng xã hội là giai cấp:",
        "o": [
-        "Nguồn gốc của sự phát triển",
-        "Cách thức của sự phát triển",
-        "Khuynh hướng của sự phát triển",
-        "Nguyên nhân của sự vận động"
+        "Có hệ tư tưởng tiến bộ, đại diện cho phương thức sản xuất tiến bộ, cho xu hướng phát triển của xã hội",
+        "Có số lượng đông đảo nhất",
+        "Nắm quyền lực kinh tế trong xã hội cũ",
+        "Bị áp bức bóc lột nặng nề nhất"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước thành bang Aten ở Hy Lạp cổ đại là điển hình của hình thức nhà nước nào?",
+       "o": [
+        "Quân chủ lập hiến",
+        "Quân chủ chuyên chế",
+        "Phong kiến phân quyền",
+        "Cộng hòa dân chủ chủ nô"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước phong kiến phân quyền là hình thức nhà nước mà ở đó:",
+       "o": [
+        "Quyền lực tập trung tuyệt đối trong tay vua",
+        "Quyền lực thuộc về Hội đồng trưởng lão",
+        "Quyền lực bị phân tán bởi nhiều thế lực phong kiến cát cứ ở các địa phương",
+        "Quyền lực do nhân dân trực tiếp nắm giữ"
        ],
        "a": 2
       },
       {
        "t": "mcq",
-       "q": "Cặp phạm trù nào phản ánh mối quan hệ sinh ra nhau?",
+       "q": "Theo C.Mác, nhà nước của thời kỳ quá độ chính trị giữa xã hội tư bản chủ nghĩa và cộng sản chủ nghĩa là:",
        "o": [
-        "Nguyên nhân – kết quả",
-        "Nội dung – hình thức",
-        "Bản chất – hiện tượng",
-        "Tất nhiên – ngẫu nhiên"
+        "Nhà nước đứng trên mọi giai cấp",
+        "Nhà nước phong kiến tập quyền",
+        "Nền chuyên chính cách mạng của giai cấp vô sản",
+        "Nền dân chủ tư sản"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Trong kiểu nhà nước vô sản, giai cấp vô sản liên minh với:",
+       "o": [
+        "Giai cấp nông dân, tầng lớp trí thức tiến bộ và các tầng lớp nhân dân lao động khác",
+        "Giai cấp chủ nô",
+        "Giai cấp tư sản phản động",
+        "Giai cấp địa chủ phong kiến"
        ],
        "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng Tháng Tám năm 1945 ở Việt Nam do tổ chức nào lãnh đạo?",
+       "o": [
+        "Đảng Dân chủ",
+        "Việt Nam Quốc dân đảng",
+        "Đại Việt quốc dân đảng",
+        "Đảng Cộng sản Đông Dương"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng Tháng Tám năm 1945 ở Việt Nam mang tính chất là cuộc cách mạng:",
+       "o": [
+        "Vô sản",
+        "Xã hội chủ nghĩa",
+        "Dân chủ tư sản kiểu mới",
+        "Tư sản kiểu cũ"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Phương pháp hòa bình giành chính quyền là phương pháp:",
+       "o": [
+        "Dùng chiến tranh cách mạng để lật đổ chính quyền",
+        "Đảo chính của một nhóm người",
+        "Đấu tranh nghị trường, bằng bầu cử để giành đa số ghế trong nghị viện và chính phủ",
+        "Thỏa hiệp với giai cấp thống trị để chia sẻ quyền lực"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Hình thức nhà nước phong kiến tập quyền là hình thức mà quyền lực:",
+       "o": [
+        "Bị phân tán cho các thế lực cát cứ địa phương",
+        "Thuộc về Hội đồng trưởng lão",
+        "Thuộc về quốc hội do dân bầu",
+        "Tập trung trong tay chính quyền trung ương, đứng đầu là vua, hoàng đế"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước thành bang Xpác ở Hy Lạp cổ đại là điển hình của hình thức nhà nước nào?",
+       "o": [
+        "Cộng hòa dân chủ chủ nô",
+        "Quân chủ lập hiến",
+        "Cộng hòa tổng thống",
+        "Quân chủ chủ nô"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Về bản chất, các hình thức nhà nước tư sản đều là:",
+       "o": [
+        "Công cụ của giai cấp công nhân",
+        "Công cụ thống trị của giai cấp tư sản",
+        "Nhà nước đứng trên các giai cấp",
+        "Nhà nước của toàn dân"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo V.I.Lênin, thực chất của mọi hình thức nhà nước tư sản đều là nền:",
+       "o": [
+        "Quân chủ chuyên chế",
+        "Dân chủ nhân dân",
+        "Chuyên chính vô sản",
+        "Chuyên chính tư sản"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Nhà nước vô sản có chức năng cơ bản là:",
+       "o": [
+        "Bảo vệ chế độ tư hữu về tư liệu sản xuất",
+        "Xây dựng trật tự xã hội mới, thủ tiêu chế độ người bóc lột người, đập tan sự phản kháng của các thế lực phản động",
+        "Duy trì nguyên trạng trật tự xã hội cũ",
+        "Duy trì quyền lực của giai cấp chủ nô"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo quan điểm mácxít, khi nhà nước vô sản đã hoàn thành chức năng, xã hội phát triển tới giai đoạn cộng sản chủ nghĩa thì nhà nước sẽ:",
+       "o": [
+        "Chuyển thành nhà nước tư sản",
+        "Chuyển thành nhà nước phong kiến",
+        "Mạnh lên gấp bội",
+        "Tự tiêu vong"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Sau Cách mạng Tháng Tám 1945, nước Việt Nam Dân chủ Cộng hòa ra đời đã chấm dứt sự tồn tại của nhà nước nào?",
+       "o": [
+        "Nhà nước tư sản",
+        "Nhà nước thuộc địa nửa phong kiến",
+        "Nhà nước chủ nô",
+        "Nhà nước phong kiến phân quyền"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Văn kiện Đại hội XII của Đảng xác định Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là nhà nước:",
+       "o": [
+        "Đứng trên các giai cấp",
+        "Của nhân dân, do nhân dân, vì nhân dân",
+        "Của giai cấp tư sản dân tộc",
+        "Do một cá nhân đứng đầu và quyết định mọi việc"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng xã hội khác với tiến hóa xã hội ở chỗ cách mạng là:",
+       "o": [
+        "Bước nhảy đột biến, làm thay đổi về chất, thay đổi toàn bộ đời sống xã hội",
+        "Sự thay đổi dần dần từng bộ phận, từng yếu tố",
+        "Sự thay đổi của một lĩnh vực riêng lẻ",
+        "Cuộc đảo chính của một nhóm người"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Tình trạng \"tầng lớp trên không thể sống như cũ\" và \"tầng lớp dưới không muốn sống như trước\" là dấu hiệu của:",
+       "o": [
+        "Cải cách xã hội",
+        "Tình thế cách mạng",
+        "Đảo chính",
+        "Tiến hóa xã hội"
+       ],
+       "a": 1
       }
      ]
     },
     {
-     "title": "Điền khuyết",
+     "title": "Cách mạng và nhà nước: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Vận động là {0} tồn tại của vật chất; không gian và thời gian là {1} tồn tại của vật chất.",
+       "q": "Tình thế cách mạng là sự chín muồi của mâu thuẫn giữa {0} và {1}, là sự phát triển đến đỉnh cao của cuộc đấu tranh giai cấp.",
        "o": [
         [
-         "kết quả",
-         "phương thức",
-         "mục đích"
+         "kiến trúc thượng tầng",
+         "lực lượng sản xuất",
+         "tồn tại xã hội"
         ],
         [
-         "nguồn gốc",
-         "nguyên nhân",
-         "hình thức"
+         "cơ sở hạ tầng",
+         "ý thức xã hội",
+         "quan hệ sản xuất"
         ]
        ],
        "a": [
@@ -227,17 +673,43 @@
       },
       {
        "t": "fill",
-       "q": "Sự thay đổi về {0} đến một giới hạn nhất định sẽ dẫn đến bước {1}.",
+       "q": "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam tồn tại theo nguyên tắc: Đảng {0}, nhà nước {1}, nhân dân {2}.",
        "o": [
         [
-         "chất",
-         "lượng",
-         "vị trí"
+         "lãnh đạo",
+         "quản lý",
+         "làm chủ"
         ],
         [
-         "đứng im",
-         "thụt lùi",
-         "nhảy vọt"
+         "làm chủ",
+         "lãnh đạo",
+         "quản lý"
+        ],
+        [
+         "quản lý",
+         "làm chủ",
+         "lãnh đạo"
+        ]
+       ],
+       "a": [
+        0,
+        2,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Theo nghĩa hẹp, cách mạng xã hội là đỉnh cao của đấu tranh {0}, là cuộc đấu tranh lật đổ {1}, thiết lập một chính quyền mới tiến bộ hơn.",
+       "o": [
+        [
+         "dân tộc",
+         "giai cấp",
+         "tư tưởng"
+        ],
+        [
+         "pháp luật",
+         "tôn giáo",
+         "chính quyền"
         ]
        ],
        "a": [
@@ -247,37 +719,93 @@
       },
       {
        "t": "fill",
-       "q": "Bản chất là cái {0} bên trong, hiện tượng là cái {1} ra bên ngoài.",
+       "q": "Khi cách mạng xã hội nổ ra thì chế độ xã hội cũ bị {0}; mỗi cuộc cách mạng đều lật đổ {1} cũ nên có tính cách chính trị.",
        "o": [
         [
-         "biểu hiện",
-         "tương đối ổn định",
-         "ngẫu nhiên"
+         "xóa bỏ",
+         "củng cố",
+         "bảo tồn"
         ],
         [
-         "bộc lộ",
-         "che giấu",
-         "tiêu biến"
+         "truyền thống",
+         "tôn giáo",
+         "chính quyền"
+        ]
+       ],
+       "a": [
+        0,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Lực lượng cách mạng xã hội là những giai cấp, tầng lớp có lợi ích {0} với cách mạng, tham gia các phong trào cách mạng, thực hiện {1} của cách mạng.",
+       "o": [
+        [
+         "đối lập",
+         "gắn bó",
+         "độc lập"
+        ],
+        [
+         "mục đích",
+         "hậu quả",
+         "phương tiện"
         ]
        ],
        "a": [
         1,
         0
        ]
+      },
+      {
+       "t": "fill",
+       "q": "Đối tượng của cách mạng xã hội là những giai cấp và những lực lượng {0} cần phải {1} của cách mạng.",
+       "o": [
+        [
+         "đồng minh",
+         "đối lập",
+         "trung lập"
+        ],
+        [
+         "liên minh",
+         "bảo vệ",
+         "đánh đổ"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
       }
      ]
     },
     {
-     "title": "Đúng sai 4 ý",
+     "title": "Cách mạng và nhà nước: đúng sai 4 ý",
      "qs": [
       {
        "t": "tf",
-       "q": "Về vật chất:",
+       "q": "Về kiểu nhà nước và hình thức nhà nước:",
        "o": [
-        "Vật chất chỉ tồn tại ở dạng nhìn thấy được.",
-        "Vận động là phương thức tồn tại của vật chất.",
-        "Vật chất là một phạm trù triết học dùng để chỉ thực tại khách quan.",
-        "Vật chất tồn tại độc lập với cảm giác của con người."
+        "Nhà nước thành bang Xpác ở Hy Lạp cổ đại là điển hình của hình thức nhà nước quân chủ chủ nô.",
+        "Hình thức nhà nước chỉ chịu sự quy định của phong tục tập quán, không liên quan đến bản chất giai cấp.",
+        "Các kiểu nhà nước trên cơ bản giống nhau ở chỗ đều là công cụ thống trị của giai cấp thống trị.",
+        "Nhà nước vô sản là nhà nước của số đông thống trị số ít."
+       ],
+       "a": [
+        true,
+        false,
+        true,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về cách mạng xã hội và các khái niệm liên quan:",
+       "o": [
+        "Đảo chính luôn là một phong trào cách mạng và làm thay đổi căn bản chế độ xã hội.",
+        "Chủ nghĩa cải lương chủ trương từ bỏ đấu tranh giai cấp và cách mạng xã hội, tuyệt đối hóa đấu tranh nghị trường.",
+        "Cải cách xã hội chỉ tạo nên những thay đổi bộ phận, lĩnh vực riêng lẻ của đời sống xã hội.",
+        "Cách mạng xã hội là bước nhảy đột biến làm thay đổi về chất, còn tiến hóa xã hội là sự thay đổi dần dần."
        ],
        "a": [
         false,
@@ -288,33 +816,17 @@
       },
       {
        "t": "tf",
-       "q": "Về các quy luật cơ bản của phép biện chứng duy vật:",
+       "q": "Về điều kiện và phương pháp của cách mạng xã hội:",
        "o": [
-        "Quy luật mâu thuẫn chỉ ra nguồn gốc, động lực của sự phát triển.",
-        "Sự phát triển có tính chất xoáy ốc.",
-        "Quy luật lượng – chất chỉ ra cách thức của sự phát triển.",
-        "Quy luật phủ định của phủ định chỉ ra nguyên nhân của sự phát triển."
+        "Phương pháp hòa bình luôn là phương pháp duy nhất và dễ thực hiện nhất để giành chính quyền.",
+        "Khi điều kiện khách quan đã chín muồi, nhân tố chủ quan có vai trò quyết định thành bại của cách mạng.",
+        "Không có tình thế cách mạng thì cách mạng xã hội không thể nổ ra được.",
+        "Thời cơ cách mạng là thời điểm đặc biệt khi điều kiện khách quan và nhân tố chủ quan đã chín muồi."
        ],
        "a": [
-        true,
-        true,
-        true,
-        false
-       ]
-      },
-      {
-       "t": "tf",
-       "q": "Về các cặp phạm trù:",
-       "o": [
-        "Cái tất nhiên là cái nhất định phải xảy ra theo quy luật nội tại.",
-        "Nội dung quyết định hình thức, nhưng hình thức tác động trở lại nội dung.",
-        "Hiện tượng luôn phản ánh đầy đủ và trực tiếp bản chất.",
-        "Nguyên nhân sinh ra kết quả."
-       ],
-       "a": [
-        true,
-        true,
         false,
+        true,
+        true,
         true
        ]
       }
@@ -326,79 +838,326 @@
    "name": "Chung kết",
    "challenges": [
     {
-     "title": "Trắc nghiệm 4 đáp án",
+     "title": "Ý thức xã hội: trắc nghiệm",
      "qs": [
       {
        "t": "mcq",
-       "q": "Ai nói câu \"mọi thứ đều trôi chảy\", đặt nền móng cho phép biện chứng cổ đại?",
+       "q": "Yếu tố cơ bản nhất của tồn tại xã hội là:",
        "o": [
-        "Heraclitus",
-        "Parmenides",
-        "Plato",
-        "Democritus"
+        "Điều kiện tự nhiên",
+        "Hoàn cảnh địa lý",
+        "Dân số và mật độ dân số",
+        "Phương thức sản xuất vật chất"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Ý thức xã hội bao gồm hai bộ phận cơ bản nào?",
+       "o": [
+        "Ý thức thông thường và ý thức tôn giáo",
+        "Tâm lý xã hội và hệ tư tưởng xã hội",
+        "Ý thức cá nhân và ý thức tập thể",
+        "Ý thức chính trị và ý thức pháp quyền"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Hình thái ý thức xã hội nào là sự phản ánh hư ảo sức mạnh của giới tự nhiên bên ngoài lẫn các quan hệ xã hội vào đầu óc con người?",
+       "o": [
+        "Ý thức đạo đức",
+        "Ý thức thẩm mỹ",
+        "Ý thức tôn giáo",
+        "Ý thức pháp quyền"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Tồn tại xã hội là:",
+       "o": [
+        "Toàn bộ các quan điểm chính trị của xã hội",
+        "Toàn bộ sinh hoạt vật chất và những điều kiện sinh hoạt vật chất của xã hội",
+        "Toàn bộ đời sống tinh thần của xã hội",
+        "Tổng số dân cư của một quốc gia"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Trong các quan hệ xã hội vật chất, những quan hệ cơ bản nhất là:",
+       "o": [
+        "Quan hệ giữa các tôn giáo",
+        "Quan hệ giữa con người với giới tự nhiên và quan hệ giữa con người với con người",
+        "Quan hệ ngoại giao giữa các quốc gia",
+        "Quan hệ giữa các nhà tư tưởng"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Bộ phận nào của ý thức xã hội là giai đoạn phát triển cao hơn, là sự nhận thức lý luận về tồn tại xã hội?",
+       "o": [
+        "Tâm lý xã hội",
+        "Hệ tư tưởng",
+        "Ý thức thông thường",
+        "Phong tục tập quán"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo Ph.Ăngghen, trong xã hội có giai cấp đối kháng, đạo đức luôn là:",
+       "o": [
+        "Đạo đức của giai cấp",
+        "Đạo đức không liên quan đến điều kiện kinh tế",
+        "Đạo đức riêng của từng cá nhân",
+        "Đạo đức chung của toàn nhân loại, không mang dấu ấn giai cấp"
        ],
        "a": 0
       },
       {
        "t": "mcq",
-       "q": "Yếu tố quyết định sự vận động, phát triển của xã hội theo chủ nghĩa Mác – Lênin là:",
+       "q": "Nghệ thuật phản ánh thế giới bằng:",
        "o": [
-        "Lực lượng sản xuất",
-        "Kiến trúc thượng tầng",
-        "Ý chí cá nhân",
+        "Khái niệm và phạm trù",
+        "Hình tượng nghệ thuật",
+        "Quy luật khoa học",
+        "Giáo lý tôn giáo"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Hình thức đặc biệt và cao nhất của tri thức cũng như của ý thức xã hội là:",
+       "o": [
+        "Khoa học tự nhiên",
+        "Nghệ thuật",
+        "Triết học",
         "Tôn giáo"
        ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Hình thái ý thức xã hội nào thể hiện trực tiếp và rõ nhất lợi ích giai cấp?",
+       "o": [
+        "Ý thức khoa học",
+        "Ý thức tôn giáo",
+        "Ý thức thẩm mỹ",
+        "Ý thức chính trị"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Các yếu tố cơ bản của tồn tại xã hội gồm:",
+       "o": [
+        "Giai cấp, nhà nước, dân tộc, tôn giáo",
+        "Tâm lý xã hội, hệ tư tưởng, tôn giáo, khoa học",
+        "Phương thức sản xuất vật chất, điều kiện tự nhiên, hoàn cảnh địa lý, dân số và mật độ dân số",
+        "Chính trị, pháp luật, đạo đức, nghệ thuật"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Hình thái ý thức xã hội nào hình thành rất sớm, từ trước khi xã hội có sự phân chia giai cấp?",
+       "o": [
+        "Ý thức nghệ thuật (thẩm mỹ)",
+        "Ý thức khoa học",
+        "Ý thức pháp quyền",
+        "Ý thức chính trị"
+       ],
        "a": 0
       },
       {
        "t": "mcq",
-       "q": "Quần chúng nhân dân là:",
+       "q": "So với ý thức lý luận, ý thức xã hội thông thường có đặc điểm:",
        "o": [
-        "Chủ thể sáng tạo chân chính ra lịch sử",
-        "Chỉ những người giàu có",
-        "Các nhà lãnh đạo",
-        "Lực lượng không ảnh hưởng"
+        "Ở trình độ cao hơn và sâu sắc hơn",
+        "Đã được hệ thống hóa thành học thuyết",
+        "Ở trình độ thấp hơn nhưng phong phú hơn",
+        "Chỉ có ở các giai cấp thống trị"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Ý thức lý luận (ý thức khoa học) có khả năng:",
+       "o": [
+        "Phản ánh sâu sắc, chính xác, bao quát, vạch ra các mối liên hệ bản chất, tất yếu mang tính quy luật",
+        "Phản ánh hư ảo sức mạnh của tự nhiên",
+        "Chỉ phản ánh tự phát những điều kiện sinh hoạt hằng ngày",
+        "Chỉ ghi lại những gì dễ thấy trên bề mặt của tồn tại xã hội"
        ],
        "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Câu nói \"người chết nắm lấy người sống\" nhấn mạnh biểu hiện nào của ý thức xã hội?",
+       "o": [
+        "Tồn tại xã hội không ảnh hưởng đến ý thức xã hội",
+        "Ý thức xã hội thường lạc hậu hơn tồn tại xã hội",
+        "Ý thức xã hội vượt trước tồn tại xã hội",
+        "Ý thức xã hội tác động trở lại tồn tại xã hội"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Một nguyên nhân làm cho ý thức xã hội thường lạc hậu hơn tồn tại xã hội là:",
+       "o": [
+        "Ý thức xã hội không phản ánh tồn tại xã hội",
+        "Sức mạnh của thói quen, tập quán, truyền thống và tính bảo thủ của hình thái ý thức xã hội",
+        "Quần chúng nhân dân không có nhu cầu tư tưởng",
+        "Sự phát triển quá nhanh của ý thức khoa học"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Ý thức xã hội có thể vượt trước tồn tại xã hội khi nó:",
+       "o": [
+        "Chỉ dựa vào thói quen, tập quán",
+        "Tách rời hoàn toàn khỏi tồn tại xã hội",
+        "Phản ánh đúng những mối liên hệ logic, khách quan, tất yếu, bản chất của tồn tại xã hội",
+        "Phản ánh hư ảo sức mạnh siêu nhiên"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Kinh tế nước Đức đầu thế kỷ XIX kém nước Anh và Pháp nhưng nền triết học lại vượt xa. Điều đó chứng tỏ:",
+       "o": [
+        "Triết học không liên quan đến xã hội",
+        "Kinh tế quyết định trực tiếp trình độ triết học",
+        "Sự phát triển của ý thức xã hội không phải bao giờ cũng song hành với sự phát triển kinh tế",
+        "Ý thức xã hội luôn lạc hậu hơn kinh tế"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Theo Ph.Ăngghen, các tiền đề và điều kiện kinh tế rốt cuộc giữ vai trò:",
+       "o": [
+        "Thụ động, còn chính trị và truyền thống mới là quyết định",
+        "Quyết định, còn các điều kiện chính trị, truyền thống cũng có vai trò nhất định nhưng không quyết định",
+        "Ngang bằng với truyền thống tư tưởng",
+        "Không giữ vai trò nào trong lịch sử"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo quan điểm của chủ nghĩa Mác, muốn xóa bỏ tôn giáo thì phải:",
+       "o": [
+        "Chỉ cần thay đổi tên gọi của các tôn giáo",
+        "Cấm đoán bằng biện pháp hành chính",
+        "Duy trì nguồn gốc xã hội của nó",
+        "Xóa bỏ nguồn gốc xã hội của nó, đồng thời nâng cao năng lực nhận thức, trình độ học vấn của con người"
+       ],
+       "a": 3
       }
      ]
     },
     {
-     "title": "Điền khuyết",
+     "title": "Ý thức xã hội: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Socrates nổi tiếng với phương pháp {0}, còn Plato là đại biểu của chủ nghĩa duy {1} khách quan.",
+       "q": "Không phải ý thức của con người {0} tồn tại của họ; trái lại, tồn tại xã hội của họ quyết định {1} của họ.",
        "o": [
         [
-         "đối thoại",
-         "thực nghiệm",
-         "suy diễn"
+         "phụ thuộc",
+         "tách rời",
+         "quyết định"
         ],
         [
-         "vật",
-         "tâm",
-         "cảm"
+         "hành vi",
+         "ý thức",
+         "tình cảm"
         ]
        ],
        "a": [
-        0,
+        2,
         1
        ]
       },
       {
        "t": "fill",
-       "q": "Cơ sở hạ tầng quyết định {0}, và kiến trúc thượng tầng tác động trở lại {1}.",
+       "q": "Ý thức xã hội thông thường là những tri thức, quan niệm hình thành một cách {0} trong hoạt động hằng ngày nhưng chưa được {1} hóa, khái quát hóa.",
        "o": [
         [
-         "lực lượng sản xuất",
-         "kiến trúc thượng tầng",
-         "tự nhiên"
+         "gián tiếp",
+         "trực tiếp",
+         "chuyên sâu"
         ],
         [
-         "tự nhiên",
-         "lịch sử",
-         "cơ sở hạ tầng"
+         "hệ thống",
+         "pháp lý",
+         "chính trị"
+        ]
+       ],
+       "a": [
+        1,
+        0
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Ý thức xã hội thường {0} hơn tồn tại xã hội, nhưng cũng có thể {1} tồn tại xã hội.",
+       "o": [
+        [
+         "tiến bộ",
+         "đồng bộ",
+         "lạc hậu"
+        ],
+        [
+         "tách khỏi",
+         "vượt trước",
+         "phủ định"
+        ]
+       ],
+       "a": [
+        2,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Hệ tư tưởng là giai đoạn phát triển {0} hơn của ý thức xã hội, là sự nhận thức {1} về tồn tại xã hội.",
+       "o": [
+        [
+         "thấp",
+         "chậm",
+         "cao"
+        ],
+        [
+         "cảm tính",
+         "lý luận",
+         "tự phát"
+        ]
+       ],
+       "a": [
+        2,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Khoa học và tôn giáo là những hiện tượng {0} nhau về bản chất; tôn giáo thù địch với lý trí con người, còn khoa học là sản phẩm cao nhất của {1}.",
+       "o": [
+        [
+         "bổ sung",
+         "đối lập",
+         "đồng nhất"
+        ],
+        [
+         "tín ngưỡng",
+         "cảm xúc",
+         "lý trí"
         ]
        ],
        "a": [
@@ -408,37 +1167,53 @@
       },
       {
        "t": "fill",
-       "q": "Con người vừa là {0} vừa là {1} của lịch sử.",
+       "q": "Phương thức sản xuất vật chất là yếu tố {0} nhất của tồn tại xã hội; tồn tại xã hội quyết định cả nội dung và {1} biểu hiện của ý thức xã hội.",
        "o": [
         [
-         "khán giả",
-         "sản phẩm",
-         "kẻ thù"
+         "thứ yếu",
+         "tinh thần",
+         "cơ bản"
         ],
         [
-         "nạn nhân",
-         "vật chứng",
-         "chủ thể"
+         "thời gian",
+         "hình thức",
+         "địa điểm"
         ]
        ],
        "a": [
-        1,
-        2
+        2,
+        1
        ]
       }
      ]
     },
     {
-     "title": "Đúng sai 4 ý",
+     "title": "Ý thức xã hội: đúng sai 4 ý",
      "qs": [
       {
        "t": "tf",
-       "q": "Về triết học cổ đại:",
+       "q": "Về kết cấu và tính giai cấp của ý thức xã hội:",
        "o": [
-        "Democritus là đại biểu của chủ nghĩa duy vật với thuyết nguyên tử.",
-        "Heraclitus cho rằng mọi thứ đều vận động, biến đổi.",
-        "Plato là đại biểu của chủ nghĩa duy vật cổ đại.",
-        "Socrates dùng phương pháp đối thoại để tìm ra chân lý."
+        "Trong xã hội có giai cấp đối kháng, hệ tư tưởng thống trị là hệ tư tưởng của giai cấp thống trị.",
+        "Tâm lý xã hội phản ánh một cách trực tiếp, tự phát những điều kiện sinh hoạt hằng ngày của con người.",
+        "Ý thức xã hội gồm tâm lý xã hội và hệ tư tưởng xã hội.",
+        "Ý thức lý luận chỉ ghi lại những gì nằm trên bề mặt của tồn tại xã hội, không vạch ra được quy luật."
+       ],
+       "a": [
+        true,
+        true,
+        true,
+        false
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về các hình thái ý thức xã hội:",
+       "o": [
+        "Ý thức chính trị và ý thức pháp quyền xuất hiện trong các xã hội có giai cấp và có nhà nước.",
+        "Khoa học và tôn giáo là những hiện tượng đối lập nhau về bản chất.",
+        "Ý thức thẩm mỹ chỉ hình thành sau khi xã hội đã phân chia giai cấp.",
+        "Chức năng chủ yếu của ý thức tôn giáo là chức năng đền bù - hư ảo."
        ],
        "a": [
         true,
@@ -449,34 +1224,18 @@
       },
       {
        "t": "tf",
-       "q": "Về lý luận hình thái kinh tế – xã hội:",
+       "q": "Về tính độc lập tương đối của ý thức xã hội:",
        "o": [
-        "Quan hệ sản xuất phải phù hợp với trình độ của lực lượng sản xuất.",
-        "Đấu tranh giai cấp là một động lực của sự phát triển xã hội có giai cấp.",
-        "Kiến trúc thượng tầng quyết định cơ sở hạ tầng.",
-        "Lực lượng sản xuất là nội dung vật chất của quá trình sản xuất."
+        "Ý thức xã hội có tính kế thừa: các quan điểm lý luận của thời đại sau dựa vào những tiền đề đã có từ các giai đoạn trước.",
+        "Ý thức xã hội thường lạc hậu hơn tồn tại xã hội, một phần do sức mạnh của thói quen, tập quán, truyền thống.",
+        "Sự phát triển của ý thức xã hội luôn luôn song hành với sự phát triển của kinh tế.",
+        "Ý thức xã hội chỉ là yếu tố thụ động, không có tác động trở lại tồn tại xã hội."
        ],
        "a": [
         true,
         true,
         false,
-        true
-       ]
-      },
-      {
-       "t": "tf",
-       "q": "Về con người và lịch sử:",
-       "o": [
-        "Con người vừa là sản phẩm vừa là chủ thể của lịch sử.",
-        "Cá nhân kiệt xuất không có vai trò gì trong lịch sử.",
-        "Bản chất con người là tổng hòa các quan hệ xã hội.",
-        "Quần chúng nhân dân là chủ thể sáng tạo ra lịch sử."
-       ],
-       "a": [
-        true,
-        false,
-        true,
-        true
+        false
        ]
       }
      ]

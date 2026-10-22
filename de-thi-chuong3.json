@@ -8,189 +8,359 @@
      "qs": [
       {
        "t": "mcq",
-       "q": "Theo Ph.Ăngghen, nhà nước là sản phẩm của:",
+       "q": "Theo chủ nghĩa Mác – Lênin, nhà nước là:",
        "o": [
-        "Sự thực hiện ý niệm và là sự ngự trị của thượng đế trên trái đất",
-        "Sự thỏa thuận tự nguyện giữa các thành viên của cộng đồng thị tộc",
-        "Một xã hội đã phát triển tới giai đoạn nhất định, bị phân thành những mặt đối lập không thể điều hòa",
-        "Sự tiến hóa tự nhiên của quan hệ huyết thống trong bộ lạc"
-       ],
-       "a": 2
-      },
-      {
-       "t": "mcq",
-       "q": "Nguyên nhân trực tiếp dẫn tới sự xuất hiện nhà nước là:",
-       "o": [
-        "Sự phát triển của lực lượng sản xuất",
-        "Sự dư thừa tương đối của cải",
-        "Sự xuất hiện chế độ tư hữu về tư liệu sản xuất",
-        "Mâu thuẫn giai cấp trong xã hội gay gắt, không thể điều hòa được"
+        "Tổ chức chỉ phục vụ lợi ích chung, không mang tính giai cấp",
+        "Tổ chức tự quản của cộng đồng thị tộc, bộ lạc",
+        "Tổ chức xã hội tồn tại vĩnh viễn cùng xã hội loài người",
+        "Tổ chức quyền lực công cộng đặc biệt trong xã hội có giai cấp"
        ],
        "a": 3
       },
       {
        "t": "mcq",
-       "q": "Về bản chất, nhà nước là:",
+       "q": "Theo chủ nghĩa Mác – Lênin, nhà nước:",
        "o": [
-        "Tổ chức chính trị của toàn thể nhân dân lao động",
-        "Tổ chức chính trị của giai cấp thống trị về kinh tế, nhằm bảo vệ trật tự hiện hành và đàn áp sự phản kháng của các giai cấp khác",
-        "Cơ quan trung gian đứng ngoài và đứng trên mọi giai cấp",
-        "Công cụ của thượng đế để duy trì chân lý vĩnh cửu"
+        "Chỉ có ở xã hội cộng sản nguyên thủy",
+        "Không tồn tại vĩnh viễn cùng xã hội loài người",
+        "Tồn tại ngay từ khi xã hội loài người xuất hiện",
+        "Không chịu tác động của điều kiện kinh tế – xã hội"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Theo V.I.Lênin, khi nào nhà nước ra đời?",
+       "q": "Nhà nước là sản phẩm của:",
        "o": [
-        "Khi xã hội xuất hiện sự phân công lao động đầu tiên",
-        "Khi trong xã hội xuất hiện biểu hiện của mâu thuẫn giai cấp không thể điều hòa được",
-        "Khi con người bắt đầu biết sử dụng công cụ lao động",
-        "Khi cộng đồng thị tộc, bộ lạc mở rộng quy mô"
+        "Sự thỏa thuận của mọi thành viên trong thị tộc",
+        "Quan hệ huyết thống trong bộ lạc",
+        "Ý chí chủ quan của một cá nhân",
+        "Những điều kiện kinh tế – xã hội nhất định"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Đặc điểm nào sau đây là của xã hội cộng sản nguyên thủy?",
+       "o": [
+        "Đã có bộ máy nhà nước hoàn chỉnh",
+        "Chưa có chế độ tư hữu về tư liệu sản xuất",
+        "Tư liệu sản xuất thuộc về một giai cấp thống trị",
+        "Đã có sự phân chia giai cấp đối kháng"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Nhà nước ra đời nhằm mục đích gì đối với cuộc đấu tranh giai cấp?",
+       "q": "Việc quản lý xã hội cộng sản nguyên thủy dựa trên:",
        "o": [
-        "Chuyển quyền lực từ giai cấp thống trị sang giai cấp bị trị",
-        "Bảo vệ quyền lợi như nhau cho mọi giai cấp",
-        "Giữ cho đấu tranh giai cấp không đi đến chỗ tiêu diệt lẫn nhau và tiêu diệt cả xã hội, duy trì xã hội trong vòng \"trật tự\"",
-        "Xóa bỏ hoàn toàn mâu thuẫn giữa các giai cấp"
+        "Pháp luật do nhà nước ban hành",
+        "Quân đội thường trực của giai cấp thống trị",
+        "Tổ chức thị tộc, bộ lạc và truyền thống",
+        "Bộ máy cưỡng chế chuyên nghiệp"
        ],
        "a": 2
       },
       {
        "t": "mcq",
-       "q": "Xã hội nguyên thủy với cộng đồng thị tộc, bộ lạc tồn tại theo thể chế nào?",
+       "q": "Trong quá trình ra đời của nhà nước, ngay sau khi lực lượng sản xuất phát triển là:",
        "o": [
-        "Thể chế chuyên chế",
-        "Thể chế tự quản",
-        "Thể chế quân chủ",
-        "Thể chế cộng hòa"
+        "Xã hội quay trở lại chế độ thị tộc",
+        "Của cải dư thừa, tư hữu xuất hiện",
+        "Nhà nước ra đời",
+        "Mâu thuẫn giai cấp biến mất"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Theo Ph.Ăngghen, nhà nước \"chẳng qua chỉ là\" gì?",
+       "q": "Bước ngay trước khi nhà nước ra đời là:",
        "o": [
-        "Một cơ quan trọng tài trung lập giữa các giai cấp",
-        "Một bộ máy của một giai cấp này dùng để trấn áp một giai cấp khác",
-        "Một thiết chế phục vụ lợi ích chung của nhân loại",
-        "Một tổ chức xã hội của mọi thành viên trong cộng đồng"
+        "Của cải dư thừa, tư hữu xuất hiện",
+        "Lực lượng sản xuất phát triển",
+        "Xã hội có tổ chức thị tộc, bộ lạc",
+        "Mâu thuẫn giai cấp gay gắt"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Bản chất của nhà nước gồm hai mặt nào?",
+       "o": [
+        "Tính cưỡng chế và tính tự nguyện",
+        "Tính dân tộc và tính tôn giáo",
+        "Tính kinh tế và tính văn hóa",
+        "Tính giai cấp và tính xã hội"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Theo tài liệu, mặt nào giữ vai trò bản chất, quyết định của nhà nước?",
+       "o": [
+        "Tính dân tộc",
+        "Tính xã hội",
+        "Hai mặt có vai trò hoàn toàn như nhau",
+        "Tính giai cấp"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Tính giai cấp của nhà nước thể hiện ở chỗ nhà nước là:",
+       "o": [
+        "Tổ chức đứng ngoài mọi giai cấp",
+        "Công cụ của giai cấp bị trị",
+        "Công cụ thực hiện quyền lực của giai cấp thống trị",
+        "Tổ chức chỉ làm nhiệm vụ cung cấp dịch vụ công"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Pháp luật và chính sách của nhà nước phản ánh:",
+       "o": [
+        "Ý chí của giai cấp bị trị",
+        "Ý chí và lợi ích của giai cấp nắm quyền",
+        "Ý chí của mọi giai cấp như nhau",
+        "Truyền thống của thị tộc, bộ lạc"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Hệ thống thuế khóa của nhà nước dùng để làm gì?",
+       "q": "Nội dung nào thuộc tính xã hội của nhà nước?",
        "o": [
-        "Duy trì các tổ chức thị tộc",
-        "Xóa bỏ chế độ tư hữu",
-        "Nuôi bộ máy chính quyền",
-        "Phân phối đều của cải cho các công dân"
+        "Ban hành pháp luật thể hiện riêng ý chí giai cấp nắm quyền",
+        "Xác lập kiểu nhà nước chủ nô",
+        "Dùng bộ máy cưỡng chế để bảo vệ riêng lợi ích giai cấp thống trị",
+        "Cung cấp dịch vụ công như giáo dục, y tế"
        ],
-       "a": 2
+       "a": 3
       },
       {
        "t": "mcq",
-       "q": "Khác với cộng đồng thị tộc, bộ lạc, cư dân trong cộng đồng nhà nước:",
+       "q": "Nhà nước thể hiện tính xã hội khi:",
        "o": [
-        "Không có bất kỳ quan hệ kinh tế nào với nhau",
-        "Luôn thuộc cùng một giai cấp",
-        "Không chỉ có quan hệ huyết thống mà còn có quan hệ ngoài huyết thống (kinh tế, xã hội, chính trị…)",
-        "Chỉ gắn bó với nhau bằng quan hệ huyết thống"
-       ],
-       "a": 2
-      },
-      {
-       "t": "mcq",
-       "q": "Nhà nước quản lý xã hội chủ yếu dựa vào:",
-       "o": [
-        "Pháp luật",
-        "Tín ngưỡng tôn giáo",
-        "Uy tín cá nhân của người đứng đầu",
-        "Phong tục tập quán"
+        "Bảo vệ môi trường, phòng chống thiên tai và các nguy cơ chung",
+        "Hạn chế việc bảo đảm an ninh, trật tự công cộng",
+        "Chỉ duy trì bộ máy cưỡng chế",
+        "Từ chối quản lý kinh tế"
        ],
        "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Ba đặc trưng cơ bản của nhà nước gồm:",
+       "o": [
+        "Thị tộc; bộ lạc; truyền thống",
+        "Tính giai cấp; tính xã hội; tính dân tộc",
+        "Bộ máy quyền lực công cộng đặc biệt; quyền lực trên một lãnh thổ nhất định; chủ quyền quốc gia trong đối nội và đối ngoại",
+        "Chính thể; cấu trúc nhà nước; chế độ chính trị"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng chính trị của nhà nước là:",
+       "o": [
+        "Xóa bỏ quyền lực của mọi giai cấp",
+        "Chỉ cung cấp dịch vụ y tế",
+        "Duy trì quyền lực và sự thống trị của giai cấp cầm quyền",
+        "Quản lý công việc chung, không liên quan đến giai cấp"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Chức năng xã hội của nhà nước là:",
+       "o": [
+        "Thay thế quyền lực chính trị bằng tổ chức thị tộc",
+        "Duy trì riêng sự thống trị của giai cấp cầm quyền",
+        "Xóa bỏ mọi hoạt động kinh tế",
+        "Quản lý công việc chung, bảo đảm ổn định và phát triển xã hội"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Các kiểu nhà nước trong lịch sử gồm:",
+       "o": [
+        "Dân chủ, độc tài, quân chủ, cộng hòa",
+        "Thị tộc, bộ lạc, chủ nô, phong kiến",
+        "Quân chủ, cộng hòa, liên bang, đơn nhất",
+        "Chủ nô, phong kiến, tư sản, xã hội chủ nghĩa"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Chính thể của nhà nước gồm các dạng:",
+       "o": [
+        "Quân chủ và cộng hòa",
+        "Chủ nô và phong kiến",
+        "Đơn nhất và liên bang",
+        "Dân chủ và độc tài"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Chế độ chính trị của nhà nước là:",
+       "o": [
+        "Các giai đoạn phát triển của lực lượng sản xuất",
+        "Các phương pháp và cách thức thực hiện quyền lực nhà nước",
+        "Hình thức tổ chức người đứng đầu nhà nước",
+        "Cách phân chia lãnh thổ quốc gia"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Mối quan hệ giữa nhà nước và xã hội được thể hiện ở chỗ:",
+       "o": [
+        "Nhà nước chỉ thực hiện quyền lực chính trị, không giải quyết vấn đề chung",
+        "Nhà nước tổ chức, quản lý các hoạt động xã hội, đồng thời chịu ảnh hưởng của điều kiện kinh tế và quan hệ xã hội",
+        "Xã hội không cần nhà nước để quản lý",
+        "Nhà nước hoàn toàn độc lập với điều kiện kinh tế – xã hội"
+       ],
+       "a": 1
       }
      ]
     },
     {
-     "title": "Nhà nước: đặc trưng và chức năng",
+     "title": "Nhà nước: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Theo V.I.Lênin, nhà nước là một cơ quan {0} giai cấp, là một cơ quan {1} của một giai cấp này đối với một giai cấp khác.",
+       "q": "Nhà nước là tổ chức quyền lực {0} đặc biệt trong xã hội có {1}.",
        "o": [
         [
-         "điều hòa",
-         "thống trị",
-         "trung gian"
-        ],
-        [
-         "áp bức",
-         "hòa giải",
-         "bảo trợ"
-        ]
-       ],
-       "a": [
-        1,
-        0
-       ]
-      },
-      {
-       "t": "fill",
-       "q": "Ba đặc trưng cơ bản của nhà nước: quản lý cư dân trên một vùng {0} nhất định; có hệ thống cơ quan quyền lực chuyên nghiệp mang tính {1}; có hệ thống {2} để nuôi bộ máy chính quyền.",
-       "o": [
-        [
-         "huyết thống",
-         "lãnh thổ",
+         "công cộng",
+         "tư nhân",
          "tôn giáo"
         ],
         [
-         "cưỡng chế",
-         "tự nguyện",
-         "thương lượng"
-        ],
-        [
-         "quyên góp",
-         "viện trợ",
-         "thuế khóa"
+         "bộ lạc",
+         "giai cấp",
+         "thị tộc"
         ]
        ],
        "a": [
-        1,
         0,
-        2
+        1
        ]
       },
       {
        "t": "fill",
-       "q": "Nhà nước có chức năng thống trị {0} và chức năng {1}; trong đó chức năng thống trị chính trị giữ vai trò {2}.",
+       "q": "Quá trình ra đời của nhà nước: lực lượng sản xuất phát triển, của cải {0}, {1} xuất hiện, xã hội phân hóa giai cấp đối kháng, mâu thuẫn giai cấp gay gắt, nhà nước ra đời.",
        "o": [
         [
-         "kinh tế",
-         "văn hóa",
-         "chính trị"
+         "dư thừa",
+         "bình quân",
+         "khan hiếm"
+        ],
+        [
+         "truyền thống",
+         "tư hữu",
+         "thị tộc"
+        ]
+       ],
+       "a": [
+        0,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Bản chất nhà nước gồm tính {0} và tính {1}; theo tài liệu, tính {2} giữ vai trò bản chất, quyết định.",
+       "o": [
+        [
+         "dân tộc",
+         "tôn giáo",
+         "giai cấp"
         ],
         [
          "xã hội",
-         "quốc phòng",
-         "tôn giáo"
+         "kinh doanh",
+         "cưỡng bức"
         ],
         [
-         "phụ thuộc",
-         "quyết định",
-         "thứ yếu"
+         "giai cấp",
+         "xã hội",
+         "dân tộc"
         ]
        ],
        "a": [
         2,
         0,
-        1
+        0
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Nhà nước có bộ máy quyền lực {0} đặc biệt, thực hiện quyền lực trên một {1} nhất định và có {2} quốc gia trong đối nội và đối ngoại.",
+       "o": [
+        [
+         "công cộng",
+         "tôn giáo",
+         "gia đình"
+        ],
+        [
+         "thời điểm",
+         "dòng họ",
+         "lãnh thổ"
+        ],
+        [
+         "truyền thống",
+         "thị tộc",
+         "chủ quyền"
+        ]
+       ],
+       "a": [
+        0,
+        2,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Chức năng chính trị duy trì quyền lực và sự {0} của giai cấp cầm quyền; chức năng xã hội quản lý công việc {1}, bảo đảm ổn định và phát triển xã hội.",
+       "o": [
+        [
+         "nguyên thủy",
+         "bị trị",
+         "thống trị"
+        ],
+        [
+         "riêng",
+         "cá nhân",
+         "chung"
+        ]
+       ],
+       "a": [
+        2,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Hình thức nhà nước gồm chính thể (quân chủ, cộng hòa), cấu trúc nhà nước (đơn nhất, {0}) và chế độ chính trị (như dân chủ hoặc {1}).",
+       "o": [
+        [
+         "chủ nô",
+         "liên bang",
+         "phong kiến"
+        ],
+        [
+         "thị tộc",
+         "tư sản",
+         "độc tài"
+        ]
+       ],
+       "a": [
+        1,
+        2
        ]
       }
      ]
@@ -200,12 +370,12 @@
      "qs": [
       {
        "t": "tf",
-       "q": "Về nguồn gốc của nhà nước:",
+       "q": "Về sự ra đời của nhà nước:",
        "o": [
-        "Nhà nước xuất hiện ngay từ khi con người xuất hiện, không gắn với giai cấp.",
-        "Cuộc đấu tranh giữa giai cấp nô lệ và giai cấp chủ nô thời cổ đại dẫn đến sự ra đời của nhà nước.",
-        "Nguyên nhân sâu xa của sự xuất hiện nhà nước là sự phát triển của lực lượng sản xuất dẫn đến sự dư thừa tương đối của cải.",
-        "Trong xã hội nguyên thủy với cộng đồng thị tộc, bộ lạc, chưa xuất hiện nhà nước."
+        "Nhà nước đã xuất hiện ngay trong tổ chức thị tộc, bộ lạc.",
+        "Nhà nước không tồn tại vĩnh viễn cùng xã hội loài người.",
+        "Xã hội cộng sản nguyên thủy chưa có chế độ tư hữu về tư liệu sản xuất.",
+        "Mâu thuẫn giai cấp gay gắt là bước ngay trước khi nhà nước ra đời."
        ],
        "a": [
         false,
@@ -218,32 +388,32 @@
        "t": "tf",
        "q": "Về bản chất của nhà nước:",
        "o": [
-        "Nhà nước chỉ ra đời và tồn tại trong xã hội có mâu thuẫn giai cấp và đấu tranh giai cấp.",
-        "Nhà nước dù tồn tại dưới hình thức nào cũng phản ánh và mang bản chất giai cấp.",
-        "Có thể có nhà nước đứng trên hoặc đứng ngoài giai cấp.",
-        "Nhà nước là công cụ chuyên chính của một giai cấp."
+        "Tính xã hội là mặt quyết định bản chất, còn tính giai cấp chỉ là phụ.",
+        "Tính xã hội thể hiện ở việc quản lý các công việc chung và duy trì trật tự xã hội.",
+        "Tính giai cấp thể hiện ở việc bảo vệ lợi ích của giai cấp thống trị.",
+        "Pháp luật và chính sách phản ánh ý chí, lợi ích của giai cấp nắm quyền."
        ],
        "a": [
-        true,
-        true,
         false,
+        true,
+        true,
         true
        ]
       },
       {
        "t": "tf",
-       "q": "Về chức năng của nhà nước:",
+       "q": "Về đặc trưng, chức năng và hình thức của nhà nước:",
        "o": [
-        "Theo Ph.Ăngghen, chức năng xã hội là cơ sở của sự thống trị chính trị.",
-        "Chức năng đối nội và đối ngoại là hai mặt của một thực thể thống nhất, hỗ trợ và tác động lẫn nhau.",
-        "Trong mối quan hệ giữa hai chức năng này, chức năng đối ngoại giữ vai trò chủ yếu.",
-        "Sự phân định các chức năng của nhà nước chỉ có ý nghĩa tương đối."
+        "Nhà nước có chủ quyền quốc gia trong đối nội và đối ngoại.",
+        "Chức năng chính trị và chức năng xã hội có quan hệ thống nhất, tác động qua lại.",
+        "Quyền lực nhà nước được thực hiện trên một lãnh thổ nhất định.",
+        "Chính thể gồm hai dạng là đơn nhất và liên bang."
        ],
        "a": [
         true,
         true,
-        false,
-        true
+        true,
+        false
        ]
       }
      ]
@@ -254,202 +424,382 @@
    "name": "Bán kết",
    "challenges": [
     {
-     "title": "Cách mạng và nhà nước: trắc nghiệm",
+     "title": "Cách mạng xã hội: trắc nghiệm",
      "qs": [
       {
        "t": "mcq",
-       "q": "Trong lịch sử đã từng tồn tại những kiểu nhà nước nào?",
+       "q": "Cách mạng xã hội là:",
        "o": [
-        "Nguyên thủy, chủ nô, phong kiến, tư sản",
-        "Chủ nô, phong kiến, tư sản, xã hội dân chủ",
-        "Phong kiến, tư sản, vô sản, cộng sản",
-        "Chủ nô, phong kiến, tư sản, vô sản"
+        "Bước biến đổi căn bản về chất trong đời sống xã hội",
+        "Sự tiến hóa tự nhiên của quan hệ thị tộc",
+        "Sự thay đổi dần dần từng bộ phận nhỏ của xã hội",
+        "Sự thay đổi người đứng đầu một cơ quan nhà nước"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng xã hội gắn với sự thay đổi của:",
+       "o": [
+        "Điều kiện thời tiết",
+        "Cách tổ chức một cơ quan hành chính",
+        "Truyền thống thị tộc",
+        "Hình thái kinh tế – xã hội"
        ],
        "a": 3
       },
       {
        "t": "mcq",
-       "q": "Nguồn gốc sâu xa của cách mạng xã hội là mâu thuẫn giữa:",
+       "q": "Nguồn gốc sâu xa, quyết định của cách mạng xã hội là mâu thuẫn giữa:",
        "o": [
-        "Giai cấp thống trị và giai cấp bị trị về quyền lực chính trị",
-        "Lực lượng sản xuất tiến bộ đòi hỏi được giải phóng với quan hệ sản xuất đã lỗi thời, lạc hậu",
+        "Lực lượng sản xuất và quan hệ sản xuất",
         "Nhà nước và pháp luật",
-        "Tồn tại xã hội và ý thức xã hội"
+        "Quân chủ và cộng hòa",
+        "Thị tộc và bộ lạc"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Khi quan hệ sản xuất hiện có trở nên lỗi thời thì nó:",
+       "o": [
+        "Trở thành lực cản đối với sự phát triển của lực lượng sản xuất",
+        "Không còn liên quan đến lực lượng sản xuất",
+        "Tự biến mất mà không gây mâu thuẫn",
+        "Thúc đẩy lực lượng sản xuất phát triển mạnh hơn"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Trong quá trình phát triển mâu thuẫn xã hội, ngay sau khi quan hệ sản xuất trở thành lực cản là:",
+       "o": [
+        "Nhà nước tự tiêu vong",
+        "Điều kiện cách mạng hình thành ngay",
+        "Mâu thuẫn lợi ích giai cấp gia tăng",
+        "Lực lượng sản xuất ngừng phát triển"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Bước ngay trước khi điều kiện cách mạng hình thành là:",
+       "o": [
+        "Lực lượng sản xuất phát triển",
+        "Đấu tranh giai cấp phát triển",
+        "Quan hệ sản xuất trở thành lực cản",
+        "Mâu thuẫn lợi ích giai cấp gia tăng"
        ],
        "a": 1
       },
       {
        "t": "mcq",
-       "q": "Giai cấp lãnh đạo cách mạng xã hội là giai cấp:",
+       "q": "Một dấu hiệu của tình thế cách mạng là:",
        "o": [
-        "Có hệ tư tưởng tiến bộ, đại diện cho phương thức sản xuất tiến bộ, cho xu hướng phát triển của xã hội",
-        "Có số lượng đông đảo nhất",
-        "Nắm quyền lực kinh tế trong xã hội cũ",
-        "Bị áp bức bóc lột nặng nề nhất"
-       ],
-       "a": 0
-      },
-      {
-       "t": "mcq",
-       "q": "Nhà nước thành bang Aten ở Hy Lạp cổ đại là điển hình của hình thức nhà nước nào?",
-       "o": [
-        "Quân chủ lập hiến",
-        "Quân chủ chuyên chế",
-        "Phong kiến phân quyền",
-        "Cộng hòa dân chủ chủ nô"
+        "Giai cấp thống trị vẫn cai trị như cũ một cách ổn định",
+        "Quần chúng nhân dân thờ ơ, không muốn hành động",
+        "Mâu thuẫn xã hội đang dịu đi",
+        "Giai cấp bị trị không thể tiếp tục sống theo cách cũ"
        ],
        "a": 3
       },
       {
        "t": "mcq",
-       "q": "Nhà nước phong kiến phân quyền là hình thức nhà nước mà ở đó:",
+       "q": "Trong tình thế cách mạng, giai cấp thống trị:",
        "o": [
-        "Quyền lực tập trung tuyệt đối trong tay vua",
-        "Quyền lực thuộc về Hội đồng trưởng lão",
-        "Quyền lực bị phân tán bởi nhiều thế lực phong kiến cát cứ ở các địa phương",
-        "Quyền lực do nhân dân trực tiếp nắm giữ"
+        "Tự nguyện trao quyền cho giai cấp bị trị",
+        "Không thể tiếp tục cai trị theo cách cũ",
+        "Không còn tồn tại",
+        "Vẫn cai trị theo cách cũ mà không gặp khó khăn"
        ],
-       "a": 2
+       "a": 1
       },
       {
        "t": "mcq",
-       "q": "Theo C.Mác, nhà nước của thời kỳ quá độ chính trị giữa xã hội tư bản chủ nghĩa và cộng sản chủ nghĩa là:",
+       "q": "Bản chất của cách mạng xã hội là:",
        "o": [
-        "Nhà nước đứng trên mọi giai cấp",
-        "Nhà nước phong kiến tập quyền",
-        "Nền chuyên chính cách mạng của giai cấp vô sản",
-        "Nền dân chủ tư sản"
-       ],
-       "a": 2
-      },
-      {
-       "t": "mcq",
-       "q": "Trong kiểu nhà nước vô sản, giai cấp vô sản liên minh với:",
-       "o": [
-        "Giai cấp nông dân, tầng lớp trí thức tiến bộ và các tầng lớp nhân dân lao động khác",
-        "Giai cấp chủ nô",
-        "Giai cấp tư sản phản động",
-        "Giai cấp địa chủ phong kiến"
-       ],
-       "a": 0
-      },
-      {
-       "t": "mcq",
-       "q": "Cách mạng Tháng Tám năm 1945 ở Việt Nam do tổ chức nào lãnh đạo?",
-       "o": [
-        "Đảng Dân chủ",
-        "Việt Nam Quốc dân đảng",
-        "Đại Việt quốc dân đảng",
-        "Đảng Cộng sản Đông Dương"
+        "Sự duy trì nguyên trạng xã hội cũ",
+        "Sự cải thiện nhỏ lẻ ở một vài lĩnh vực",
+        "Sự thay đổi chỉ về hình thức bên ngoài",
+        "Sự biến đổi căn bản về chất của đời sống xã hội"
        ],
        "a": 3
       },
       {
        "t": "mcq",
-       "q": "Cách mạng Tháng Tám năm 1945 ở Việt Nam mang tính chất là cuộc cách mạng:",
+       "q": "Cách mạng xã hội làm thay đổi:",
        "o": [
-        "Vô sản",
-        "Xã hội chủ nghĩa",
-        "Dân chủ tư sản kiểu mới",
-        "Tư sản kiểu cũ"
+        "Quan hệ sản xuất, cơ sở hạ tầng và kiến trúc thượng tầng",
+        "Chỉ lực lượng sản xuất",
+        "Chỉ truyền thống thị tộc",
+        "Chỉ tên gọi của nhà nước"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Trong xã hội có giai cấp đối kháng, cách mạng xã hội là:",
+       "o": [
+        "Đỉnh cao của đấu tranh giai cấp",
+        "Hiện tượng không liên quan đến đấu tranh giai cấp",
+        "Sự chấm dứt hoàn toàn của mọi đấu tranh giai cấp từ trước",
+        "Điểm khởi đầu của quan hệ thị tộc"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng xã hội là cuộc đấu tranh chính trị nhằm:",
+       "o": [
+        "Duy trì chính quyền cũ",
+        "Giành chính quyền",
+        "Xóa bỏ mọi tổ chức xã hội",
+        "Giữ nguyên trật tự xã hội cũ"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Vai trò của cách mạng xã hội là:",
+       "o": [
+        "Duy trì mãi các quan hệ kinh tế – xã hội lỗi thời",
+        "Làm chậm tiến trình phát triển lịch sử",
+        "Làm mâu thuẫn xã hội gay gắt thêm mà không giải quyết",
+        "Mở đường cho sự hình thành trật tự xã hội mới"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Phương pháp cách mạng bạo lực có thể xuất hiện khi:",
+       "o": [
+        "Xã hội không có bất kỳ mâu thuẫn nào",
+        "Giai cấp thống trị không tự nguyện từ bỏ quyền lực",
+        "Nhà nước chưa ra đời",
+        "Giai cấp thống trị tự nguyện nhường quyền"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Mác ví bạo lực như gì của xã hội mới trong những điều kiện lịch sử nhất định?",
+       "o": [
+        "“Bà đỡ”",
+        "“Người thầy”",
+        "“Cái neo”",
+        "“Người gác cổng”"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Cách mạng không bạo lực có thể diễn ra khi:",
+       "o": [
+        "Quần chúng nhân dân không có tổ chức",
+        "Giai cấp thống trị luôn mạnh hơn và không phải nhượng bộ",
+        "Có điều kiện lịch sử phù hợp và tương quan lực lượng buộc giai cấp thống trị nhượng bộ",
+        "Phương pháp bạo lực là bắt buộc trong mọi hoàn cảnh"
        ],
        "a": 2
       },
       {
        "t": "mcq",
-       "q": "Phương pháp hòa bình giành chính quyền là phương pháp:",
+       "q": "Cách mạng xã hội chủ nghĩa theo lý luận Mác – Lênin hướng đến:",
        "o": [
-        "Dùng chiến tranh cách mạng để lật đổ chính quyền",
-        "Đảo chính của một nhóm người",
-        "Đấu tranh nghị trường, bằng bầu cử để giành đa số ghế trong nghị viện và chính phủ",
-        "Thỏa hiệp với giai cấp thống trị để chia sẻ quyền lực"
+        "Củng cố chế độ tư hữu",
+        "Duy trì áp bức, bóc lột",
+        "Xóa bỏ áp bức, bóc lột và xây dựng xã hội công bằng, dân chủ, văn minh",
+        "Khôi phục xã hội thị tộc, bộ lạc"
        ],
        "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Những vấn đề thúc đẩy các phong trào xã hội trong thế giới hiện nay gồm:",
+       "o": [
+        "Chỉ có vấn đề thị tộc, bộ lạc",
+        "Bất bình đẳng, môi trường và quyền dân chủ",
+        "Chỉ có xung đột giữa các thị tộc",
+        "Hoàn toàn không có vấn đề xã hội nào"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Mạng xã hội tạo điều kiện cho các phong trào xã hội:",
+       "o": [
+        "Kết nối và tổ chức cộng đồng",
+        "Loại bỏ hoàn toàn yếu tố quốc tế",
+        "Chấm dứt mọi hoạt động của cộng đồng",
+        "Làm thông tin lan truyền chậm đi"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Trong bối cảnh toàn cầu hóa, các vấn đề quốc gia ngày càng:",
+       "o": [
+        "Gắn với yếu tố quốc tế",
+        "Không chịu ảnh hưởng của thông tin",
+        "Do thị tộc quyết định",
+        "Tách rời khỏi yếu tố quốc tế"
+       ],
+       "a": 0
       }
      ]
     },
     {
-     "title": "Cách mạng và nhà nước pháp quyền",
+     "title": "Cách mạng xã hội: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Tình thế cách mạng là sự chín muồi của mâu thuẫn giữa {0} và {1}, là sự phát triển đến đỉnh cao của cuộc đấu tranh giai cấp.",
+       "q": "Cách mạng xã hội là bước biến đổi căn bản về {0} trong đời sống xã hội, gắn với sự thay đổi hình thái kinh tế – {1}.",
        "o": [
         [
-         "kiến trúc thượng tầng",
-         "lực lượng sản xuất",
-         "tồn tại xã hội"
+         "hình thức",
+         "lượng",
+         "chất"
         ],
         [
-         "cơ sở hạ tầng",
-         "ý thức xã hội",
-         "quan hệ sản xuất"
+         "văn hóa",
+         "chính trị",
+         "xã hội"
         ]
        ],
        "a": [
-        1,
+        2,
         2
        ]
       },
       {
        "t": "fill",
-       "q": "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam tồn tại theo nguyên tắc: Đảng {0}, nhà nước {1}, nhân dân {2}.",
+       "q": "Mâu thuẫn giữa lực lượng {0} và quan hệ {1} là nguồn gốc sâu xa, quyết định của cách mạng xã hội.",
        "o": [
         [
-         "lãnh đạo",
-         "quản lý",
-         "làm chủ"
+         "sản xuất",
+         "phân phối",
+         "tiêu dùng"
         ],
         [
-         "làm chủ",
-         "lãnh đạo",
-         "quản lý"
-        ],
-        [
-         "quản lý",
-         "làm chủ",
-         "lãnh đạo"
+         "phân phối",
+         "sản xuất",
+         "tiêu dùng"
         ]
        ],
        "a": [
         0,
-        2,
         1
        ]
       },
       {
        "t": "fill",
-       "q": "Theo nghĩa hẹp, cách mạng xã hội là đỉnh cao của đấu tranh {0}, là cuộc đấu tranh lật đổ {1}, thiết lập một chính quyền mới tiến bộ hơn.",
+       "q": "Trong tình thế cách mạng, giai cấp {0} không thể tiếp tục sống theo cách cũ, còn giai cấp {1} không thể tiếp tục cai trị theo cách cũ.",
        "o": [
         [
-         "dân tộc",
-         "giai cấp",
-         "tư tưởng"
+         "thống trị",
+         "bị trị",
+         "trung gian"
         ],
         [
-         "pháp luật",
-         "tôn giáo",
-         "chính quyền"
+         "thống trị",
+         "trung gian",
+         "bị trị"
         ]
        ],
        "a": [
         1,
+        0
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Cách mạng xã hội làm thay đổi quan hệ sản xuất, cơ sở {0} và kiến trúc {1}.",
+       "o": [
+        [
+         "tư tưởng",
+         "hạ tầng",
+         "thượng tầng"
+        ],
+        [
+         "thượng tầng",
+         "kinh tế",
+         "hạ tầng"
+        ]
+       ],
+       "a": [
+        1,
+        0
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Cách mạng bạo lực nhằm giành chính quyền và {0} chế độ cũ; Mác ví bạo lực như “{1}” của xã hội mới.",
+       "o": [
+        [
+         "duy trì",
+         "bảo vệ",
+         "lật đổ"
+        ],
+        [
+         "người gác cổng",
+         "chiếc neo",
+         "bà đỡ"
+        ]
+       ],
+       "a": [
+        2,
         2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Cách mạng xã hội chủ nghĩa hướng đến xóa bỏ {0}, bóc lột, gắn với vai trò của giai cấp {1} và nhân dân lao động.",
+       "o": [
+        [
+         "dân chủ",
+         "áp bức",
+         "tự do"
+        ],
+        [
+         "công nhân",
+         "phong kiến",
+         "chủ nô"
+        ]
+       ],
+       "a": [
+        1,
+        0
        ]
       }
      ]
     },
     {
-     "title": "Nhà nước và cách mạng: đúng sai 4 ý",
+     "title": "Cách mạng xã hội: đúng sai 4 ý",
      "qs": [
       {
        "t": "tf",
-       "q": "Về kiểu nhà nước và hình thức nhà nước:",
+       "q": "Về nguồn gốc và quá trình hình thành điều kiện cách mạng:",
        "o": [
-        "Nhà nước thành bang Xpác ở Hy Lạp cổ đại là điển hình của hình thức nhà nước quân chủ chủ nô.",
-        "Hình thức nhà nước chỉ chịu sự quy định của phong tục tập quán, không liên quan đến bản chất giai cấp.",
-        "Các kiểu nhà nước trên cơ bản giống nhau ở chỗ đều là công cụ thống trị của giai cấp thống trị.",
-        "Nhà nước vô sản là nhà nước của số đông thống trị số ít."
+        "Quan hệ sản xuất hiện có có thể trở nên lỗi thời và trở thành lực cản.",
+        "Đấu tranh giai cấp phát triển là bước dẫn tới điều kiện cách mạng hình thành.",
+        "Mâu thuẫn lợi ích giai cấp giảm đi khi quan hệ sản xuất trở thành lực cản.",
+        "Lực lượng sản xuất không ngừng phát triển."
+       ],
+       "a": [
+        true,
+        true,
+        false,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về tình thế cách mạng và bản chất của cách mạng xã hội:",
+       "o": [
+        "Trong tình thế cách mạng, quần chúng nhân dân sẵn sàng hành động cách mạng.",
+        "Cách mạng xã hội chỉ làm thay đổi một vài lĩnh vực riêng lẻ của đời sống xã hội.",
+        "Cách mạng xã hội thiết lập hình thái kinh tế – xã hội mới.",
+        "Trong tình thế cách mạng, mâu thuẫn xã hội phát triển đến mức gay gắt."
        ],
        "a": [
         true,
@@ -460,32 +810,16 @@
       },
       {
        "t": "tf",
-       "q": "Về cách mạng xã hội và các khái niệm liên quan:",
+       "q": "Về phương pháp cách mạng và bối cảnh hiện nay:",
        "o": [
-        "Đảo chính luôn là một phong trào cách mạng và làm thay đổi căn bản chế độ xã hội.",
-        "Chủ nghĩa cải lương chủ trương từ bỏ đấu tranh giai cấp và cách mạng xã hội, tuyệt đối hóa đấu tranh nghị trường.",
-        "Cải cách xã hội chỉ tạo nên những thay đổi bộ phận, lĩnh vực riêng lẻ của đời sống xã hội.",
-        "Cách mạng xã hội là bước nhảy đột biến làm thay đổi về chất, còn tiến hóa xã hội là sự thay đổi dần dần."
+        "Lực lượng tham gia, mục tiêu và hình thức tổ chức của các phong trào xã hội hiện nay rất đa dạng.",
+        "Cách mạng không bạo lực chỉ xảy ra khi giai cấp thống trị rất mạnh và không phải nhượng bộ.",
+        "Công nghệ tác động đến phương thức hoạt động của các phong trào xã hội.",
+        "Việc lựa chọn phương pháp cách mạng phụ thuộc hoàn cảnh cụ thể."
        ],
        "a": [
+        true,
         false,
-        true,
-        true,
-        true
-       ]
-      },
-      {
-       "t": "tf",
-       "q": "Về điều kiện và phương pháp của cách mạng xã hội:",
-       "o": [
-        "Phương pháp hòa bình luôn là phương pháp duy nhất và dễ thực hiện nhất để giành chính quyền.",
-        "Khi điều kiện khách quan đã chín muồi, nhân tố chủ quan có vai trò quyết định thành bại của cách mạng.",
-        "Không có tình thế cách mạng thì cách mạng xã hội không thể nổ ra được.",
-        "Thời cơ cách mạng là thời điểm đặc biệt khi điều kiện khách quan và nhân tố chủ quan đã chín muồi."
-       ],
-       "a": [
-        false,
-        true,
         true,
         true
        ]
@@ -498,212 +832,366 @@
    "name": "Chung kết",
    "challenges": [
     {
-     "title": "Ý thức xã hội: trắc nghiệm",
+     "title": "Ứng dụng và liên hệ: trắc nghiệm",
      "qs": [
       {
        "t": "mcq",
-       "q": "Yếu tố cơ bản nhất của tồn tại xã hội là:",
+       "q": "Trong bối cảnh hiện đại, nhà nước phải quản lý xã hội trong môi trường nào?",
        "o": [
-        "Điều kiện tự nhiên",
-        "Hoàn cảnh địa lý",
-        "Dân số và mật độ dân số",
-        "Phương thức sản xuất vật chất"
-       ],
-       "a": 3
-      },
-      {
-       "t": "mcq",
-       "q": "Ý thức xã hội bao gồm hai bộ phận cơ bản nào?",
-       "o": [
-        "Ý thức thông thường và ý thức tôn giáo",
-        "Tâm lý xã hội và hệ tư tưởng xã hội",
-        "Ý thức cá nhân và ý thức tập thể",
-        "Ý thức chính trị và ý thức pháp quyền"
-       ],
-       "a": 1
-      },
-      {
-       "t": "mcq",
-       "q": "Hình thái ý thức xã hội nào là sự phản ánh hư ảo sức mạnh của giới tự nhiên bên ngoài lẫn các quan hệ xã hội vào đầu óc con người?",
-       "o": [
-        "Ý thức đạo đức",
-        "Ý thức thẩm mỹ",
-        "Ý thức tôn giáo",
-        "Ý thức pháp quyền"
-       ],
-       "a": 2
-      },
-      {
-       "t": "mcq",
-       "q": "Tồn tại xã hội là:",
-       "o": [
-        "Toàn bộ các quan điểm chính trị của xã hội",
-        "Toàn bộ sinh hoạt vật chất và những điều kiện sinh hoạt vật chất của xã hội",
-        "Toàn bộ đời sống tinh thần của xã hội",
-        "Tổng số dân cư của một quốc gia"
-       ],
-       "a": 1
-      },
-      {
-       "t": "mcq",
-       "q": "Trong các quan hệ xã hội vật chất, những quan hệ cơ bản nhất là:",
-       "o": [
-        "Quan hệ giữa các tôn giáo",
-        "Quan hệ giữa con người với giới tự nhiên và quan hệ giữa con người với con người",
-        "Quan hệ ngoại giao giữa các quốc gia",
-        "Quan hệ giữa các nhà tư tưởng"
-       ],
-       "a": 1
-      },
-      {
-       "t": "mcq",
-       "q": "Bộ phận nào của ý thức xã hội là giai đoạn phát triển cao hơn, là sự nhận thức lý luận về tồn tại xã hội?",
-       "o": [
-        "Tâm lý xã hội",
-        "Hệ tư tưởng",
-        "Ý thức thông thường",
-        "Phong tục tập quán"
-       ],
-       "a": 1
-      },
-      {
-       "t": "mcq",
-       "q": "Theo Ph.Ăngghen, trong xã hội có giai cấp đối kháng, đạo đức luôn là:",
-       "o": [
-        "Đạo đức của giai cấp",
-        "Đạo đức không liên quan đến điều kiện kinh tế",
-        "Đạo đức riêng của từng cá nhân",
-        "Đạo đức chung của toàn nhân loại, không mang dấu ấn giai cấp"
+        "Môi trường số",
+        "Môi trường không có pháp luật",
+        "Chỉ môi trường nông nghiệp truyền thống",
+        "Chỉ môi trường thị tộc, bộ lạc"
        ],
        "a": 0
       },
       {
        "t": "mcq",
-       "q": "Nghệ thuật phản ánh thế giới bằng:",
+       "q": "Để bảo vệ người dân trong môi trường số, nhà nước cần xây dựng:",
        "o": [
-        "Khái niệm và phạm trù",
-        "Hình tượng nghệ thuật",
-        "Quy luật khoa học",
-        "Giáo lý tôn giáo"
+        "Chính sách cho phép tùy ý khai thác dữ liệu",
+        "Chính sách chỉ bảo vệ dữ liệu của nhà nước",
+        "Chính sách xóa bỏ mọi dữ liệu cá nhân",
+        "Chính sách bảo vệ dữ liệu cá nhân"
        ],
-       "a": 1
+       "a": 3
       },
       {
        "t": "mcq",
-       "q": "Hình thức đặc biệt và cao nhất của tri thức cũng như của ý thức xã hội là:",
+       "q": "Nhà nước cần bảo đảm chủ quyền quốc gia trên:",
        "o": [
-        "Khoa học tự nhiên",
-        "Nghệ thuật",
-        "Triết học",
-        "Tôn giáo"
+        "Chỉ lãnh thổ đất liền",
+        "Chỉ vùng biển",
+        "Không gian mạng",
+        "Chỉ khu vực nông thôn"
        ],
        "a": 2
       },
       {
        "t": "mcq",
-       "q": "Hình thái ý thức xã hội nào thể hiện trực tiếp và rõ nhất lợi ích giai cấp?",
+       "q": "Một vấn đề đặt ra đối với nhà nước là cân bằng giữa:",
        "o": [
-        "Ý thức khoa học",
-        "Ý thức tôn giáo",
-        "Ý thức thẩm mỹ",
-        "Ý thức chính trị"
+        "Quản lý xã hội và việc bỏ qua pháp luật",
+        "Thị tộc và bộ lạc",
+        "Quản lý xã hội và quyền, lợi ích hợp pháp của cá nhân",
+        "Quân chủ và cộng hòa"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Trước các nguy cơ xuyên biên giới, nhà nước cần:",
+       "o": [
+        "Bỏ qua các nguy cơ này",
+        "Tăng cường hợp tác quốc tế",
+        "Chỉ dựa vào truyền thống thị tộc",
+        "Đóng cửa mọi quan hệ quốc tế"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Nội dung nào thể hiện vai trò của nhà nước trong thời đại số?",
+       "o": [
+        "Quay về quản lý theo thị tộc",
+        "Phát triển dịch vụ công trực tuyến",
+        "Xóa bỏ định danh điện tử",
+        "Cấm hoàn toàn dịch vụ công"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo phần kết luận, nhà nước là:",
+       "o": [
+        "Sản phẩm của chế độ thị tộc",
+        "Hiện tượng vĩnh viễn của xã hội loài người",
+        "Sản phẩm lịch sử, gắn với sự phân hóa giai cấp",
+        "Tổ chức không liên quan đến giai cấp"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Trong tình huống một cuộc tấn công mạng làm rò rỉ dữ liệu nhiều người dân, nhà nước cần:",
+       "o": [
+        "Bỏ qua sự việc",
+        "Phối hợp ứng phó và điều tra",
+        "Để từng cá nhân tự xử lý",
+        "Cấm mọi hoạt động trên mạng"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Trong tình huống an ninh mạng, cơ sở để xác định trách nhiệm và bảo vệ quyền lợi là:",
+       "o": [
+        "Ý muốn cá nhân",
+        "Pháp luật",
+        "Truyền thống thị tộc",
+        "Thỏa thuận ngầm giữa các bên"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Trong tình huống an ninh mạng, tổ chức và cá nhân cần:",
+       "o": [
+        "Không cần quan tâm đến bảo mật",
+        "Chỉ chờ nhà nước xử lý",
+        "Chia sẻ công khai mật khẩu",
+        "Nâng cao nhận thức bảo mật"
        ],
        "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Tình huống an ninh mạng được liên hệ với chức năng nào của nhà nước?",
+       "o": [
+        "Chỉ chức năng duy trì sự thống trị giai cấp",
+        "Chức năng xã hội",
+        "Chức năng của tổ chức thị tộc",
+        "Không liên quan đến chức năng nào"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "AI làm thay đổi:",
+       "o": [
+        "Chỉ hình thức bên ngoài của chính thể",
+        "Chỉ lịch sử thời cổ đại",
+        "Không thay đổi điều gì",
+        "Phương thức sản xuất và xử lý thông tin"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Những thách thức mà AI đặt ra gồm:",
+       "o": [
+        "Quyền riêng tư, dữ liệu và trách nhiệm",
+        "Chỉ vấn đề thời tiết",
+        "Chỉ vấn đề lãnh thổ",
+        "Không có thách thức nào"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Đối với sự phát triển của AI, nhà nước cần:",
+       "o": [
+        "Bỏ mặc, không quản lý",
+        "Cấm mọi đổi mới công nghệ",
+        "Hoàn thiện cơ chế quản lý phù hợp với sự phát triển công nghệ",
+        "Chỉ quản lý bằng truyền thống cũ"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Đổi mới công nghệ cần đi đôi với:",
+       "o": [
+        "Việc bỏ qua rủi ro",
+        "Việc từ bỏ pháp luật",
+        "Việc hạn chế mọi quyền lợi của người dân",
+        "An toàn và trách nhiệm"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Công nghệ mới trước hết làm thay đổi:",
+       "o": [
+        "Lực lượng sản xuất",
+        "Hình thức chính thể quân chủ",
+        "Thị tộc, bộ lạc",
+        "Truyền thống nguyên thủy"
+       ],
+       "a": 0
+      },
+      {
+       "t": "mcq",
+       "q": "Vì sao không thể đồng nhất mọi đổi mới công nghệ với cách mạng xã hội?",
+       "o": [
+        "Vì mọi đổi mới công nghệ đều lật đổ chính quyền",
+        "Vì cách mạng xã hội chỉ xảy ra bằng công nghệ",
+        "Không phải mọi đổi mới công nghệ đều là cách mạng xã hội theo nghĩa chính trị",
+        "Vì công nghệ không bao giờ ảnh hưởng đến xã hội"
+       ],
+       "a": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Khi lực lượng sản xuất thay đổi theo công nghệ, pháp luật, chính sách và thiết chế xã hội cần:",
+       "o": [
+        "Chỉ phục vụ một nhóm",
+        "Đứng yên không thay đổi",
+        "Bị xóa bỏ",
+        "Thích ứng"
+       ],
+       "a": 3
+      },
+      {
+       "t": "mcq",
+       "q": "Theo bài học từ thực tiễn, chính sách cần xem xét tác động đến:",
+       "o": [
+        "Chỉ lợi ích của công nghệ",
+        "Nhiều nhóm lợi ích",
+        "Không nhóm nào",
+        "Duy nhất một nhóm lợi ích"
+       ],
+       "a": 1
+      },
+      {
+       "t": "mcq",
+       "q": "Theo phần tổng hợp, nhà nước có vai trò:",
+       "o": [
+        "Thay thế hoàn toàn xã hội",
+        "Tổ chức quyền lực, quản lý và duy trì trật tự xã hội",
+        "Thúc đẩy trực tiếp mọi cuộc cách mạng",
+        "Xóa bỏ mọi mâu thuẫn xã hội"
+       ],
+       "a": 1
       }
      ]
     },
     {
-     "title": "Ý thức xã hội: điền khuyết",
+     "title": "Ứng dụng và liên hệ: điền khuyết",
      "qs": [
       {
        "t": "fill",
-       "q": "Không phải ý thức của con người {0} tồn tại của họ; trái lại, tồn tại xã hội của họ quyết định {1} của họ.",
+       "q": "Nhà nước cần xây dựng chính sách bảo vệ dữ liệu {0}, phòng chống tội phạm {1} và bảo đảm chủ quyền quốc gia trên không gian mạng.",
        "o": [
         [
-         "phụ thuộc",
-         "tách rời",
-         "quyết định"
+         "tôn giáo",
+         "cá nhân",
+         "thị tộc"
         ],
         [
-         "hành vi",
-         "ý thức",
-         "tình cảm"
-        ]
-       ],
-       "a": [
-        2,
-        1
-       ]
-      },
-      {
-       "t": "fill",
-       "q": "Ý thức xã hội thông thường là những tri thức, quan niệm hình thành một cách {0} trong hoạt động hằng ngày nhưng chưa được {1} hóa, khái quát hóa.",
-       "o": [
-        [
-         "gián tiếp",
-         "trực tiếp",
-         "chuyên sâu"
-        ],
-        [
-         "hệ thống",
-         "pháp lý",
-         "chính trị"
+         "thị tộc",
+         "chủ nô",
+         "công nghệ cao"
         ]
        ],
        "a": [
         1,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Trong tình huống rò rỉ dữ liệu, nhà nước phối hợp ứng phó và điều tra; {0} là cơ sở xác định trách nhiệm và bảo vệ quyền lợi; tổ chức, cá nhân cần nâng cao nhận thức {1}.",
+       "o": [
+        [
+         "ý muốn",
+         "truyền thống",
+         "pháp luật"
+        ],
+        [
+         "bảo mật",
+         "thị tộc",
+         "chính trị"
+        ]
+       ],
+       "a": [
+        2,
         0
        ]
       },
       {
        "t": "fill",
-       "q": "Ý thức xã hội thường {0} hơn tồn tại xã hội, nhưng cũng có thể {1} tồn tại xã hội.",
+       "q": "AI làm phát sinh thách thức về {0}, dữ liệu và trách nhiệm; đổi mới công nghệ cần đi đôi với {1} và trách nhiệm.",
        "o": [
         [
-         "tiến bộ",
-         "đồng bộ",
-         "lạc hậu"
+         "chính thể",
+         "quyền riêng tư",
+         "thị tộc"
         ],
         [
-         "tách khỏi",
-         "vượt trước",
-         "phủ định"
+         "tư hữu",
+         "bạo lực",
+         "an toàn"
         ]
        ],
        "a": [
-        2,
+        1,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Công nghệ mới làm thay đổi lực lượng {0}; không phải mọi đổi mới công nghệ đều là cách mạng xã hội theo nghĩa {1}.",
+       "o": [
+        [
+         "sản xuất",
+         "chính thể",
+         "thị tộc"
+        ],
+        [
+         "thị tộc",
+         "chính trị",
+         "thời tiết"
+        ]
+       ],
+       "a": [
+        0,
+        1
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Sự vận động của xã hội là {0} chung; nhà nước tổ chức quyền lực, còn cách mạng xã hội thúc đẩy biến đổi căn bản trật tự xã hội khi {1} phát triển.",
+       "o": [
+        [
+         "kết quả",
+         "bối cảnh",
+         "mục tiêu"
+        ],
+        [
+         "truyền thống",
+         "thị tộc",
+         "mâu thuẫn"
+        ]
+       ],
+       "a": [
+        1,
+        2
+       ]
+      },
+      {
+       "t": "fill",
+       "q": "Nhà nước là sản phẩm {0}, gắn với sự phân hóa {1}; bản chất nhà nước thống nhất giữa tính giai cấp và tính xã hội.",
+       "o": [
+        [
+         "vĩnh viễn",
+         "lịch sử",
+         "tự nhiên"
+        ],
+        [
+         "thị tộc",
+         "giai cấp",
+         "tôn giáo"
+        ]
+       ],
+       "a": [
+        1,
         1
        ]
       }
      ]
     },
     {
-     "title": "Ý thức xã hội: đúng sai 4 ý",
+     "title": "Ứng dụng và liên hệ: đúng sai 4 ý",
      "qs": [
       {
        "t": "tf",
-       "q": "Về kết cấu và tính giai cấp của ý thức xã hội:",
+       "q": "Về nhà nước trong thời đại số:",
        "o": [
-        "Trong xã hội có giai cấp đối kháng, hệ tư tưởng thống trị là hệ tư tưởng của giai cấp thống trị.",
-        "Tâm lý xã hội phản ánh một cách trực tiếp, tự phát những điều kiện sinh hoạt hằng ngày của con người.",
-        "Ý thức xã hội gồm tâm lý xã hội và hệ tư tưởng xã hội.",
-        "Ý thức lý luận chỉ ghi lại những gì nằm trên bề mặt của tồn tại xã hội, không vạch ra được quy luật."
-       ],
-       "a": [
-        true,
-        true,
-        true,
-        false
-       ]
-      },
-      {
-       "t": "tf",
-       "q": "Về các hình thái ý thức xã hội:",
-       "o": [
-        "Ý thức chính trị và ý thức pháp quyền xuất hiện trong các xã hội có giai cấp và có nhà nước.",
-        "Khoa học và tôn giáo là những hiện tượng đối lập nhau về bản chất.",
-        "Ý thức thẩm mỹ chỉ hình thành sau khi xã hội đã phân chia giai cấp.",
-        "Chức năng chủ yếu của ý thức tôn giáo là chức năng đền bù - hư ảo."
+        "Nhà nước phát triển dịch vụ công trực tuyến, quản lý dữ liệu và định danh điện tử.",
+        "Nhà nước cần cân bằng giữa quản lý xã hội và quyền, lợi ích hợp pháp của cá nhân.",
+        "Chủ quyền quốc gia chỉ áp dụng trên lãnh thổ đất liền, không liên quan đến không gian mạng.",
+        "Các nguy cơ xuyên biên giới đòi hỏi tăng cường hợp tác quốc tế."
        ],
        "a": [
         true,
@@ -714,18 +1202,34 @@
       },
       {
        "t": "tf",
-       "q": "Về tính độc lập tương đối của ý thức xã hội:",
+       "q": "Về AI, công nghệ và biến đổi xã hội:",
        "o": [
-        "Ý thức xã hội có tính kế thừa: các quan điểm lý luận của thời đại sau dựa vào những tiền đề đã có từ các giai đoạn trước.",
-        "Ý thức xã hội thường lạc hậu hơn tồn tại xã hội, một phần do sức mạnh của thói quen, tập quán, truyền thống.",
-        "Sự phát triển của ý thức xã hội luôn luôn song hành với sự phát triển của kinh tế.",
-        "Ý thức xã hội chỉ là yếu tố thụ động, không có tác động trở lại tồn tại xã hội."
+        "Pháp luật, chính sách và thiết chế xã hội cần thích ứng với đổi mới công nghệ.",
+        "Mọi đổi mới công nghệ đều là cách mạng xã hội theo nghĩa chính trị.",
+        "AI làm thay đổi phương thức sản xuất và xử lý thông tin.",
+        "Công nghệ mới làm thay đổi lực lượng sản xuất, kéo theo quan hệ kinh tế và cách tổ chức lao động có thể thay đổi."
+       ],
+       "a": [
+        true,
+        false,
+        true,
+        true
+       ]
+      },
+      {
+       "t": "tf",
+       "q": "Về mối liên hệ giữa nhà nước và cách mạng xã hội:",
+       "o": [
+        "Hai nội dung này lý giải các khía cạnh khác nhau của cơ cấu và sự vận động xã hội.",
+        "Nhà nước tổ chức quyền lực, quản lý và duy trì trật tự xã hội.",
+        "Nhà nước tồn tại vĩnh viễn, không gắn với sự phân hóa giai cấp.",
+        "Cách mạng xã hội thúc đẩy biến đổi căn bản của trật tự xã hội khi mâu thuẫn phát triển."
        ],
        "a": [
         true,
         true,
         false,
-        false
+        true
        ]
       }
      ]
